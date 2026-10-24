@@ -1,7 +1,7 @@
 {
   "name": "swap-backend",
   "version": "1.0.0",
-  "description": "Swap API and Control Center (a HPY initiative)",
+  "description": "Swaapo API and Control Center (a HPY initiative)",
   "type": "module",
   "private": true,
   "engines": {

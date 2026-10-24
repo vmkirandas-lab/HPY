@@ -1,6 +1,6 @@
-# Swap backend · API + Control Center
+# Swaapo backend · API + Control Center
 
-The server for Swap (a HPY initiative). It is one Node.js app that serves:
+The server for Swaapo (a HPY initiative). It is one Node.js app that serves:
 
 - **`/api`**: the REST API the app and website call.
 - **`/admin`**: the **Control Center**, a staff console for running the platform.
@@ -48,12 +48,12 @@ Every staff action is written to the audit log, along with automatic sales, draw
 | **Users** | Search and filter members. Mark verified. Suspend or lift a suspension, with a reason. Confirm a teen's guardian consent. Approve or remove Women's Circle. *Admin:* change plan (never to a paid plan for teens), change role, set trust, add or remove coins with a reason. |
 | **Reports** | Dismiss, warn (trust −10), remove the item, or suspend the owner. Also lists messages flagged for scam words (OTP, UPI, advance…). |
 | **Auctions** | Verification queue: approve (the auction goes live and its timer starts) or reject with a reason. Cancel a live auction. *Admin:* track escrow (awaiting payment → paid → released / refunded / disputed). A refund adds a strike, and three strikes block bidding. |
-| **Brands & bidders** | Verification queue for **Swap Exclusive** brand pages: check the GSTIN, trademark or authorisation, and website, then verify or reject with a reason. Suspending a brand cancels its live drops. Also approves **verified bidders** after their ID and PAN check. |
+| **Brands & bidders** | Verification queue for **Swaapo Exclusive** brand pages: check the GSTIN, trademark or authorisation, and website, then verify or reject with a reason. Suspending a brand cancels its live drops. Also approves **verified bidders** after their ID and PAN check. |
 | **Studio & draws** | Pro Plus draws, giveaways, challenges, mystery boxes and videos. **Pick winners** uses a secure random draw and records the result in the audit log. Remove or restore posts. |
 | **Ads** | Approve or reject campaigns, pause, resume or end them, and see spend, views and clicks. |
 | **Content** | Remove or restore listings, events and groups. |
 | **Coins & Circle** | Circle request queue, and the full coin ledger. |
-| **Swap Green** | Compares what has been pledged (one tree per completed swap; meals and a clean-up drive every 10,000 swaps) with what has been delivered. *Admin:* record each delivered planting, meals or clean-up batch with the partner, place, date and a proof link. Only recorded batches count as delivered. |
+| **Swaapo Green** | Compares what has been pledged (one tree per completed swap; meals and a clean-up drive every 10,000 swaps) with what has been delivered. *Admin:* record each delivered planting, meals or clean-up batch with the partner, place, date and a proof link. Only recorded batches count as delivered. |
 | **Calls** | Call records: who, when, how long. No audio or video is stored. |
 | **Settings** (admin) | Feature switches for sign-ups, auctions, studio, draws, calls, coins, Circle, ads, events and groups. Also: maintenance mode with a message, plan prices, sale fees, coin rules, age and other limits, ad CPMs, and categories. All changes apply immediately. |
 | **Audit log** | Everything above, with who did it and when. |
@@ -73,10 +73,10 @@ Every gate in the app is enforced again on the server, so it can't be bypassed.
 - **Trust and welcome bonus**
   - Starting trust is mobile 20 + email 10 + ID 20 = 50 (`settings.trust`). Swaps and ratings add more later, and money never buys trust.
   - ID can be Aadhaar (through DigiLocker or UIDAI offline e-KYC), a passport, a driving licence or a voter ID. All earn the same points, because Aadhaar must stay optional for a private service.
-  - Swap stores only the method, the last 4 digits and a keyed hash of the provider's reference, so one ID can't verify two accounts. A full 12-digit Aadhaar number is rejected.
+  - Swaapo stores only the method, the last 4 digits and a keyed hash of the provider's reference, so one ID can't verify two accounts. A full 12-digit Aadhaar number is rejected.
   - The name and date of birth on the ID must match the account.
   - In production, `POST /api/me/id/verify` needs a KYC provider (`KYC_PROVIDER`); outside production it accepts the result so the flow can be tested.
-  - Completing all 9 profile items (name, username, mobile, email, ID, date of birth, area, bio, photo) pays a one-time welcome bonus of 1,000 Swap Coins (`coins.welcomeBonus`).
+  - Completing all 9 profile items (name, username, mobile, email, ID, date of birth, area, bio, photo) pays a one-time welcome bonus of 1,000 Swaapo Coins (`coins.welcomeBonus`).
 - **Deactivate and delete** (DPDP Act 2023)
   - Deactivating hides the profile and listings until the next login.
   - Deleting starts a 30-day grace period (`limits.deleteGraceDays`); logging in during it cancels the deletion.
@@ -102,7 +102,7 @@ Every gate in the app is enforced again on the server, so it can't be bypassed.
   - Reserve amounts and sealed bids are never shown to buyers.
   - Price-drop and Buy Now purchases are handled.
   - Auctions close automatically.
-- **Swap Coins**
+- **Swaapo Coins**
   - The member who receives a ★★★★★ rating gets 100 coins.
   - If both members are in Women's Circle, they get +50.
   - Coins can be added to offers from 1,000.
@@ -113,14 +113,14 @@ Every gate in the app is enforced again on the server, so it can't be bypassed.
   - One entry per person.
   - Winners are picked by a secure random draw and logged.
   - Mystery boxes need a declared minimum value (₹200 or more) and are swapped, never sold.
-- **Swap Exclusive**
+- **Swaapo Exclusive**
   - Only a **verified brand** (GSTIN in the right format, trademark or authorisation, reviewed by staff) can list executive auctions. It doesn't need a member plan.
   - Each piece gets a "1 of 1" edition and a certificate number like `SWX-MAL-0001`.
   - Swap-or-bid isn't allowed; executive auctions are cash only.
   - Only members whose ID and PAN check is approved (`kyc_status = verified`) can bid or buy.
   - The brand fee comes from `settings.exclusive.feePct`.
 - **Videos**: 2:00 maximum.
-- **Swap Green**
+- **Swaapo Green**
   - Every completed swap pledges trees (`settings.impact.treesPerSwap`).
   - Every `milestoneSwaps` completed swaps pledges meals and a clean-up drive, and the milestone is written to the audit log.
   - "Planted" and "funded" figures come only from batches recorded with a proof link and a past date.
@@ -142,8 +142,8 @@ Send `Authorization: Bearer <token>` with every request after logging in. Errors
 | Community | `GET/POST /api/events` · `POST /api/events/:id/rsvp` · `GET/POST /api/groups` · `POST /api/groups/:id/join` · `GET /api/messages/:userId` · `POST /api/messages` · `POST /api/calls` · `POST /api/calls/:id/end` · `POST /api/reports` |
 | Ads | `GET /api/ads/next?placement=feed\|story\|side\|auction` · `POST /api/ads/:id/click` · `GET/POST /api/campaigns` · `PATCH /api/campaigns/:id` |
 | Profile & trust | `GET /api/me/profile` (checklist, trust, bonus) · `PATCH /api/me/profile` · `POST /api/me/email/request` · `POST /api/me/email/verify` · `POST /api/me/id/verify` |
-| Swap Exclusive | `POST /api/brands` (apply) · `GET /api/brands` · `GET /api/brands/:slug` · `GET /api/me/brand` · `POST /api/me/kyc` · `POST /api/auctions` with `brandId` |
-| Swap Green | `GET /api/impact` (public counters, milestone progress, recent batches) · `GET /api/me/impact` |
+| Swaapo Exclusive | `POST /api/brands` (apply) · `GET /api/brands` · `GET /api/brands/:slug` · `GET /api/me/brand` · `POST /api/me/kyc` · `POST /api/auctions` with `brandId` |
+| Swaapo Green | `GET /api/impact` (public counters, milestone progress, recent batches) · `GET /api/me/impact` |
 | Admin | `/api/admin/stats` · `users` · `reports` · `messages/flagged` · `posts` · `promos` · `events` · `groups` · `campaigns` · `auctions` (+ `verify`, `cancel`, `escrow`) · `brands` (+ `PATCH brands/:id`) · `impact` (+ `POST impact/batches`) · `ledger` · `calls` · `audit` · `settings` |
 
 ## Before going live
@@ -152,7 +152,7 @@ These parts are deliberately stubbed and need real providers:
 
 1. **Payments**
    - Plans: `POST /api/me/plan` currently switches the plan straight away. Replace this with a payment gateway's webhook.
-   - SwapSafe escrow must run through an RBI-authorised payment aggregator. Never hold buyers' money yourself.
+   - SwaapoSafe escrow must run through an RBI-authorised payment aggregator. Never hold buyers' money yourself.
 2. **Calls**: the API records calls and enforces who may call whom. Audio and video need a WebRTC provider with TURN servers.
 3. **Uploads**: the API stores media URLs. Add object storage with upload moderation, and re-check video length with `ffprobe` on the server.
 4. **Verification**

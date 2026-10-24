@@ -1,4 +1,4 @@
-// Swap Green: every completed swap pledges a tree; every milestone pledges meals and a clean-up drive.
+// Swaapo Green: every completed swap pledges a tree; every milestone pledges meals and a clean-up drive.
 // "Pledged" comes from completed swaps. "Delivered" only counts batches staff record with partner proof.
 import { Router } from 'express';
 import { requireUser } from '../auth.js';

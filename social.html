@@ -757,6 +757,26 @@ html[data-minor="1"] .tabs-b{grid-template-columns:repeat(4,1fr)}
 .btn.d{border-color:var(--live);color:var(--live)}
 @media (max-width:820px){.authwrap{grid-template-columns:minmax(0,1fr);min-height:0;gap:18px}.authbrand ul{display:none}.authbrand h1{font-size:1.6rem}.authbrand .brandlogo{height:44px}}
 
+/* Gatherings & Offers */
+.gcard{display:flex;flex-direction:column;gap:10px;border:1px solid var(--glass-line);border-radius:18px;padding:14px;background:var(--glass)}
+.gtop{display:flex;gap:12px;align-items:flex-start}
+.gdate{min-width:52px;border-radius:14px;padding:6px 4px;text-align:center;color:#fff;font-weight:800;line-height:1.1}.gdate small{display:block;font-size:.66rem;opacity:.85}.gdate b{font-size:1.25rem}
+.gsplit{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-radius:14px;padding:10px 12px;background:rgba(255,200,87,.08);border:1px solid rgba(255,200,87,.3)}
+.gsplit .share{font-size:1.25rem;font-weight:800;color:var(--gold-ink)}
+.seats{display:flex;gap:4px}.seats i{width:22px;height:22px;border-radius:50%;border:1.5px dashed var(--glass-line)}.seats i.f{border:0;background:linear-gradient(135deg,#9A4DFF,#00C8FF)}
+.gtag{font-size:.7rem;font-weight:800;padding:2px 9px;border-radius:999px;border:1px solid var(--glass-line);color:var(--muted)}.gtag.rose{color:var(--rose);border-color:rgba(255,59,107,.45)}.gtag.ok{color:var(--ok);border-color:rgba(61,245,208,.45)}.gtag.gold{color:var(--gold-ink);border-color:rgba(255,200,87,.5)}
+.ggrid,.ogrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:0 16px 16px}
+@media (max-width:700px){.ggrid,.ogrid{grid-template-columns:minmax(0,1fr)}}
+.ocard{display:flex;flex-direction:column;border:1px solid var(--glass-line);border-radius:18px;overflow:hidden;background:var(--glass)}
+.ohead{display:flex;align-items:center;gap:12px;padding:14px;color:#fff}
+.omono{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-weight:800;font-size:1.05rem;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);flex:none}
+.odeal{font-size:1.35rem;font-weight:800;line-height:1.15}
+.obody{padding:12px 14px 14px;display:flex;flex-direction:column;gap:8px}
+.live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--rose);box-shadow:0 0 0 0 rgba(255,59,107,.6);animation:pulse 1.6s infinite;margin-right:6px}
+@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(255,59,107,0)}100%{box-shadow:0 0 0 0 rgba(255,59,107,0)}}
+.ostrip{display:flex;gap:10px;overflow-x:auto;padding:0 16px 16px;scrollbar-width:none}.ostrip .ocard{min-width:250px}
+.ocode{font-family:ui-monospace,monospace;font-size:1.3rem;font-weight:800;letter-spacing:.12em;text-align:center;padding:12px;border:1.5px dashed var(--gold);border-radius:14px;color:var(--gold-ink)}
+
 /* Verification, trust and profile completion */
 .idbox{display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:14px;border:1px solid rgba(255,200,87,.45);background:rgba(255,200,87,.08)}
 .pinfo .toprow .btn{white-space:nowrap}
@@ -842,6 +862,8 @@ h1,h2,h3{font-weight:800;letter-spacing:-.015em}
     <a class="nav" href="#swipe" data-v="swipe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 12h6M12 9v6"/></svg><span class="lbl">Swipe</span></a>
     <a class="nav" href="#explore" data-v="explore"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="lbl">Explore</span></a>
     <a class="nav" href="#events" data-v="events"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span class="lbl">Events</span></a>
+    <a class="nav" href="#gather" data-v="gather"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 9a2 2 0 0 0 0 4v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4a2 2 0 0 1 0-4V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1z"/><path d="M14 4v14" stroke-dasharray="2 2"/></svg><span class="lbl">Gatherings</span><span class="pro pro-tag">NEW</span></a>
+    <a class="nav" href="#offers" data-v="offers"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg><span class="lbl">Offers</span><span class="pro pro-tag">NEW</span></a>
     <a class="nav" href="#groups" data-v="groups"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.5a5 5 0 0 1 5.5 5"/></svg><span class="lbl">Groups</span></a>
     <a class="nav" href="#coins" data-v="coins"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5c-.6-.9-1.6-1.3-2.5-1.3-1.5 0-2.5.8-2.5 1.9 0 2.6 5 1.4 5 4 0 1.1-1.1 1.9-2.5 1.9-1 0-2-.4-2.6-1.3M12 7v1.2M12 15.8V17"/></svg><span class="lbl">Coins</span><span class="pro pro-tag" id="coin-tag">1,250</span></a>
     <a class="nav" href="#impact" data-v="impact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22v-7"/><path d="M12 15c-4 0-7-2.7-7-6.5C5 5 8 2 12 2s7 3 7 6.5c0 3.8-3 6.5-7 6.5z"/><path d="M12 15l-3-3M12 12l3-3"/></svg><span class="lbl">Swap Green</span></a>
@@ -1504,7 +1526,7 @@ function route(){
   const v=location.hash.slice(1)||"feed";
   document.querySelectorAll(".rail .nav[data-v]").forEach(a=>a.dataset.v===v?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current"));
   document.querySelectorAll(".tabs-b [data-go]").forEach(b=>b.dataset.go===v?b.setAttribute("aria-current","page"):b.removeAttribute("aria-current"));
-  ((["auctions","exclusive","brand"].includes(v)&&!canSeeAuctions())?{[v]:vAuctionGate}:{})[v]?vAuctionGate():({settings:vSettings,exclusive:vExclusive,brand:()=>vBrand(viewBrand),reels:vReels,addons:vAddons,impact:vImpact,create:vCreate,coins:vCoins,draws:vRewards,ads:EDITION==="web"?vAds:vWebOnly,about:EDITION==="web"?vAbout:vWebOnly,events:vEvents,groups:vGroups,group:vGroup,how:vHow,safety:vSafety,help:vHelp,auctions:vAuctions,swipe:vSwipe,explore:vExplore,pro:vPro,messages:vMessages,alerts:()=>{vAlerts();setTimeout(()=>{ALERTS.forEach(a=>a.new=false);badges()},1500)},profile:()=>vProfile("you"),user:()=>vProfile(viewUser||"you")}[v]||vFeed)();
+  ((["auctions","exclusive","brand"].includes(v)&&!canSeeAuctions())?{[v]:vAuctionGate}:{})[v]?vAuctionGate():({settings:vSettings,gather:vGather,offers:vOffers,exclusive:vExclusive,brand:()=>vBrand(viewBrand),reels:vReels,addons:vAddons,impact:vImpact,create:vCreate,coins:vCoins,draws:vRewards,ads:EDITION==="web"?vAds:vWebOnly,about:EDITION==="web"?vAbout:vWebOnly,events:vEvents,groups:vGroups,group:vGroup,how:vHow,safety:vSafety,help:vHelp,auctions:vAuctions,swipe:vSwipe,explore:vExplore,pro:vPro,messages:vMessages,alerts:()=>{vAlerts();setTimeout(()=>{ALERTS.forEach(a=>a.new=false);badges()},1500)},profile:()=>vProfile("you"),user:()=>vProfile(viewUser||"you")}[v]||vFeed)();
   rail();badges();
 }
 window.addEventListener("hashchange",()=>{document.querySelectorAll(".modal").forEach(m=>m.remove());window.scrollTo(0,0);route()});
@@ -1686,7 +1708,7 @@ function vHelp(){
   main.innerHTML=`<div class="glass"><div class="vhead"><h2>Help</h2></div><div style="padding:0 16px 16px">${q.map(([a,b])=>`<details class="qa"><summary>${a}</summary><p class="small muted">${b}</p></details>`).join("")}</div></div>`;
 }
 function openMore(){
-  const {w,close}=modal(`<div class="shead"><h3>More</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div><div class="sbody" style="gap:6px">${[["explore","Explore"],["events","Events"],["groups","Groups"],["reels","Reels"],...(canSeeAuctions()?[["exclusive","◆ Swap Exclusive"]]:[]),["swipe","Swipe to match"],["coins","Swap Coins"],["impact","Swap Green"],["addons","Add-ons"],["draws","Draws & Giveaways"],["messages","Messages"],["pro","Plans"],...(EDITION==="web"?[["ads","Advertise"],["about","About Swap"]]:[]),["how","How it works"],["safety","Safety"],["help","Help"],["settings","Account settings"]].map(([k,l])=>`<a class="nav" href="#${k}" style="border:1px solid var(--glass-line)">${l}</a>`).join("")}<button class="nav" data-logout style="border:1px solid var(--glass-line);color:var(--rose)">Log out</button></div>`,"More");
+  const {w,close}=modal(`<div class="shead"><h3>More</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div><div class="sbody" style="gap:6px">${[["explore","Explore"],["events","Events"],["gather","Gatherings"],["offers","Offers near you"],["groups","Groups"],["reels","Reels"],...(canSeeAuctions()?[["exclusive","◆ Swap Exclusive"]]:[]),["swipe","Swipe to match"],["coins","Swap Coins"],["impact","Swap Green"],["addons","Add-ons"],["draws","Draws & Giveaways"],["messages","Messages"],["pro","Plans"],...(EDITION==="web"?[["ads","Advertise"],["about","About Swap"]]:[]),["how","How it works"],["safety","Safety"],["help","Help"],["settings","Account settings"]].map(([k,l])=>`<a class="nav" href="#${k}" style="border:1px solid var(--glass-line)">${l}</a>`).join("")}<button class="nav" data-logout style="border:1px solid var(--glass-line);color:var(--rose)">Log out</button></div>`,"More");
   w.querySelectorAll("a").forEach(a=>a.addEventListener("click",close));
 }
 document.addEventListener("click",e=>{
@@ -1910,6 +1932,115 @@ function vCoins(){
    <p class="xs muted" style="padding:0 18px 18px">Swap Coins are rewards inside Swap. They have no cash value and can't be bought or sold.</p></div>`;
 }
 function earnCoins(k){setTimeout(syncCoins,0);const name=U[k].n,bonus=CIRCLE&&U[k].w?50:0;COINS+=100+bonus;COIN_LOG.unshift(["+100",`5-star swap with ${name}`,"now"]);if(bonus)COIN_LOG.unshift(["+50","Women's Circle bonus","now"]);const ct=document.getElementById("coin-tag");if(ct)ct.textContent=COINS.toLocaleString("en-IN");document.querySelectorAll(".coinpill b,.pcoin").forEach(b=>b.textContent=COINS.toLocaleString("en-IN"));toast(`★★★★★ swap with ${name}. +${100+bonus} ${bonus?" (Circle bonus)":""}`,true)}
+
+/* ================= Swap Gatherings: find people to go with, split the ticket ================= */
+const G_KINDS={concert:"Concert",party:"Party",match:"Match",movie:"Movie",trip:"Trip",festival:"Festival",workshop:"Workshop"};
+const G_GRAD={concert:"linear-gradient(135deg,#9A4DFF,#4A00F5)",party:"linear-gradient(135deg,#FF3B6B,#9A4DFF)",match:"linear-gradient(135deg,#0E6E6E,#2FB59C)",movie:"linear-gradient(135deg,#1C2A5A,#6A3AA0)",trip:"linear-gradient(135deg,#0B3B39,#00C8FF)",festival:"linear-gradient(135deg,#B08A3E,#E07A5F)",workshop:"linear-gradient(135deg,#3A2E14,#B08A3E)"};
+const day=(d,h,m)=>{const x=new Date(NOW);x.setDate(x.getDate()+d);x.setHours(h,m||0,0,0);return x.getTime()};
+let GATHER=[
+ {id:"gt1",u:"sneha",kind:"concert",t:"Indie night at the Bolgatty lawns",when:day(3,18,30),where:"Bolgatty Palace, Mulavukad",cost:6000,size:4,going:["sneha","meera"],age:18,note:"Bought a 4-person group pass. Two spots left. We'll meet at the gate at 6."},
+ {id:"gt2",u:"arjun",kind:"match",t:"Kerala Blasters home match, East stand",when:day(5,19,30),where:"JLN Stadium, Kaloor",cost:2400,size:4,going:["arjun","kiran","rahul"],age:0,note:"Block booking for 4, need one more. Yellow jerseys mandatory!"},
+ {id:"gt3",u:"fatima",kind:"movie",t:"First-day show, Malayalam premiere",when:day(2,21,0),where:"PVR Lulu Mall, Edappally",cost:1350,size:3,going:["fatima"],age:0,women:true,note:"Women-only group. Recliner seats, I'll book once we're three."},
+ {id:"gt4",u:"dev",kind:"trip",t:"Munnar sunrise trip, shared cab",when:day(9,4,0),where:"Pick-up: Vyttila Hub",cost:5200,size:4,going:["dev","vikram"],age:18,note:"Innova for the day, fuel and driver included. Back by 8 pm."},
+ {id:"gt5",u:"meera",kind:"party",t:"New Year's eve rooftop, Marine Drive",when:day(12,20,0),where:"Rooftop venue, Marine Drive",cost:12000,size:6,going:["meera","sneha","anjali"],age:23,note:"Venue serves alcohol, so 23+ with ID at the door. Couple and group entry only, hence the group."},
+ {id:"gt6",u:"anjali",kind:"workshop",t:"Pottery workshop for beginners",when:day(6,10,0),where:"Clay Studio, Fort Kochi",cost:3000,size:2,going:["anjali"],age:0,women:true,note:"2-for-1 couple pass. Looking for one more woman to share it."},
+ {id:"gt7",u:"rahul",kind:"festival",t:"Kochi-Muziris Biennale day pass",when:day(4,11,0),where:"Aspinwall House, Fort Kochi",cost:800,size:4,going:["rahul","kiran"],age:0,note:"Group ticket is cheaper. Ferry from High Court jetty together."}
+];
+let G_FILTER="all";const G_MINE={};
+const gShare=g=>Math.ceil(g.cost/g.size);
+const gWhen=t=>new Date(t).toLocaleString("en-IN",{weekday:"short",day:"numeric",month:"short",hour:"numeric",minute:"2-digit"});
+const gOk=g=>(!g.age||AGE_N>=g.age)&&!(isTeen()&&(g.kind==="party"||g.kind==="trip"));
+function gCard(g){const d=new Date(g.when),left=g.size-g.going.length-(G_MINE[g.id]==="in"?1:0),st=G_MINE[g.id],mine=g.u==="you";
+  return `<div class="gcard"><div class="gtop"><div class="gdate" style="background:${G_GRAD[g.kind]}"><small>${d.toLocaleString("en-IN",{month:"short"})}</small><b>${d.getDate()}</b><small>${d.toLocaleString("en-IN",{weekday:"short"})}</small></div>
+   <div style="flex:1;min-width:0"><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px"><span class="gtag">${G_KINDS[g.kind]}</span>${g.women?'<span class="gtag rose">♀ Women only</span>':""}${g.age?`<span class="gtag gold">${g.age}+</span>`:""}</div><b>${esc(g.t)}</b><div class="xs muted">${gWhen(g.when)} · ${esc(g.where)}</div></div></div>
+   <div class="gsplit"><div><span class="xs muted">Your share</span><div class="share">₹${gShare(g).toLocaleString("en-IN")}</div></div><div class="xs muted" style="flex:1;min-width:120px">₹${g.cost.toLocaleString("en-IN")} total ÷ ${g.size} people</div><div><div class="seats">${Array.from({length:g.size},(_,i)=>`<i class="${i<g.size-left?"f":""}"></i>`).join("")}</div><span class="xs muted">${left>0?left+" spot"+(left>1?"s":"")+" left":"Full"}</span></div></div>
+   <div class="person">${av(g.u,"xs")}<span class="small" style="flex:1;min-width:0">${mine?"You're hosting":`Hosted by ${nm(g.u)}`} <span class="xs muted">· Trust ${U[g.u].trust}</span></span>
+   ${mine?`<span class="gtag ok">${g.going.length}/${g.size} going</span>`:st==="in"?'<span class="gtag ok">✓ You\'re going</span>':st==="req"?'<span class="gtag gold">Requested</span>':left<=0?'<span class="gtag">Full</span>':`<button class="btn g" data-gjoin="${g.id}">Join · ₹${gShare(g).toLocaleString("en-IN")}</button>`}</div>
+   ${g.note?`<p class="small muted" style="margin:0">“${esc(g.note)}”</p>`:""}</div>`}
+function vGather(){const list=GATHER.filter(gOk).filter(g=>G_FILTER==="all"||(G_FILTER==="women"?g.women:G_FILTER==="mine"?(g.u==="you"||G_MINE[g.id]):g.kind===G_FILTER)).sort((a,b)=>a.when-b.when);
+  main.innerHTML=`<div class="glass"><div class="vhead"><div><span class="fmt">Swap Gatherings</span><h2 style="margin-top:8px">Don't go alone. Go together.</h2><p class="small muted" style="margin-top:4px">Find people near you for a concert, match, party, movie or trip, and split the ticket. Your share waits in SwapSafe until the host shares the tickets.</p></div><button class="btn g" data-gnew>+ Start a gathering</button></div>
+   <div class="chips">${[["all","All"],["mine","Yours"],["women","♀ Women only"],...Object.entries(G_KINDS).filter(([k])=>!(isTeen()&&(k==="party"||k==="trip")))].map(([k,l])=>`<button aria-pressed="${G_FILTER===k}" data-gf="${k}">${l}</button>`).join("")}</div>
+   ${list.length?`<div class="ggrid">${list.map(gCard).join("")}</div>`:`<div class="empty"><b>Nothing here yet</b><p class="small muted">Start a gathering and people near you can join.</p></div>`}
+   <div class="vhead" style="padding-top:0"><h3>How it stays safe</h3></div>
+   <div class="fmts" style="padding:0 16px 16px"><div><b>Verified people</b><span class="small muted">Hosts need a verified phone and trust 40+. Every profile shows trust and reviews.</span></div><div><b>SwapSafe split</b><span class="small muted">Shares are held until the host uploads the tickets. Refunded if the host cancels.</span></div><div><b>Meet at the venue</b><span class="small muted">Meet in public. Share your plan with a friend from the gathering page.</span></div><div><b>Age and women-only</b><span class="small muted">Venues serving alcohol are 23+. Women-only gatherings are visible to Circle members.</span></div></div></div>`}
+function openGatherJoin(id){const g=GATHER.find(x=>x.id===id);if(!g)return;
+  if(g.women&&!CIRCLE){toast("This one is women-only. Join Women's Circle to take part.");return}
+  if(!SESSION){toast("Log in to join a gathering.");return}
+  const {w,close}=modal(`<div class="shead"><h3>Join this gathering</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
+   <form class="sbody" novalidate><b>${esc(g.t)}</b><div class="vlist"><span>${gWhen(g.when)}</span><span>${esc(g.where)}</span><span>Hosted by ${esc(U[g.u].n)} · trust ${U[g.u].trust}</span></div>
+   <div class="gsplit"><div><span class="xs muted">You pay</span><div class="share">₹${gShare(g).toLocaleString("en-IN")}</div></div><div class="xs muted" style="flex:1">Held in SwapSafe. Released to ${esc(U[g.u].n.split(" ")[0])} when the tickets are shared with you. Full refund if they cancel or don't accept you.</div></div>
+   <div class="field"><label for="gj-m">Say hello <span class="muted">(optional)</span></label><textarea id="gj-m" rows="2" maxlength="200" placeholder="Hi! I'd love to join. I'll be coming from Kakkanad."></textarea></div>
+   <label class="toggle"><span>Share my plan with a friend<br><span class="xs muted">They get the time, place and host's profile</span></span><span class="switch"><input type="checkbox" checked><i></i></span></label>
+   <button class="btn g" type="submit" style="padding:12px">Request to join · ₹${gShare(g).toLocaleString("en-IN")}</button><p class="xs muted" style="text-align:center">Example only. No real payment in this preview.</p></form>`,"Join gathering");
+  w.querySelector("form").onsubmit=e=>{e.preventDefault();const msg=w.querySelector("#gj-m").value.trim();G_MINE[g.id]="req";close();toast(`Request sent to ${U[g.u].n.split(" ")[0]}. Your share is held in SwapSafe.`,true);if(location.hash==="#gather")vGather();
+    setTimeout(()=>{G_MINE[g.id]="in";let ci=CONVS.findIndex(c=>c.u===g.u);if(ci<0){CONVS.unshift({u:g.u,unread:true,msgs:[]});ci=0}
+      if(msg)CONVS[ci].msgs.push({t:"me",x:msg});CONVS[ci].msgs.push({t:"them",x:`You're in for “${g.t}”! I'll share the tickets here. Meet at ${g.where.split(",")[0]}.`});CONVS[ci].unread=true;
+      ALERTS.unshift({new:true,u:g.u,x:`accepted you for <b>${esc(g.t)}</b>`,t:"now",e:"",go:"messages"});badges();toast(`${U[g.u].n.split(" ")[0]} accepted you. Check Messages.`,true);if(location.hash==="#gather")vGather()},2500)}}
+function openGatherNew(){if(!SESSION){toast("Log in to start a gathering.");return}
+  const a=SESSION;if(trustOf(a)<40){toast("Hosting needs trust 40. Verify your email or ID in Settings.");go("settings");return}
+  const {w,close}=modal(`<div class="shead"><h3>Start a gathering</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
+   <form class="sbody" novalidate>
+   <div class="field"><label for="gn-k">What is it?</label><select id="gn-k">${Object.entries(G_KINDS).filter(([k])=>!(isTeen()&&(k==="party"||k==="trip"))).map(([k,l])=>`<option value="${k}">${l}</option>`).join("")}</select></div>
+   <div class="field"><label for="gn-t">Title</label><input id="gn-t" maxlength="70" placeholder="e.g. Coldplay tribute night, need 2 more"></div>
+   <div class="two"><div class="field"><label for="gn-w">Date and time</label><input id="gn-w" type="datetime-local"></div><div class="field"><label for="gn-p">Where</label><input id="gn-p" maxlength="60" placeholder="Venue, area"></div></div>
+   <div class="two"><div class="field"><label for="gn-c">Total ticket cost (₹)</label><input id="gn-c" type="number" min="0" step="50" placeholder="4000"></div><div class="field"><label for="gn-s">People in total, with you</label><input id="gn-s" type="number" min="2" max="12" value="4"></div></div>
+   <div class="gsplit"><span class="xs muted">Each person pays</span><span class="share" id="gn-sh">₹0</span></div>
+   <div class="field"><label for="gn-a">Age limit</label><select id="gn-a"><option value="0">All ages</option><option value="18">18+</option><option value="23">23+ (venue serves alcohol)</option></select></div>
+   ${CIRCLE?'<label class="toggle"><span>Women only</span><span class="switch"><input type="checkbox" id="gn-wo"><i></i></span></label>':""}
+   <div class="field"><label for="gn-n">Note <span class="muted">(optional)</span></label><textarea id="gn-n" rows="2" maxlength="200" placeholder="Where you'll meet, what's included"></textarea></div>
+   <span class="err" hidden></span><button class="btn g" type="submit" style="padding:12px">Post gathering</button></form>`,"Start a gathering");
+  const $=id=>w.querySelector(id),er=w.querySelector(".err"),upd=()=>{const c=+$("#gn-c").value||0,n=Math.max(2,+$("#gn-s").value||2);$("#gn-sh").textContent="₹"+Math.ceil(c/n).toLocaleString("en-IN")};
+  $("#gn-c").oninput=upd;$("#gn-s").oninput=upd;
+  w.querySelector("form").onsubmit=e=>{e.preventDefault();const t=$("#gn-t").value.trim(),when=new Date($("#gn-w").value).getTime(),c=+$("#gn-c").value,n=+$("#gn-s").value,age=+$("#gn-a").value;
+    const fail=m=>{er.textContent=m;er.hidden=false};
+    if(t.length<4)return fail("Add a title.");if(!when||when<Date.now())return fail("Pick a date and time in the future.");if(!$("#gn-p").value.trim())return fail("Add where it is.");
+    if(!(c>0))return fail("Add the total ticket cost.");if(!(n>=2&&n<=12))return fail("A gathering is 2 to 12 people.");if(age>AGE_N)return fail(`You need to be ${age}+ to host this.`);
+    GATHER.unshift({id:"gt"+Date.now(),u:"you",kind:$("#gn-k").value,t,when,where:$("#gn-p").value.trim(),cost:c,size:n,going:["you"],age,women:!!(CIRCLE&&$("#gn-wo")&&$("#gn-wo").checked),note:$("#gn-n").value.trim()});
+    close();G_FILTER="all";toast("Your gathering is live. People near you can request to join.",true);vGather()}}
+
+/* ================= Swap Offers: brand offers around you ================= */
+const OFFERS=[
+ {id:"of1",b:"Nike",cat:"Footwear",deal:"Extra 20% off running shoes",sub:"On top of store prices. Members only.",store:"Nike store, Lulu Mall",area:"Edappally",km:1.2,until:day(0,22,0),live:true,code:"SWAPNK20",g:"linear-gradient(135deg,#111,#3a3a3a)"},
+ {id:"of2",b:"Puma",cat:"Sportswear",deal:"Buy 2, get 1 free",sub:"Tees, shorts and track pants.",store:"Puma, Oberon Mall",area:"Edappally",km:1.6,until:day(4,21,0),code:"SWAPPUMA3",g:"linear-gradient(135deg,#B3121F,#5A0A10)"},
+ {id:"of3",b:"Jockey",cat:"Innerwear",deal:"Flat 25% off sets of 3",sub:"Innerwear and athleisure.",store:"Jockey Exclusive, MG Road",area:"MG Road",km:3.4,until:day(6,21,0),code:"SWAPJKY25",g:"linear-gradient(135deg,#0B2A6A,#1F5AC9)"},
+ {id:"of4",b:"Zivame",cat:"Lingerie",deal:"Free fitting session + 30% off",sub:"Book a slot or walk in.",store:"Zivame, Forum Mall",area:"Maradu",km:6.8,until:day(0,20,30),live:true,code:"SWAPZIV30",g:"linear-gradient(135deg,#8E1B5A,#E04A8E)",women:true},
+ {id:"of5",b:"Nykd by Nykaa",cat:"Lingerie",deal:"Any 3 for ₹1,499",sub:"Bras, briefs and loungewear.",store:"Nykaa Luxe, Panampilly Nagar",area:"Panampilly Nagar",km:4.1,until:day(3,21,0),code:"SWAPNYKD",g:"linear-gradient(135deg,#6A1B4D,#D81B60)",women:true},
+ {id:"of6",b:"Woodland",cat:"Outdoor",deal:"₹1,000 off over ₹4,999",sub:"Boots, jackets and backpacks.",store:"Woodland, Kaloor",area:"Kaloor",km:2.7,until:day(8,21,0),code:"SWAPWDL1K",g:"linear-gradient(135deg,#3A2E14,#6B5320)",coins:true},
+ {id:"of7",b:"Nike",cat:"Sportswear",deal:"Early access: new football boots",sub:"Try them 2 days before launch. Pro Plus.",store:"Nike store, Lulu Mall",area:"Edappally",km:1.2,until:day(2,20,0),code:"SWAPNKEA",g:"linear-gradient(135deg,#1a1a1a,#FF5A1F)",plus:true},
+ {id:"of8",b:"Puma",cat:"Footwear",deal:"Swap your old sneakers, get ₹800 off",sub:"Old pair goes to recycling. Counts towards Swap Green.",store:"Puma, Lulu Mall",area:"Edappally",km:1.3,until:day(10,21,0),code:"SWAPPUMAGRN",g:"linear-gradient(135deg,#0E6E6E,#2FB59C)"}
+];
+let O_FILTER="all";const O_SAVED=new Set(),O_GOT=new Set();
+const oLeft=t=>{const m=Math.max(0,Math.round((t-Date.now())/MIN));return m<60?m+" min left":m<24*60?Math.floor(m/60)+" h left":"until "+new Date(t).toLocaleDateString("en-IN",{day:"numeric",month:"short"})};
+const mono=b=>b.replace(/ by .*/,"").split(/\s+/).map(x=>x[0]).join("").slice(0,2).toUpperCase();
+function oCard(o){return `<div class="ocard"><div class="ohead" style="background:${o.g}"><span class="omono" aria-hidden="true">${mono(o.b)}</span><div style="min-width:0"><b>${esc(o.b)}</b><div class="xs" style="opacity:.85">${esc(o.cat)} · ${o.km} km · ${esc(o.area)}</div></div>${o.live?'<span class="gtag" style="margin-left:auto;color:#fff;border-color:rgba(255,255,255,.5)"><span class="live-dot"></span>Now</span>':""}</div>
+  <div class="obody"><div class="odeal">${esc(o.deal)}</div><span class="small muted">${esc(o.sub)}</span>
+  <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="gtag ${o.live?"rose":""}">${oLeft(o.until)}</span>${o.plus?'<span class="gtag gold">Pro Plus</span>':""}${o.coins?'<span class="gtag gold">Coin deal · 1,000 coins</span>':""}${o.women?'<span class="gtag">Women\'s</span>':""}</div>
+  <span class="xs muted">${esc(o.store)}</span>
+  <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn g" data-oget="${o.id}">${O_GOT.has(o.id)?"Show code":"Get offer"}</button><button class="btn" data-osave="${o.id}" aria-pressed="${O_SAVED.has(o.id)}">${O_SAVED.has(o.id)?"Saved":"Save"}</button></div></div></div>`}
+function vOffers(){const cats=[...new Set(OFFERS.map(o=>o.cat))],list=OFFERS.filter(o=>O_FILTER==="all"||(O_FILTER==="now"?o.live:O_FILTER==="saved"?O_SAVED.has(o.id):o.cat===O_FILTER)).sort((a,b)=>a.km-b.km),live=OFFERS.filter(o=>o.live);
+  main.innerHTML=`<div class="glass"><div class="vhead"><div><span class="fmt">Swap Offers</span><h2 style="margin-top:8px">Offers around you</h2><p class="small muted" style="margin-top:4px">Members-only offers from brand stores near you, sorted by distance. Show the code at billing.</p></div><span class="gtag">Near ${esc((SESSION&&SESSION.area)||U.you.area||"Kochi")}</span></div>
+   <div class="warn" style="margin:0 16px 14px">Example offers for this preview. These brands haven't partnered with Swap yet, and no code here works in stores.</div>
+   ${live.length?`<div class="vhead" style="padding-top:0"><h3><span class="live-dot"></span>Happening now</h3></div><div class="ostrip">${live.map(oCard).join("")}</div>`:""}
+   <div class="chips">${[["all","All"],["now","Happening now"],["saved","Saved"],...cats.map(c=>[c,c])].map(([k,l])=>`<button aria-pressed="${O_FILTER===k}" data-of="${k}">${l}</button>`).join("")}</div>
+   ${list.length?`<div class="ogrid">${list.map(oCard).join("")}</div>`:`<div class="empty"><b>No offers here</b><p class="small muted">Save offers to find them here.</p></div>`}
+   <div class="setrow"><div><b>Are you a brand?</b><div class="small muted">Reach Swap members near your store. Offers are free to list for verified brands during launch.</div></div><a class="btn" href="#${EDITION==="web"?"ads":"exclusive"}" style="text-decoration:none">Partner with us</a></div></div>`}
+function openOffer(id){const o=OFFERS.find(x=>x.id===id);if(!o)return;
+  if(o.plus&&!has("plus")){need("plus","Early access offers are for Pro Plus members.");return}
+  if(o.coins&&COINS<1000){toast(`Coin deals unlock at 1,000 Swap Coins. You have ${COINS.toLocaleString("en-IN")}.`);return}
+  O_GOT.add(o.id);
+  modal(`<div class="shead"><h3>${esc(o.b)}</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
+   <div class="sbody"><div class="odeal">${esc(o.deal)}</div><span class="small muted">${esc(o.sub)}</span>
+   <div class="ocode">${o.code}</div><p class="xs muted" style="text-align:center;margin:0">Example code · ${oLeft(o.until)} · one use per member</p>
+   <div class="vlist"><span>${esc(o.store)}, ${esc(o.area)} · ${o.km} km away</span><span>Show this code at billing with your Swap profile</span></div>
+   <a class="btn g" style="text-decoration:none;text-align:center" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(o.store+", "+o.area+", Kochi")}">Directions</a></div>`,"Offer");
+  if(location.hash==="#offers")vOffers()}
+document.addEventListener("click",e=>{const t=e.target.closest("[data-gf],[data-gjoin],[data-gnew],[data-of],[data-oget],[data-osave]");if(!t)return;const d=t.dataset;
+  if(d.gf){G_FILTER=d.gf;vGather();return}
+  if(d.gjoin){openGatherJoin(d.gjoin);return}
+  if(d.gnew!==undefined){openGatherNew();return}
+  if(d.of){O_FILTER=d.of;vOffers();return}
+  if(d.oget){openOffer(d.oget);return}
+  if(d.osave){O_SAVED.has(d.osave)?O_SAVED.delete(d.osave):O_SAVED.add(d.osave);toast(O_SAVED.has(d.osave)?"Saved. We'll remind you before it ends.":"Removed from saved");vOffers()}});
 
 /* ================= Women's Circle ================= */
 let CIRCLE=false;

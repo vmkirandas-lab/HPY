@@ -768,7 +768,7 @@ html[data-minor="1"] .tabs-b{grid-template-columns:repeat(4,1fr)}
 .comp .todo{display:flex;flex-wrap:wrap;gap:6px}
 .comp .todo button{border:1px dashed var(--glass-line);background:none;color:var(--ink);border-radius:999px;padding:6px 12px;font-weight:700;font-size:.8rem}
 .comp .todo button:hover{border-color:var(--gold)}
-.comp .todo .done{border-style:solid;color:var(--ok);border-color:rgba(61,245,208,.35);pointer-events:none}
+.comp .todo .isdone{border-style:solid;color:var(--ok);border-color:rgba(61,245,208,.35);pointer-events:none}
 .idseg{display:flex;flex-direction:column;gap:10px;margin:0 16px 8px;padding:12px;border:1px solid var(--glass-line);border-radius:16px}
 .idseg .setrow{padding-left:0;padding-right:0}
 .tbreak{display:flex;flex-wrap:wrap;gap:6px;margin-top:-4px}
@@ -1257,7 +1257,6 @@ function vProfile(k){
      <p>${esc(u.bio)}</p>
      ${k==="you"?`<a class="pcoins" href="#coins"><span class="pc-ic" aria-hidden="true"><i class="coin" aria-hidden="true"></i></span><span class="pc-main"><span class="lbl-s">Swap Coins</span><b class="pcoin">${COINS.toLocaleString("en-IN")}</b></span><span class="pc-side"><span class="pc-st">${COINS>=1000?"Unlocked for deals":`${(1000-COINS).toLocaleString("en-IN")} to unlock`}</span><span class="xs muted">${CIRCLE?"+150 with Circle members →":"+100 per 5-star swap →"}</span></span><i class="pc-bar"><i style="width:${Math.min(100,COINS/10)}%"></i></i></a>`:""}
      <a class="ecorow" href="#impact"><span aria-hidden="true"></span><span><b>${(k==="you"?MY_TREES:u.swaps).toLocaleString("en-IN")} trees</b> planted from ${k==="you"?"your":"their"} swaps · about ${co2(k==="you"?MY_TREES:u.swaps)} CO₂e avoided <span class="muted">(est.)</span></span><span class="xs" style="margin-left:auto;font-weight:800;color:var(--ok)">Swap Green →</span></a>
-     ${k==="you"?completionHTML():""}
      <div class="trust"><b class="small">Trust score</b><div class="meter"><i style="width:${u.trust}%"></i></div><b class="num">${u.trust}</b></div>
      <div class="stats"><div><b>${u.swaps}</b><span>Swaps</span></div><div><b>${u.rating?"★ "+u.rating:"—"}</b><span>Rating</span></div><div><b>${fmtN(u.fol+(k!=="you"&&FOLLOW.has(k)?1:0))}</b><span>Followers</span></div><div><b>${fmtN(u.fing)}</b><span>Following</span></div></div>
    </div>
@@ -2502,7 +2501,8 @@ function vSettings(){
     ${trustBreakdownHTML()}
     ${row("ID verification",a.idv?`${esc(a.idv.label)} ending ${esc(a.idv.last4)} <span class="okline">✓ Verified</span>`:`Aadhaar through DigiLocker, or a passport, driving licence or voter ID. Optional. Phone, email and ID together give <b>trust 50</b>.`,a.idv?"":'<button class="btn g" data-fix="id">Verify with Aadhaar</button>')}
     <p class="xs muted">Only the last 4 digits are kept. Your Aadhaar details and points are shown here only, never on your profile.</p></div>
-   ${row("Profile",`${checklistOf(a).filter(i=>i.done).length} of 9 complete${a.bonus?" · Welcome bonus received":" · Complete it to get 1,000 Swap Coins"}`,'<button class="btn" data-fix="profile">Edit profile</button>')}${row("Date of birth",`${esc(a.dob)} · ${ageGroup(ageFrom(a.dob))}`)}
+   <div class="vhead"><h3>Your profile</h3></div>
+   <div class="idseg">${a.bonus?`<div class="tbreak"><span class="on">Profile complete ✓ · 9 of 9</span><span class="on">Welcome bonus received</span></div>`:completionHTML()}<button class="btn" data-fix="profile" style="align-self:flex-start">Edit profile</button></div>${row("Date of birth",`${esc(a.dob)} · ${ageGroup(ageFrom(a.dob))}`)}
    <div class="vhead"><h3>Ways to log in</h3></div>
    ${row("Mobile number","A 6-digit code by SMS",'<span class="okline">On</span>')}
    ${row("Password",a.pw?"Set":"Not set. You log in with a code, Google or Apple.",`<button class="btn" data-setpw>${a.pw?"Change":"Set password"}</button>`)}
@@ -2591,7 +2591,7 @@ function completionHTML(compact){
   if(a.bonus)return compact?"":`<div class="tbreak"><span class="on">Profile complete ✓</span></div>`;
   return `<div class="comp"><div class="top"><b>Finish your profile</b><span class="gift"><i class="coin" aria-hidden="true"></i>Get ${WELCOME_BONUS.toLocaleString("en-IN")} Swap Coins</span></div>
    <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="9" aria-valuenow="${n}" aria-label="Profile ${n} of 9 complete"><i style="width:${n/9*100}%"></i></div>
-   <div class="todo">${items.map(i=>i.done?`<button class="done" tabindex="-1">✓ ${i.label}</button>`:`<button data-fix="${i.fix}">${i.label}</button>`).join("")}</div>
+   <div class="todo">${items.map(i=>i.done?`<button class="isdone" tabindex="-1">✓ ${i.label}</button>`:`<button data-fix="${i.fix}">${i.label}</button>`).join("")}</div>
    ${compact?"":`<span class="xs muted">${n} of 9 done. Swap Coins have no cash value and can't be bought or sold.</span>`}</div>`;
 }
 function trustBreakdownHTML(){const a=SESSION||DEMO_ACC;return `<div class="tbreak"><span class="${a.phone?"on":""}">Phone ${a.phone?"✓":""} +${TRUST_PTS.phone}</span><span class="${a.emailVerified?"on":""}">Email ${a.emailVerified?"✓":""} +${TRUST_PTS.email}</span><span class="${a.idv?"on":""}">ID ${a.idv?"✓":""} +${TRUST_PTS.id}</span><span>Swaps and ratings add more</span></div>`}

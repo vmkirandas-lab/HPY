@@ -771,6 +771,16 @@ html[data-minor="1"] .tabs-b{grid-template-columns:repeat(4,1fr)}
 .comp .todo .isdone{border-style:solid;color:var(--ok);border-color:rgba(61,245,208,.35);pointer-events:none}
 .idseg{display:flex;flex-direction:column;gap:10px;margin:0 16px 8px;padding:12px;border:1px solid var(--glass-line);border-radius:16px}
 .idseg .setrow{padding-left:0;padding-right:0}
+.prow{display:flex;flex-direction:column;gap:6px}.prow .seg button{font-size:.8rem;padding:7px 6px}
+.idseg .toggle{padding:4px 0}.idseg .toggle .xs{font-weight:500}
+.pglist{display:flex;flex-direction:column;gap:8px}
+.pgcard{display:flex;align-items:center;gap:10px 12px;flex-wrap:wrap;padding:10px 12px;border:1px solid var(--glass-line);border-radius:14px;background:var(--glass)}
+.pgic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-weight:800;background:linear-gradient(135deg,#9A4DFF,#4A00F5);color:#fff;flex:none}
+.pgst{font-size:.7rem;font-weight:800;padding:2px 8px;border-radius:999px;border:1px solid var(--glass-line);color:var(--muted)}.pgst.live{color:var(--ok);border-color:rgba(61,245,208,.45)}.pgst.rev{color:var(--gold-ink);border-color:rgba(255,200,87,.45)}
+.ptabs2{display:flex;gap:6px;overflow-x:auto;padding:0 0 4px}.ptabs2 button{border:1px solid var(--glass-line);background:none;color:var(--muted);border-radius:999px;padding:6px 12px;font-weight:700;white-space:nowrap}.ptabs2 button[aria-pressed="true"]{color:var(--ink);border-color:var(--teal);background:rgba(61,245,255,.08)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}.kpis div{border:1px solid var(--glass-line);border-radius:12px;padding:10px}.kpis b{display:block;font-size:1.2rem}
+.adm{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--glass-line);flex-wrap:wrap}.adm select,.adm input{border:1px solid var(--glass-line);background:var(--glass);color:var(--ink);border-radius:10px;padding:7px 10px;width:auto}.adm select option{background:var(--bg);color:var(--ink)}#padd input{flex:1 1 140px;min-width:0}
+.privchips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}.privchips span{font-size:.72rem;font-weight:700;color:var(--muted);border:1px solid var(--glass-line);border-radius:999px;padding:2px 9px}
 .tbreak{display:flex;flex-wrap:wrap;gap:6px;margin-top:-4px}
 .tbreak span{font-size:.72rem;font-weight:800;padding:3px 9px;border-radius:999px;border:1px solid var(--glass-line);color:var(--muted)}
 .tbreak span.on{color:var(--ok);border-color:rgba(61,245,208,.45)}
@@ -1253,11 +1263,11 @@ function vProfile(k){
    ${coverHTML(k)}
    <div class="pinfo">
      <div class="toprow">${profAvatar(k)}${k==="you"?`<div style="display:flex;gap:8px"><a class="btn" href="#settings" style="text-decoration:none">Settings</a><a class="btn g" href="#pro" style="text-decoration:none">${isPro?"Seller studio":"See plans"}</a></div>`:`<div style="display:flex;gap:8px"><button class="btn" data-dm="${k}">Message</button><button class="btn p" data-follow="${k}">${FOLLOW.has(k)?"Following":"Follow"}</button></div>`}</div>
-     <div><h2>${esc(u.n)}${u.v?' <span class="tick">✓</span>':""}${isPro?" "+tierBadge(ptier):""}</h2>${(k==="you"?CIRCLE:u.w)?'<span class="circle-b">♀ Women&#39;s Circle</span> ':""}<span class="small muted">@${esc(u.h)}${u.area?" · "+esc(u.area):""} · Member since 2026</span></div>
+     <div><h2>${esc(u.n)}${u.v?' <span class="tick">✓</span>':""}${isPro?" "+tierBadge(ptier):""}</h2>${(k==="you"?CIRCLE:u.w)?'<span class="circle-b">♀ Women&#39;s Circle</span> ':""}<span class="small muted">@${esc(u.h)}${k==="you"?areaShown():u.area?" · "+esc(u.area):""} · Member since 2026</span>${k==="you"?privChips():""}</div>
      <p>${esc(u.bio)}</p>
      ${k==="you"?`<a class="pcoins" href="#coins"><span class="pc-ic" aria-hidden="true"><i class="coin" aria-hidden="true"></i></span><span class="pc-main"><span class="lbl-s">Swap Coins</span><b class="pcoin">${COINS.toLocaleString("en-IN")}</b></span><span class="pc-side"><span class="pc-st">${COINS>=1000?"Unlocked for deals":`${(1000-COINS).toLocaleString("en-IN")} to unlock`}</span><span class="xs muted">${CIRCLE?"+150 with Circle members →":"+100 per 5-star swap →"}</span></span><i class="pc-bar"><i style="width:${Math.min(100,COINS/10)}%"></i></i></a>`:""}
      <a class="ecorow" href="#impact"><span aria-hidden="true"></span><span><b>${(k==="you"?MY_TREES:u.swaps).toLocaleString("en-IN")} trees</b> planted from ${k==="you"?"your":"their"} swaps · about ${co2(k==="you"?MY_TREES:u.swaps)} CO₂e avoided <span class="muted">(est.)</span></span><span class="xs" style="margin-left:auto;font-weight:800;color:var(--ok)">Swap Green →</span></a>
-     <div class="trust"><b class="small">Trust score</b><div class="meter"><i style="width:${u.trust}%"></i></div><b class="num">${u.trust}</b></div>
+     <div class="trust"><b class="small">Trust score${k==="you"&&!PRIV().trust?' <span class="xs muted">· hidden from others</span>':""}</b><div class="meter"><i style="width:${u.trust}%"></i></div><b class="num">${u.trust}</b></div>
      <div class="stats"><div><b>${u.swaps}</b><span>Swaps</span></div><div><b>${u.rating?"★ "+u.rating:"—"}</b><span>Rating</span></div><div><b>${fmtN(u.fol+(k!=="you"&&FOLLOW.has(k)?1:0))}</b><span>Followers</span></div><div><b>${fmtN(u.fing)}</b><span>Following</span></div></div>
    </div>
    <div class="ptabs" role="tablist">${[["items","Has"],["wants","Wants"],...(k==="you"?[["boards","Boards"]]:[]),["reviews","Reviews"]].map(([t,l])=>`<button role="tab" aria-selected="${profTab===t}" data-ptab="${t}" data-pk="${k}">${l}</button>`).join("")}</div>
@@ -2503,6 +2513,8 @@ function vSettings(){
     <p class="xs muted">Only the last 4 digits are kept. Your Aadhaar details and points are shown here only, never on your profile.</p></div>
    <div class="vhead"><h3>Your profile</h3></div>
    <div class="idseg">${a.bonus?`<div class="tbreak"><span class="on">Profile complete ✓ · 9 of 9</span><span class="on">Welcome bonus received</span></div>`:completionHTML()}<button class="btn" data-fix="profile" style="align-self:flex-start">Edit profile</button></div>${row("Date of birth",`${esc(a.dob)} · ${ageGroup(ageFrom(a.dob))}`)}
+   ${privacyHTML(a)}
+   ${pagesHTML(a)}
    <div class="vhead"><h3>Ways to log in</h3></div>
    ${row("Mobile number","A 6-digit code by SMS",'<span class="okline">On</span>')}
    ${row("Password",a.pw?"Set":"Not set. You log in with a code, Google or Apple.",`<button class="btn" data-setpw>${a.pw?"Change":"Set password"}</button>`)}
@@ -2516,6 +2528,92 @@ function vSettings(){
      ${row("Delete account",`Permanently delete your account after a ${30}-day grace period. Your profile, listings, messages and Swap Coins are erased. Records the law requires us to keep, like auction sales and tax invoices, stay without your name.`,`<button class="btn d" data-delacc ${blk.length?"disabled":""}>Delete account</button>`)}
    </div></div>`;
 }
+/* ================= Privacy controls and pages you manage ================= */
+const PRIV_DEF=()=>({vis:isTeen()?"followers":"public",dm:isTeen()?"followers":"everyone",area:"area",trust:true,online:true,search:true,mentions:true,ads:!isTeen(),trees:true,blocked:[]});
+const PRIV=()=>{const a=SESSION||DEMO_ACC;a.privacy={...PRIV_DEF(),...(a.privacy||{})};if(isTeen())a.privacy.ads=false;return a.privacy};
+const PRIV_SEG={vis:["Who can see your profile",[["public","Everyone"],["followers","Followers"],["private","Only you"]]],dm:["Who can message you",[["everyone","Everyone"],["followers","Followers"],["none","No one"]]],area:["Location on your profile",[["area","Area"],["city","City only"],["hidden","Hidden"]]]};
+const PRIV_TOG=[["trust","Show trust score to others","Your score still counts for swaps and auctions"],["online","Online status and read receipts","When off, you can't see others' either"],["search","Find me in search and “People near you”",""],["mentions","Allow mentions and tags","People can tag you in posts and comments"],["trees","Show Swap Green trees on my profile",""],["ads","Personalised ads","Uses your categories and area, never your messages. Always off under 18."]];
+const areaShown=()=>{const v=PRIV().area,ar=U.you.area||"";return !ar||v==="hidden"?"":" · "+esc(v==="city"?"Kochi":ar)};
+const privChips=()=>{const p=PRIV(),l={public:"Public profile",followers:"Followers only",private:"Private profile"};return `<div class="privchips"><span>${l[p.vis]}</span>${p.dm!=="everyone"?`<span>Messages: ${p.dm==="none"?"off":"followers"}</span>`:""}<a class="xs" href="#settings" style="font-weight:700">Privacy</a></div>`};
+function privacyHTML(a){const p=PRIV();
+  return `<div class="vhead"><h3>Privacy</h3></div><div class="idseg" id="privseg">
+   ${Object.entries(PRIV_SEG).map(([k,[t,opts]])=>`<div class="prow"><b class="small">${t}</b><div class="seg" role="group" aria-label="${t}">${opts.map(([v,l])=>`<button type="button" data-pseg="${k}" data-v="${v}" aria-pressed="${p[k]===v}">${l}</button>`).join("")}</div></div>`).join("")}
+   ${PRIV_TOG.map(([k,t,d])=>`<label class="toggle"><span>${t}${d?`<br><span class="xs muted">${d}</span>`:""}</span><span class="switch"><input type="checkbox" data-ptog="${k}" ${p[k]?"checked":""} ${k==="ads"&&isTeen()?"disabled":""}><i></i></span></label>`).join("")}
+   <div class="setrow"><div><b>Blocked accounts</b><div class="small muted">${p.blocked.length?p.blocked.map(h=>"@"+esc(U[h]?U[h].h:h)).join(", "):"No one blocked"}</div></div><button class="btn" data-pblock>Manage</button></div>
+   <div class="setrow"><div><b>Download your data</b><div class="small muted">A copy of your profile, listings, messages and coin history (DPDP Act 2023).</div></div><button class="btn" data-pdata>Request</button></div></div>`}
+function openBlocked(){const p=PRIV(),cand=Object.keys(U).filter(k=>k!=="you"&&!U[k].off&&!U[k].brand);
+  const {w,close}=modal(`<div class="shead"><h3>Blocked accounts</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
+   <div class="sbody"><p class="small muted">Blocked people can't see your profile, message you, offer swaps or bid on your auctions. They aren't told.</p>
+   <div>${cand.map(k=>`<div class="adm">${av(k,"xs")}<span style="flex:1"><b class="small">${esc(U[k].n)}</b> <span class="xs muted">@${esc(U[k].h)}</span></span><button class="btn ${p.blocked.includes(k)?"":"d"}" data-blk="${k}">${p.blocked.includes(k)?"Unblock":"Block"}</button></div>`).join("")}</div>
+   <button class="btn" data-x style="align-self:flex-start">Done</button></div>`,"Blocked accounts");
+  w.addEventListener("click",e=>{const b=e.target.closest("[data-blk]");if(!b)return;const k=b.dataset.blk,i=p.blocked.indexOf(k);
+    if(i>=0){p.blocked.splice(i,1);b.textContent="Block";b.classList.add("d");toast(`Unblocked @${U[k].h}`)}else{p.blocked.push(k);FOLLOW.delete(k);b.textContent="Unblock";b.classList.remove("d");toast(`Blocked @${U[k].h}`)}
+    saveAccounts()});
+  const obs=new MutationObserver(()=>{if(!document.body.contains(w)){obs.disconnect();if(location.hash==="#settings")vSettings()}});obs.observe(document.body,{childList:true})}
+
+const PAGE_TYPES={shop:["Shop page","Your swap shop, with its own followers and listings. 18+."],group:["Community group","A group for swaps around a place, school or hobby."],event:["Event page","Swap meets, clean-up drives and auction nights."],brand:["Brand page","For registered businesses. Needs verification for Swap Exclusive."]};
+const ROLES={owner:"Owner",admin:"Admin",editor:"Editor",mod:"Moderator"};
+const ROLE_D={owner:"Everything, including deleting the page",admin:"Everything except deleting the page or removing the owner",editor:"Post, list items and edit details",mod:"Approve posts, remove comments and handle reports"};
+const pagesOf=a=>{if(!a.pages)a.pages=a.demo?[{id:"pg1",type:"shop",n:"Room Clear-out Shop",about:"Gadgets, books and hostel gear from an engineering student.",status:"live",post:"admins",fol:184,views:1260,swaps:6,team:[["you","owner"],["rahul","editor"]],queue:[{u:"vikram",x:"Is the study lamp still available? Will swap gym gloves.",kind:"Post waiting for approval"},{u:"kiran",x:"cheap phones dm me whatsapp only",kind:"Reported comment · possible scam"}]}]:[];return a.pages};
+function pagesHTML(a){const pg=pagesOf(a);
+  return `<div class="vhead"><h3>Pages you manage</h3></div><div class="idseg">
+   ${pg.length?`<div class="pglist">${pg.map(x=>`<div class="pgcard"><span class="pgic" aria-hidden="true">${esc(x.n.trim()[0]||"P").toUpperCase()}</span><div style="flex:1 1 160px;min-width:0"><b>${esc(x.n)}</b> <span class="pgst ${x.status==="live"?"live":x.status==="review"?"rev":""}">${{live:"Live",hidden:"Hidden",review:"In review"}[x.status]}</span><div class="xs muted">${PAGE_TYPES[x.type][0]} · ${ROLES[(x.team.find(t=>t[0]==="you")||[,"owner"])[1]]} · ${fmtN(x.fol)} followers${x.queue.length?` · <b style="color:var(--gold-ink)">${x.queue.length} to review</b>`:""}</div></div><button class="btn g" data-pgm="${x.id}">Manage</button></div>`).join("")}</div>`:`<p class="small muted">You don't manage any pages yet. Pages let you run a shop, a community group or an event with a team.</p>`}
+   <button class="btn" data-pgnew style="align-self:flex-start">Create a page</button></div>`}
+function openNewPage(){const a=SESSION||DEMO_ACC;
+  const {w,close}=modal(`<div class="shead"><h3>Create a page</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
+   <form class="sbody" novalidate><div class="field"><label>Type</label><div class="seg" role="group" aria-label="Page type" style="flex-wrap:wrap">${Object.entries(PAGE_TYPES).map(([k,[l]],i)=>`<button type="button" data-npt="${k}" aria-pressed="${i===0}">${l}</button>`).join("")}</div><span class="xs muted" id="np-d">${PAGE_TYPES.shop[1]}</span></div>
+   <div class="field"><label for="np-n">Page name</label><input id="np-n" maxlength="60" placeholder="e.g. Kaloor Book Exchange"></div>
+   <div class="field"><label for="np-a">About <span class="muted">(optional)</span></label><textarea id="np-a" rows="2" maxlength="200"></textarea></div>
+   <span class="err" hidden></span><button class="btn g" type="submit" style="padding:12px">Create page</button></form>`,"Create a page");
+  let type="shop";const er=w.querySelector(".err");
+  w.querySelectorAll("[data-npt]").forEach(b=>b.onclick=()=>{type=b.dataset.npt;w.querySelectorAll("[data-npt]").forEach(x=>x.setAttribute("aria-pressed",x===b));w.querySelector("#np-d").textContent=PAGE_TYPES[type][1]});
+  w.querySelector("form").onsubmit=e=>{e.preventDefault();const n=w.querySelector("#np-n").value.trim();
+    if(type==="brand"){close();openBrandApply();return}
+    if(type==="shop"&&isTeen()){er.textContent="Shop pages are for members aged 18 and over.";er.hidden=false;return}
+    if(n.length<3){er.textContent="Give your page a name (at least 3 characters).";er.hidden=false;return}
+    pagesOf(a).push({id:"pg"+Date.now(),type,n,about:w.querySelector("#np-a").value.trim(),status:"live",post:"admins",fol:0,views:0,swaps:0,team:[["you","owner"]],queue:[]});
+    saveAccounts();close();toast(`${n} is live. You're the owner.`,true);vSettings()}}
+let PG_TAB="overview";
+function openPageAdmin(id,tab){const a=SESSION||DEMO_ACC,x=pagesOf(a).find(p=>p.id===id);if(!x)return;PG_TAB=tab||PG_TAB;
+  const me=(x.team.find(t=>t[0]==="you")||[,"owner"])[1],canAdmin=me==="owner"||me==="admin";
+  const body={
+   overview:`<div class="kpis"><div><b>${fmtN(x.fol)}</b><span class="xs muted">Followers</span></div><div><b>${fmtN(x.views)}</b><span class="xs muted">Views, 7 days</span></div><div><b>${x.swaps}</b><span class="xs muted">Swaps</span></div><div><b>${x.queue.length}</b><span class="xs muted">To review</span></div></div>
+    <p class="small">${esc(x.about||"No description yet.")}</p><p class="xs muted">Your role: <b>${ROLES[me]}</b>. ${ROLE_D[me]}.</p>`,
+   team:`${x.team.map(([k,r])=>`<div class="adm">${av(k,"xs")}<span style="flex:1"><b class="small">${esc(U[k].n)}</b> <span class="xs muted">@${esc(U[k].h)}</span></span>${r==="owner"||!canAdmin?`<span class="pgst">${ROLES[r]}</span>`:`<select data-prole="${k}" aria-label="Role for ${esc(U[k].n)}">${["admin","editor","mod"].map(v=>`<option value="${v}" ${v===r?"selected":""}>${ROLES[v]}</option>`).join("")}</select><button class="iconbtn" data-prm="${k}" aria-label="Remove ${esc(U[k].n)}">✕</button>`}</div>`).join("")}
+    ${canAdmin?`<form class="adm" id="padd" novalidate><input id="pa-h" placeholder="@username" style="flex:1" aria-label="Username to add"><select id="pa-r" aria-label="Role">${["admin","editor","mod"].map(v=>`<option value="${v}" ${v==="editor"?"selected":""}>${ROLES[v]}</option>`).join("")}</select><button class="btn g" type="submit">Add</button></form>`:""}
+    <div class="vlist xs">${Object.entries(ROLE_D).map(([k,d])=>`<span><b>${ROLES[k]}:</b> ${d}</span>`).join("")}</div>`,
+   review:x.queue.length?x.queue.map((q,i)=>`<div class="adm" style="align-items:flex-start">${av(q.u,"xs")}<div style="flex:1;min-width:0"><span class="xs muted">${esc(q.kind)}</span><p class="small">${esc(q.x)}</p><span class="xs muted">@${esc(U[q.u].h)}</span></div><div style="display:flex;flex-direction:column;gap:6px"><button class="btn g" data-pq="ok" data-i="${i}">Approve</button><button class="btn d" data-pq="rm" data-i="${i}">Remove</button></div></div>`).join(""):`<p class="small muted">Nothing to review. Posts waiting for approval and reported comments show up here.</p>`,
+   settings:`<form id="pset" class="sbody" style="padding:0" novalidate>
+    <div class="field"><label for="ps-n">Page name</label><input id="ps-n" value="${esc(x.n)}" maxlength="60" ${canAdmin?"":"disabled"}></div>
+    <div class="field"><label for="ps-a">About</label><textarea id="ps-a" rows="2" maxlength="200" ${canAdmin?"":"disabled"}>${esc(x.about||"")}</textarea></div>
+    <div class="field"><label for="ps-p">Who can post</label><select id="ps-p" ${canAdmin?"":"disabled"}><option value="admins" ${x.post==="admins"?"selected":""}>Page team only</option><option value="approve" ${x.post==="approve"?"selected":""}>Followers, after approval</option><option value="all" ${x.post==="all"?"selected":""}>Followers</option></select></div>
+    <label class="toggle"><span>Page is visible<br><span class="xs muted">Hidden pages can only be seen by the team</span></span><span class="switch"><input type="checkbox" id="ps-v" ${x.status!=="hidden"?"checked":""} ${canAdmin?"":"disabled"}><i></i></span></label>
+    ${canAdmin?'<button class="btn g" type="submit" style="align-self:flex-start">Save changes</button>':""}
+    ${me==="owner"?'<div class="danger" style="margin:8px 0 0"><div class="setrow"><div><b>Delete page</b><div class="small muted">Removes the page, its posts and its team. Followers are told the page has closed.</div></div><button class="btn d" type="button" data-pdel>Delete page</button></div></div>':""}</form>`};
+  document.querySelector(".modal[aria-label='Manage page']")?._close();
+  const {w,close}=modal(`<div class="shead"><h3>${esc(x.n)}</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
+   <div class="sbody"><div class="ptabs2" role="group" aria-label="Page sections">${[["overview","Overview"],["team","Admins & roles"],["review",`Review${x.queue.length?" ("+x.queue.length+")":""}`],["settings","Page settings"]].map(([t,l])=>`<button type="button" data-pgt="${t}" aria-pressed="${PG_TAB===t}">${l}</button>`).join("")}</div>${body[PG_TAB]}</div>`,"Manage page");
+  const re=t=>{saveAccounts();openPageAdmin(id,t)};
+  w.addEventListener("click",e=>{const t=e.target.closest("[data-pgt],[data-prm],[data-pq],[data-pdel]");if(!t)return;const d=t.dataset;
+    if(d.pgt){re(d.pgt);return}
+    if(d.prm){x.team=x.team.filter(m=>m[0]!==d.prm);toast(`@${U[d.prm].h} removed from the page`);re("team");return}
+    if(d.pq){const q=x.queue.splice(+d.i,1)[0];toast(d.pq==="ok"?"Approved and posted":"Removed. The author has been told why.");if(d.pq==="ok")x.views+=1;re("review");return}
+    if(d.pdel!==undefined){if(!confirm(`Delete ${x.n}? This can't be undone.`))return;a.pages=a.pages.filter(p=>p!==x);saveAccounts();close();toast("Page deleted");vSettings()}});
+  w.addEventListener("change",e=>{const s=e.target.closest("[data-prole]");if(!s)return;const m=x.team.find(t=>t[0]===s.dataset.prole);m[1]=s.value;saveAccounts();toast(`@${U[m[0]].h} is now ${ROLES[s.value].toLowerCase()}`)});
+  const add=w.querySelector("#padd");if(add)add.onsubmit=e=>{e.preventDefault();const h=w.querySelector("#pa-h").value.trim().replace(/^@/,"").toLowerCase();const k=Object.keys(U).find(k=>U[k].h.toLowerCase()===h&&!U[k].brand&&!U[k].off);
+    if(!k){toast("No member with that username.");return}if(x.team.some(t=>t[0]===k)){toast("They're already on the team.");return}
+    x.team.push([k,w.querySelector("#pa-r").value]);toast(`@${U[k].h} added as ${ROLES[w.querySelector("#pa-r").value].toLowerCase()}`);re("team")};
+  const ps=w.querySelector("#pset");if(ps)ps.onsubmit=e=>{e.preventDefault();const n=w.querySelector("#ps-n").value.trim();if(n.length<3){toast("Page name needs at least 3 characters.");return}
+    x.n=n;x.about=w.querySelector("#ps-a").value.trim();x.post=w.querySelector("#ps-p").value;x.status=w.querySelector("#ps-v").checked?"live":"hidden";toast("Page saved");re("settings")};
+  const obs=new MutationObserver(()=>{if(!document.body.contains(w)){obs.disconnect();if(location.hash==="#settings"&&!document.querySelector(".modal"))vSettings()}});obs.observe(document.body,{childList:true})}
+document.addEventListener("click",e=>{const t=e.target.closest("[data-pseg],[data-pblock],[data-pdata],[data-pgnew],[data-pgm]");if(!t)return;const d=t.dataset;
+  if(d.pseg){PRIV()[d.pseg]=d.v;saveAccounts();t.parentNode.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===t));toast("Privacy updated");return}
+  if(d.pblock!==undefined){openBlocked();return}
+  if(d.pdata!==undefined){toast("Request received. We'll send a download link to your verified email within 48 hours.");return}
+  if(d.pgnew!==undefined){openNewPage();return}
+  if(d.pgm){PG_TAB="overview";openPageAdmin(d.pgm)}});
+document.addEventListener("change",e=>{const t=e.target.closest("[data-ptog]");if(!t)return;PRIV()[t.dataset.ptog]=t.checked;saveAccounts();toast("Privacy updated")});
+
 function blockers(){const out=[];
   if(auctions().some(a=>a.u==="you"&&!ended(a)))out.push("auctions you're selling");
   if(auctions().some(a=>a.sold&&a.soldTo==="you"))out.push("auction payments in SwapSafe escrow");

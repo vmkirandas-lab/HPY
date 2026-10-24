@@ -1,6 +1,6 @@
 // Verifications, trust score and the profile-completion bonus.
 // ID checks: Aadhaar is optional (Aadhaar Act 2016 and the 2018 Puttaswamy judgment), so a passport, driving licence or
-// voter ID earns the same trust. Swap never stores a full ID number: only the method, the last 4 digits and a keyed hash of
+// voter ID earns the same trust. Swaapo never stores a full ID number: only the method, the last 4 digits and a keyed hash of
 // the provider's reference, used to stop one person verifying several accounts.
 import { Router } from 'express';
 import crypto from 'node:crypto';
@@ -101,7 +101,7 @@ export default function profile(db) {
     const norm = s => String(s || '').toLowerCase().replace(/[^a-z]/g, '');
     if (norm(b.nameOnId) !== norm(u.name) || str(b.dobOnId, 10) !== u.dob) fail(409, "The name or date of birth on your ID doesn't match your account. Update your profile, then try again.", 'id_mismatch');
     const h = refHash(b.method, ref);
-    if (db.get('SELECT 1 FROM users WHERE id_ref_hash=? AND id<>?', h, u.id)) fail(409, 'This ID is already verified on another Swap account.', 'id_used');
+    if (db.get('SELECT 1 FROM users WHERE id_ref_hash=? AND id<>?', h, u.id)) fail(409, 'This ID is already verified on another Swaapo account.', 'id_used');
     db.run('UPDATE users SET id_verified=1, id_method=?, id_last4=?, id_ref_hash=?, verified=1 WHERE id=?', b.method, last4.toUpperCase(), h, u.id);
     db.audit(u.id, 'user.id_verified', `user:${u.id}`, { method: b.method });
     refreshTrust(db, u.id);

@@ -1,4 +1,4 @@
-// Swap Exclusive brand pages: apply, browse verified brands, and verified-bidder (KYC) requests.
+// Swaapo Exclusive brand pages: apply, browse verified brands, and verified-bidder (KYC) requests.
 import { Router } from 'express';
 import { requireUser } from '../auth.js';
 import { fail } from '../errors.js';

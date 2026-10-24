@@ -1,4 +1,4 @@
-// Sign-up, login, profile, plans, Swap Coins and Women's Circle.
+// Sign-up, login, profile, plans, Swaapo Coins and Women's Circle.
 import { Router } from 'express';
 import crypto from 'node:crypto';
 import { hashPassword, checkPassword, issueToken, requireUser, signTicket, readTicket } from '../auth.js';
@@ -95,7 +95,7 @@ export default function account(db) {
     if (!ot && password.length < 8) fail(400, 'Use a password of at least 8 characters.');
     const age = ageOf(dob);
     if (age < 0) fail(400, 'Enter your date of birth as YYYY-MM-DD.');
-    if (age < minAge) fail(403, `You need to be ${minAge} or older to join Swap.`, 'too_young');
+    if (age < minAge) fail(403, `You need to be ${minAge} or older to join Swaapo.`, 'too_young');
     const guardian = str(req.body.guardianContact, 120);
     if (age < adultAge && !guardian) fail(400, 'Members under 18 need a parent or guardian contact for consent.', 'guardian_required');
     if (db.get('SELECT 1 FROM users WHERE handle=?', handle)) fail(409, 'That username is taken.', 'handle_taken');
@@ -134,7 +134,7 @@ export default function account(db) {
     const n = (sql, ...p) => db.get(sql, ...p).n;
     const out = [];
     if (n("SELECT COUNT(*) n FROM auctions WHERE seller_id=? AND status IN ('pending','live')", u.id)) out.push('auctions you are selling');
-    if (n("SELECT COUNT(*) n FROM auctions WHERE (seller_id=? OR winner_id=?) AND status='sold' AND escrow IN ('awaiting_payment','paid','disputed')", u.id, u.id)) out.push('auction payments in SwapSafe escrow');
+    if (n("SELECT COUNT(*) n FROM auctions WHERE (seller_id=? OR winner_id=?) AND status='sold' AND escrow IN ('awaiting_payment','paid','disputed')", u.id, u.id)) out.push('auction payments in SwaapoSafe escrow');
     if (n("SELECT COUNT(*) n FROM offers WHERE (from_id=? OR to_id=?) AND status='accepted'", u.id, u.id)) out.push('swaps you have agreed but not completed');
     return out;
   }
@@ -192,7 +192,7 @@ export default function account(db) {
     const u = requireUser(req), c = db.setting('coins');
     res.json({ balance: u.coins, unlocked: u.coins >= c.unlockAt, unlockAt: c.unlockAt, perFiveStar: c.perFiveStar,
       circleBonus: c.circleBonus, ledger: db.all('SELECT delta,reason,ref,created_at FROM coin_ledger WHERE user_id=? ORDER BY id DESC LIMIT 100', u.id),
-      note: 'Swap Coins are rewards inside Swap. They have no cash value and can\'t be bought or sold.' });
+      note: 'Swaapo Coins are rewards inside Swaapo. They have no cash value and can\'t be bought or sold.' });
   });
 
   // Women's Circle: the member confirms, then staff verify a selfie against ID and approve.

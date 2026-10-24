@@ -5,7 +5,7 @@ import { fail } from '../errors.js';
 import { FMT, PRO_FMTS, needAdult, needBidAge, needAuctionView, needTier, needFeature, minNext, topBid, dutchPrice, hasTier, str, int, nowIso } from '../rules.js';
 
 // Close live auctions whose timer has run out. Called on a timer and before reads.
-// Brand (Swap Exclusive) sales use the exclusive fee; others use the seller's plan fee.
+// Brand (Swaapo Exclusive) sales use the exclusive fee; others use the seller's plan fee.
 const feeFor = (db, a, sellerTier) => (a.brand_id ? db.setting('exclusive').feePct : db.setting('fees')[sellerTier === 'plus' ? 'plus' : 'pro']);
 // Executive auctions only accept bids from members whose ID check is approved.
 function needKyc(db, u, a) {
@@ -171,7 +171,7 @@ export default function auctions(db) {
       db.run("UPDATE auctions SET status='sold', winner_id=?, final_price=?, fee_pct=?, escrow='awaiting_payment', ends_at=? WHERE id=?",
         u.id, price, feeFor(db, a, seller.tier), nowIso(), a.id);
       db.audit(u.id, 'auction.buy', `auction:${a.id}`, { price });
-      return { status: 'sold', price, next: 'Pay into SwapSafe escrow to complete.' };
+      return { status: 'sold', price, next: 'Pay into SwaapoSafe escrow to complete.' };
     });
     res.json(out);
   });

@@ -43,7 +43,7 @@ export function createApp({ dbPath } = {}) {
   app.use(['/api/auth/login', '/api/auth/signup'], limiter(Number(process.env.AUTH_RATE_MAX || 20), 10 * 60000));
 
   app.use('/api', authenticate(db));
-  app.get('/api/health', (_req, res) => res.json({ ok: true, name: 'Swap API', time: new Date().toISOString() }));
+  app.get('/api/health', (_req, res) => res.json({ ok: true, name: 'Swaapo API', time: new Date().toISOString() }));
   // Maintenance mode blocks every write except for staff.
   app.use('/api', (req, _res, next) => {
     const m = db.setting('maintenance');

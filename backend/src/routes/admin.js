@@ -204,7 +204,7 @@ export default function admin(db) {
     res.json({ ok: true });
   });
 
-  // ---- Swap Exclusive brands: verification queue and status changes
+  // ---- Swaapo Exclusive brands: verification queue and status changes
   r.get('/brands', (req, res) => {
     const st = str(req.query.status, 12) || 'pending';
     res.json(db.all(`SELECT b.*, u.handle owner, (SELECT COUNT(*) FROM auctions a WHERE a.brand_id=b.id) auctions,
@@ -224,7 +224,7 @@ export default function admin(db) {
     res.json({ ok: true });
   });
 
-  // ---- Swap Green: what's pledged vs delivered, and recording delivered batches with proof
+  // ---- Swaapo Green: what's pledged vs delivered, and recording delivered batches with proof
   r.get('/impact', (_req, res) => {
     const s = impactSummary(db);
     res.json({ ...s, owed: { trees: Math.max(0, s.trees.pledged - s.trees.planted), meals: Math.max(0, s.meals.pledged - s.meals.funded), cleanups: Math.max(0, s.cleanups.pledged - s.cleanups.done) },

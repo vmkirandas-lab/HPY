@@ -105,9 +105,9 @@ CREATE INDEX IF NOT EXISTS ix_reports ON reports(status);
 // Every value the Control Center can change at runtime. Prices and fees are example pricing.
 export const DEFAULT_SETTINGS = {
   features: { signups: true, auctions: true, studio: true, draws: true, calls: true, coins: true, circle: true, ads: true, events: true, groups: true, exclusive: true },
-  // Swap Exclusive: one-of-one auctions by verified brands. Fee is example pricing.
+  // Swaapo Exclusive: one-of-one auctions by verified brands. Fee is example pricing.
   exclusive: { feePct: 8, kycRequired: true },
-  maintenance: { on: false, message: 'Swap is down for a short update. Back soon.' },
+  maintenance: { on: false, message: 'Swaapo is down for a short update. Back soon.' },
   plans: { pro: 149, plus: 399 },
   fees: { pro: 5, plus: 3 },
   coins: { perFiveStar: 100, unlockAt: 1000, circleBonus: 50, welcomeBonus: 1000 },
@@ -115,7 +115,7 @@ export const DEFAULT_SETTINGS = {
   trust: { phone: 20, email: 10, id: 20 },
   limits: { minAge: 15, adultAge: 18, bidAge: 23, deleteGraceDays: 30, proAuctionsPerMonth: 3, videoMaxSeconds: 120, boxMinValue: 200, antiSnipeSeconds: 120 },
   ads: { cpm: { feed: 80, story: 120, side: 60, auction: 150 } },
-  // Swap Green. CO2e and waste per swap are estimates for an average item not bought new; publish the method.
+  // Swaapo Green. CO2e and waste per swap are estimates for an average item not bought new; publish the method.
   impact: { treesPerSwap: 1, milestoneSwaps: 10000, mealsPerMilestone: 10000, cleanupsPerMilestone: 1, co2KgPerSwap: 12, wasteKgPerSwap: 2.5 },
   categories: ['Electronics', 'Books', 'Sports', 'Home', 'Fashion', 'Hobbies', 'Kids', 'Bike & Car'],
 };

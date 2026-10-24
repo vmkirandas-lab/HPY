@@ -167,7 +167,7 @@ test('settings: admin-only, validated, and feature switches take effect', async 
   assert.ok(db.all("SELECT 1 FROM audit_log WHERE action='settings.update'").length >= 3);
 });
 
-test('Swap Green: each completed swap pledges a tree, milestones pledge meals, delivery needs proof', async () => {
+test('Swaapo Green: each completed swap pledges a tree, milestones pledge meals, delivery needs proof', async () => {
   await call('PUT', '/api/admin/settings/impact', { value: { treesPerSwap: 1, milestoneSwaps: 5, mealsPerMilestone: 500, cleanupsPerMilestone: 1, co2KgPerSwap: 12, wasteKgPerSwap: 2.5 } }, T.boss);
   const before = (await call('GET', '/api/impact')).body;
   let last;
@@ -189,7 +189,7 @@ test('Swap Green: each completed swap pledges a tree, milestones pledge meals, d
   assert.equal(a.trees.planted, 3); assert.equal(a.owed.trees, 2); assert.equal(a.owed.meals, 500);
 });
 
-test('Swap Exclusive: verified brands list 1-of-1 pieces, only verified bidders can bid', async () => {
+test('Swaapo Exclusive: verified brands list 1-of-1 pieces, only verified bidders can bid', async () => {
   const brandOwner = await signup('loomco', 45);
   const app = { name: 'Malabar Loom', legalName: 'Malabar Loom Co-op', gstin: '32AAAAM5678D1Z2', trademark: 'TM 123', genuine: true, invoices: true };
   assert.equal((await call('POST', '/api/brands', { ...app, gstin: 'BAD' }, T.loomco)).status, 400);

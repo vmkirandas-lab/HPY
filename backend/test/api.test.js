@@ -336,3 +336,17 @@ test('trust: phone 20 + email 10 + ID 20 = 50; full profile earns 1,000 coins on
   assert.equal((await call('GET', '/api/coins', null, tk)).body.balance, 1000);
   assert.equal((await call('GET', '/api/me/profile', null, tk)).body.complete, 9);
 });
+
+test('Medical & Care: no medicines or needles, cleaning must be confirmed; donations are free item posts', async () => {
+  const bad = await call('POST', '/api/posts', { type: 'item', cat: 'Medical & Care', title: 'Insulin pens and test strips', careConfirmed: true }, T.seller);
+  assert.equal(bad.body.code, 'medical_banned');
+  const unconfirmed = await call('POST', '/api/posts', { type: 'item', cat: 'Medical & Care', title: 'Folding wheelchair' }, T.seller);
+  assert.equal(unconfirmed.body.code, 'care_unconfirmed');
+  const ok = await call('POST', '/api/posts', { type: 'item', cat: 'Medical & Care', title: 'Folding wheelchair', careConfirmed: true, want: 'Walker' }, T.seller);
+  assert.equal(ok.status, 201);
+  const gift = await call('POST', '/api/posts', { type: 'donate', cat: 'Fashion', title: "Bag of kids' clothes", value: 900 }, T.buyer);
+  assert.equal(gift.status, 201);
+  const row = db.get('SELECT type, donate, value FROM posts WHERE id=?', gift.body.id);
+  assert.deepEqual({ ...row }, { type: 'item', donate: 1, value: null });
+  assert.equal(db.get('SELECT care_ok FROM posts WHERE id=?', ok.body.id).care_ok, 1);
+});

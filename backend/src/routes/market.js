@@ -5,6 +5,9 @@ import { fail } from '../errors.js';
 import { needConsent, needFeature, str, int } from '../rules.js';
 import { onSwapCompleted } from './impact.js';
 
+const MEDICAL = 'Medical & Care';
+const MED_BANNED = /\b(medicines?|tablets?|capsules?|syrups?|injections?|syringes?|needles?|insulin|strips?|ointments?|drugs?|vials?|ampoules?|cannulas?|catheters?)\b/i;
+
 export default function market(db) {
   const r = Router();
 
@@ -22,15 +25,21 @@ export default function market(db) {
   });
   r.post('/posts', (req, res) => {
     const u = requireUser(req); needConsent(u);
-    const type = req.body.type, cats = db.setting('categories');
-    if (!['item', 'iso', 'done'].includes(type)) fail(400, 'Post type must be item, iso or done.');
+    const cats = db.setting('categories'), donate = req.body.type === 'donate';
+    const type = donate ? 'item' : req.body.type;
+    if (!['item', 'iso', 'done'].includes(type)) fail(400, 'Post type must be item, iso, done or donate.');
     const title = str(req.body.title, 80);
     if (!title) fail(400, 'Say what the item is.');
     const cat = req.body.cat ? str(req.body.cat, 30) : null;
     if (cat && !cats.includes(cat)) fail(400, 'Unknown category.');
-    const { lastInsertRowid: id } = db.run('INSERT INTO posts(user_id,type,cat,title,body,want,cond,value,media_url) VALUES(?,?,?,?,?,?,?,?,?)',
-      u.id, type, cat, title, str(req.body.body, 2000), str(req.body.want, 200) || null, str(req.body.cond, 20) || null,
-      Number.isFinite(int(req.body.value)) ? int(req.body.value) : null, str(req.body.mediaUrl, 500) || null);
+    const body = str(req.body.body, 2000), careOk = cat === MEDICAL;
+    if (careOk) {
+      if (MED_BANNED.test(`${title} ${body}`)) fail(400, "Medicines, injections, needles, test strips and opened consumables can't be listed.", 'medical_banned');
+      if (req.body.careConfirmed !== true) fail(400, 'Confirm the item is cleaned, disinfected and safe to use.', 'care_unconfirmed');
+    }
+    const { lastInsertRowid: id } = db.run('INSERT INTO posts(user_id,type,cat,title,body,want,cond,value,media_url,donate,care_ok) VALUES(?,?,?,?,?,?,?,?,?,?,?)',
+      u.id, type, cat, title, body, str(req.body.want, 200) || null, str(req.body.cond, 20) || null,
+      donate ? null : Number.isFinite(int(req.body.value)) ? int(req.body.value) : null, str(req.body.mediaUrl, 500) || null, donate ? 1 : 0, careOk ? 1 : 0);
     res.status(201).json({ id: Number(id) });
   });
   r.delete('/posts/:id', (req, res) => {

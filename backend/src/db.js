@@ -117,7 +117,7 @@ export const DEFAULT_SETTINGS = {
   ads: { cpm: { feed: 80, story: 120, side: 60, auction: 150 } },
   // Swaapo Green. CO2e and waste per swap are estimates for an average item not bought new; publish the method.
   impact: { treesPerSwap: 1, milestoneSwaps: 10000, mealsPerMilestone: 10000, cleanupsPerMilestone: 1, co2KgPerSwap: 12, wasteKgPerSwap: 2.5 },
-  categories: ['Electronics', 'Books', 'Sports', 'Home', 'Fashion', 'Hobbies', 'Kids', 'Bike & Car'],
+  categories: ['Electronics', 'Books', 'Sports', 'Home', 'Fashion', 'Hobbies', 'Kids', 'Bike & Car', 'Medical & Care'],
 };
 
 const clean = v => (v === undefined ? null : typeof v === 'boolean' ? (v ? 1 : 0) : v);
@@ -153,6 +153,9 @@ export function openDb(path = process.env.DB_PATH || 'data/swap.db') {
   };
   const addCol = (table, col, def) => { if (!raw.prepare(`PRAGMA table_info(${table})`).all().some(c => c.name === col)) raw.exec(`ALTER TABLE ${table} ADD COLUMN ${col} ${def}`); };
   addCol('users', 'kyc_status', "TEXT NOT NULL DEFAULT 'none'");
+  // Swaapo Donate: a donation is an item post given away free. Medical & Care posts record the cleaning confirmation.
+  addCol('posts', 'donate', 'INTEGER NOT NULL DEFAULT 0');
+  addCol('posts', 'care_ok', 'INTEGER NOT NULL DEFAULT 0');
   addCol('users', 'phone', 'TEXT');
   addCol('users', 'status', "TEXT NOT NULL DEFAULT 'active'");
   addCol('users', 'deactivated_at', 'TEXT');

@@ -893,7 +893,6 @@ h1,h2,h3{font-weight:800;letter-spacing:-.015em}
     <a class="nav" href="#donate" data-v="donate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/></svg><span class="lbl">Donate</span><span class="pro pro-tag">NEW</span></a>
     <a class="nav" href="#groups" data-v="groups"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.5a5 5 0 0 1 5.5 5"/></svg><span class="lbl">Groups</span></a>
     <a class="nav" href="#coins" data-v="coins"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5c-.6-.9-1.6-1.3-2.5-1.3-1.5 0-2.5.8-2.5 1.9 0 2.6 5 1.4 5 4 0 1.1-1.1 1.9-2.5 1.9-1 0-2-.4-2.6-1.3M12 7v1.2M12 15.8V17"/></svg><span class="lbl">Coins</span><span class="pro pro-tag" id="coin-tag">1,250</span></a>
-    <a class="nav" href="#impact" data-v="impact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22v-7"/><path d="M12 15c-4 0-7-2.7-7-6.5C5 5 8 2 12 2s7 3 7 6.5c0 3.8-3 6.5-7 6.5z"/><path d="M12 15l-3-3M12 12l3-3"/></svg><span class="lbl">Swaapo Green</span></a>
     <a class="nav" href="#draws" data-v="draws"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-2-4-6-4-6-1s4 1 6 1c2 0 6 2 6-1s-4-3-6 1"/></svg><span class="lbl">Draws</span><span class="pro pro-tag" style="background:linear-gradient(135deg,var(--teal),#9AFBFF);color:var(--on-teal)">FREE</span></a>
     <a class="nav" href="#messages" data-v="messages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span class="lbl">Messages</span><span class="dot" data-badge="messages"></span></a>
     <a class="nav" href="#alerts" data-v="alerts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="lbl">Notifications</span><span class="dot" data-badge="alerts"></span></a>
@@ -909,7 +908,6 @@ h1,h2,h3{font-weight:800;letter-spacing:-.015em}
   <aside class="right" aria-label="Side">
     <form class="search glass" id="rsearch" role="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="rsearch-q" type="search" placeholder="Search items, wants, people" aria-label="Search"></form>
     <div class="box glass adbox" id="sidead"></div>
-    <div class="box glass ecobox" id="ecobox"></div>
     <div class="box glass" id="ending"></div>
     <div class="box glass"><h3>Your items</h3><div id="myitems" style="display:flex;flex-direction:column;gap:10px"></div><a href="#swipe" class="small" style="font-weight:800">Swipe for matches →</a></div>
     <div class="box glass"><h3>Trending wants in Kochi</h3><div id="trends" style="display:flex;flex-direction:column;gap:6px"></div></div>
@@ -1131,7 +1129,6 @@ function postHTML(p){
     cta=p.u==="you"?"":`<button class="go-btn" data-offer="${p.id}">Offer a swap</button>`;
   } else if(p.type==="done"){
     body=`<p class="ptext">${linkify(p.text)}</p><div class="done"><div class="side">${av(p.u,"sm")}<span class="e">${p.a[0]}</span><span class="small">${esc(p.a[1])}</span></div><span class="x">⇄</span><div class="side">${av(p.with,"sm")}<span class="e">${p.b[0]}</span><span class="small">${esc(p.b[1])}</span></div><div style="grid-column:1/-1;font-weight:800">Exchange complete <span class="stars">${"★".repeat(p.stars)}</span>${p.stars===5?' <span class="coinpill" style="pointer-events:none">+100 each</span>':""}</div></div>`;
-    body+=`<div class="pmeta"><span class="treechip">+1 tree planted for this swap</span></div>`;
     cta=`<button class="go-btn ghost" data-congrats="${p.id}">Congrats</button>`;
   } else if(p.type==="donate"){
     const mine=p.u==="you",asked=(p.reqs||[]).includes("you");
@@ -1186,7 +1183,6 @@ function vFeed(){
      <button class="story" data-compose><span class="ring" style="background:var(--glass-line)"><span style="color:var(--gold-ink);font-weight:800">+</span></span><small>Your story</small></button>
      ${STORIES.map((s,i)=>s.live&&!canSeeAuctions()?"":`<button class="story ${s.seen?"seen":""} ${s.live?"live":""}" data-story="${i}"><span class="ring"><span style="background:${U[s.u].c}">${s.e}</span></span>${s.live?'<span class="livepill">LIVE</span>':""}<small>${esc(U[s.u].h)}</small></button>${i===1&&!isTeen()?`<button class="story adstory" data-svad><span class="ring"><span style="background:#FFE29A"></span></span><span class="adtag" style="margin-top:-12px;z-index:1">AD</span><small>Sponsored</small></button>`:""}`).join("")}
    </div>
-   ${feedTab==="foryou"?`<a class="glass ecostrip" href="#impact"><span aria-hidden="true"></span><span><b>${ECO.swaps.toLocaleString("en-IN")} trees pledged</b> · every swap plants one</span><span class="ecobar" style="flex:1;min-width:60px"><i style="width:${Math.round((ECO.swaps%ECO.milestone)/ECO.milestone*100)}%"></i></span><span class="xs" style="font-weight:800;color:var(--ok)">${Math.round((ECO.swaps%ECO.milestone)/ECO.milestone*100)}% to ${nextMilestone().toLocaleString("en-IN")}</span></a>`:""}
    <div class="glass composer">
      <div class="top">${av("you")}<button class="fake" data-compose>Swap it, ask for it, or auction it…</button></div>
      <div class="acts"><button class="chipbtn" data-compose="item">Offer a swap</button><button class="chipbtn" data-compose="iso">Ask for something</button><button class="chipbtn gold" data-compose="auction">Start an auction <span class="pro">PRO</span></button><button class="chipbtn" data-compose="donate">Donate</button><button class="chipbtn" data-compose="done">Share a swap</button></div>
@@ -1324,7 +1320,6 @@ function vProfile(k){
      <p>${esc(u.bio)}</p>
      ${k==="you"?`<a class="pcoins" href="#coins"><span class="pc-ic" aria-hidden="true"><i class="coin" aria-hidden="true"></i></span><span class="pc-main"><span class="lbl-s">Swaapo Coins</span><b class="pcoin">${COINS.toLocaleString("en-IN")}</b></span><span class="pc-side"><span class="pc-st">${COINS>=1000?"Unlocked for deals":`${(1000-COINS).toLocaleString("en-IN")} to unlock`}</span><span class="xs muted">${CIRCLE?"+150 with Circle members →":"+100 per 5-star swap →"}</span></span><i class="pc-bar"><i style="width:${Math.min(100,COINS/10)}%"></i></i></a>`:""}
      ${k==="you"?planCardHTML():""}
-     <a class="ecorow" href="#impact"><span aria-hidden="true"></span><span><b>${(k==="you"?MY_TREES:u.swaps).toLocaleString("en-IN")} trees</b> planted from ${k==="you"?"your":"their"} swaps · about ${co2(k==="you"?MY_TREES:u.swaps)} CO₂e avoided <span class="muted">(est.)</span></span><span class="xs" style="margin-left:auto;font-weight:800;color:var(--ok)">Swaapo Green →</span></a>
      <div class="trust"><b class="small">Trust score${k==="you"&&!PRIV().trust?' <span class="xs muted">· hidden from others</span>':""}</b><div class="meter"><i style="width:${u.trust}%"></i></div><b class="num">${u.trust}</b></div>
      <div class="stats"><div><b>${u.swaps}</b><span>Swaps</span></div><div><b>${u.rating?"★ "+u.rating:"—"}</b><span>Rating</span></div><div><b>${fmtN(u.fol+(k!=="you"&&FOLLOW.has(k)?1:0))}</b><span>Followers</span></div><div><b>${fmtN(u.fing)}</b><span>Following</span></div></div>
    </div>
@@ -1554,7 +1549,7 @@ function rail(){
   const ct=document.getElementById("coin-tag");if(ct)ct.textContent=COINS.toLocaleString("en-IN");document.querySelectorAll(".coinpill b").forEach(b=>b.textContent=COINS.toLocaleString("en-IN"));
   const end=auctions().filter(a=>!ended(a)).sort((a,b)=>a.end-b.end).slice(0,3);
   $("#sidead").hidden=isTeen();if(!isTeen())$("#sidead").innerHTML=sideAdHTML();
-  $("#ecobox").innerHTML=ecoBoxHTML();
+
   $("#ending").hidden=!canSeeAuctions();document.documentElement.dataset.minor=isTeen()?"1":"";
   $("#ending").innerHTML=`<h3>Ending soon</h3>${end.map(a=>`<button class="person trend" data-auction="${a.id}" style="align-items:center"><span class="av sm" style="background:var(--tile);font-size:1.1rem">${a.e}</span><span class="who"><b>${esc(a.item)}</b><span class="xs muted"><span data-aprice="${a.id}">${inr(curPrice(a))}</span> · <span data-end="${a.id}">${left(a.end-Date.now())}</span></span></span></button>`).join("")}<a href="#auctions" class="small" style="font-weight:800;color:var(--gold-ink)">Auction House →</a>`;
   $("#myitems").innerHTML=MY.map(m=>{const n=POSTS.filter(p=>p.type==="item"&&p.u!=="you"&&matchOf(p.want)===m).length;
@@ -1574,7 +1569,7 @@ function route(){
   const v=location.hash.slice(1)||"feed";
   document.querySelectorAll(".rail .nav[data-v]").forEach(a=>a.dataset.v===v?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current"));
   document.querySelectorAll(".tabs-b [data-go]").forEach(b=>b.dataset.go===v?b.setAttribute("aria-current","page"):b.removeAttribute("aria-current"));
-  ((["auctions","exclusive","brand"].includes(v)&&!canSeeAuctions())?{[v]:vAuctionGate}:{})[v]?vAuctionGate():({settings:vSettings,privacy:()=>vInfo("privacy"),"privacy-centre":()=>vInfo("centre"),terms:()=>vInfo("terms"),cookies:()=>vInfo("cookies"),developers:()=>vInfo("developers"),careers:()=>vInfo("careers"),donate:vDonate,gather:vGather,offers:vOffers,exclusive:vExclusive,brand:()=>vBrand(viewBrand),reels:vReels,addons:()=>evHub("addons"),impact:vImpact,create:vCreate,coins:vCoins,draws:vRewards,ads:EDITION==="web"?vAds:vWebOnly,about:EDITION==="web"?vAbout:vWebOnly,events:()=>evHub("events"),groups:vGroups,group:vGroup,how:vHow,safety:vSafety,help:vHelp,auctions:vAuctions,swipe:vSwipe,explore:vExplore,pro:vPro,messages:vMessages,alerts:()=>{vAlerts();setTimeout(()=>{ALERTS.forEach(a=>a.new=false);badges()},1500)},profile:()=>vProfile("you"),user:()=>vProfile(viewUser||"you")}[v]||vFeed)();
+  ((["auctions","exclusive","brand"].includes(v)&&!canSeeAuctions())?{[v]:vAuctionGate}:{})[v]?vAuctionGate():({settings:vSettings,privacy:()=>vInfo("privacy"),"privacy-centre":()=>vInfo("centre"),terms:()=>vInfo("terms"),cookies:()=>vInfo("cookies"),developers:()=>vInfo("developers"),careers:()=>vInfo("careers"),donate:vDonate,gather:vGather,offers:vOffers,exclusive:vExclusive,brand:()=>vBrand(viewBrand),reels:vReels,addons:()=>evHub("addons"),create:vCreate,coins:vCoins,draws:vRewards,ads:EDITION==="web"?vAds:vWebOnly,about:EDITION==="web"?vAbout:vWebOnly,events:()=>evHub("events"),groups:vGroups,group:vGroup,how:vHow,safety:vSafety,help:vHelp,auctions:vAuctions,swipe:vSwipe,explore:vExplore,pro:vPro,messages:vMessages,alerts:()=>{vAlerts();setTimeout(()=>{ALERTS.forEach(a=>a.new=false);badges()},1500)},profile:()=>vProfile("you"),user:()=>vProfile(viewUser||"you")}[v]||vFeed)();
   rail();badges();
 }
 window.addEventListener("hashchange",()=>{document.querySelectorAll(".modal").forEach(m=>m.remove());window.scrollTo(0,0);route()});
@@ -1755,7 +1750,7 @@ function vHelp(){const q=helpQs();
   main.innerHTML=`<div class="glass"><div class="vhead"><h2>Help</h2></div><div style="padding:0 16px 16px">${q.map(([a,b])=>`<details class="qa"><summary>${a}</summary><p class="small muted">${b}</p></details>`).join("")}</div></div>`;
 }
 function openMore(){
-  const {w,close}=modal(`<div class="shead"><h3>More</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div><div class="sbody" style="gap:6px">${[["explore","Explore"],["events","Events & Add-ons"],["gather","Gatherings"],["offers","Offers near you"],["donate","Swaapo Donate"],["groups","Groups"],["reels","Reels"],...(canSeeAuctions()?[["exclusive","◆ Swaapo Exclusive"]]:[]),["swipe","Swipe to match"],["coins","Swaapo Coins"],["impact","Swaapo Green"],["draws","Draws & Giveaways"],["messages","Messages"],...(EDITION==="web"?[["ads","Advertise"],["about","About Swaapo"]]:[]),["how","How it works"],["terms","Terms"],["privacy","Privacy Policy"],["privacy-centre","Privacy Centre"],["cookies","Cookies"],["developers","Developers"],["careers","Careers"],["safety","Safety"],["help","Help"],["settings","Account settings"]].map(([k,l])=>`<a class="nav" href="#${k}" style="border:1px solid var(--glass-line)">${l}</a>`).join("")}<button class="nav" data-logout style="border:1px solid var(--glass-line);color:var(--rose)">Log out</button></div>`,"More");
+  const {w,close}=modal(`<div class="shead"><h3>More</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div><div class="sbody" style="gap:6px">${[["explore","Explore"],["events","Events & Add-ons"],["gather","Gatherings"],["offers","Offers near you"],["donate","Swaapo Donate"],["groups","Groups"],["reels","Reels"],...(canSeeAuctions()?[["exclusive","◆ Swaapo Exclusive"]]:[]),["swipe","Swipe to match"],["coins","Swaapo Coins"],["draws","Draws & Giveaways"],["messages","Messages"],...(EDITION==="web"?[["ads","Advertise"],["about","About Swaapo"]]:[]),["how","How it works"],["terms","Terms"],["privacy","Privacy Policy"],["privacy-centre","Privacy Centre"],["cookies","Cookies"],["developers","Developers"],["careers","Careers"],["safety","Safety"],["help","Help"],["settings","Account settings"]].map(([k,l])=>`<a class="nav" href="#${k}" style="border:1px solid var(--glass-line)">${l}</a>`).join("")}<button class="nav" data-logout style="border:1px solid var(--glass-line);color:var(--rose)">Log out</button></div>`,"More");
   w.querySelectorAll("a").forEach(a=>a.addEventListener("click",close));
 }
 document.addEventListener("click",e=>{
@@ -1792,7 +1787,7 @@ let EVENTS=[
  {id:"e3",t:"Live Auction Night: Vintage Watches",e:"⌚",when:"Fri 31 Oct · 9 pm",where:"Online · Auction House",host:"dev",kind:"Live auction",going:540,int:820,g:4,grp:"g3",live:true,d:"Six restored watches, ten minutes each. Pro and Pro Plus members can bid. Everyone can watch."},
  {id:"e4",t:"Kids' Toy Swap Morning",e:"🧸",when:"Sat 8 Nov · 9–11 am",where:"Community Hall, Kaloor",host:"anjali",kind:"Swap meet",going:95,int:150,g:3,grp:"g4",d:"Toys, books and ride-ons for ages 1–10. Clean and complete toys only, please."},
  {id:"e5",t:"Cycle Swap & Repair Day",e:"🚲",when:"Sun 9 Nov · 7–10 am",where:"Infopark Phase 1, Kakkanad",host:"arjun",kind:"Workshop",going:128,int:200,g:2,grp:"g1",d:"Free tune-ups, then swap bikes, parts and gear. Morning ride for anyone who wants to join."},
- {id:"e6",t:"Cherai Beach Clean-up",e:"🏖️",when:"Sun 16 Nov · 6:30–9 am",where:"Cherai Beach, Vypin",host:"team",kind:"Clean-up",going:214,int:330,g:2,d:"Swaapo Green clean-up drive. Gloves, bags and breakfast provided. Plastic collected goes to a certified recycler, and we post the weight after."},
+ {id:"e6",t:"Cherai Beach Clean-up",e:"🏖️",when:"Sun 16 Nov · 6:30–9 am",where:"Cherai Beach, Vypin",host:"team",kind:"Clean-up",going:214,int:330,g:2,d:"Community clean-up drive. Gloves, bags and breakfast provided. Plastic collected goes to a certified recycler, and we post the weight after."},
  {id:"e7",t:"Vembanad Lake Shore Clean-up",e:"🛶",when:"Sat 29 Nov · 7–10 am",where:"Thanneermukkom, Alappuzha",host:"team",kind:"Clean-up",going:156,int:240,g:0,d:"Funded by our 10,000-swap milestone. We clear plastic from the shore and canals with a local fishermen's group."}
 ].map(e=>({...e,me:null}));
 let GROUPS=[
@@ -1986,7 +1981,7 @@ const DRAFT=`<p class="draft">Draft for legal review · last updated ${LEGAL_DAT
 const INFO={
  about:{t:"About Swaapo",h:()=>`<p><b>Don't Buy. Don't Sell. Just Exchange.</b> Swaapo is India's first exchange marketplace from God's Own Country. People swap what they don't use for what they want, with people nearby.</p>
   <h3>The company</h3><ul><li><b>Swaapo</b> is a HPY initiative.</li><li>Based in Kochi, Kerala, India.</li></ul>
-  <h3>What we believe</h3><ul><li>Everything has value, even the things you've stopped using.</li><li>A fair exchange leaves two people happy.</li><li>Trust is earned through honest listings and real accountability.</li><li>Every swap is one less thing bought new. We plant a tree for each one.</li></ul>`},
+  <h3>What we believe</h3><ul><li>Everything has value, even the things you've stopped using.</li><li>A fair exchange leaves two people happy.</li><li>Trust is earned through honest listings and real accountability.</li><li>Every swap is one less thing bought new.</li></ul>`},
  privacy:{t:"Privacy Policy",h:()=>`${DRAFT}
   <p>This policy explains what personal data Swaapo collects, why, and the choices you have. Swaapo is run by HPY in Kochi, Kerala, India, and follows the Digital Personal Data Protection Act, 2023 (DPDP Act) and the Information Technology Act, 2000.</p>
   <h3>What we collect</h3><table><tr><th>Data</th><th>Why</th></tr>
@@ -2074,7 +2069,7 @@ const DON_POINTS=[["Swaapo drop-off · Lulu Mall, Edappally","Daily 10 am – 9 
 let D_FILTER="all";
 function vDonate(){const list=POSTS.filter(p=>p.type==="donate").filter(p=>D_FILTER==="all"||(D_FILTER==="mine"?p.u==="you":p.cat===D_FILTER));
   main.innerHTML=`<div class="glass"><div class="vhead"><div><span class="fmt">Swaapo Donate</span><h2 style="margin-top:8px">Give what you don't need</h2><p class="small muted" style="margin-top:4px">Clothes, medical and care items, books and more, free to people and NGOs near you. You choose who gets it. Nothing is sold.</p></div><button class="btn g" data-dnew>+ Donate an item</button></div>
-   <div class="fmts" style="padding:0 16px 16px"><div><b>You choose</b><span class="small muted">People request your item. You pick who gets it and chat to arrange pick-up.</span></div><div><b>+50 Swaapo Coins</b><span class="small muted">When the receiver confirms they got it. Every donation also plants a tree with Swaapo Green.</span></div><div><b>Never resold</b><span class="small muted">Donated items can't be listed for sale or auction on Swaapo.</span></div><div><b>Safe medical items</b><span class="small muted">Cleaned and disinfected only. No medicines, needles or opened consumables.</span></div></div>
+   <div class="fmts" style="padding:0 16px 16px"><div><b>You choose</b><span class="small muted">People request your item. You pick who gets it and chat to arrange pick-up.</span></div><div><b>+50 Swaapo Coins</b><span class="small muted">When the receiver confirms they got it.</span></div><div><b>Never resold</b><span class="small muted">Donated items can't be listed for sale or auction on Swaapo.</span></div><div><b>Safe medical items</b><span class="small muted">Cleaned and disinfected only. No medicines, needles or opened consumables.</span></div></div>
    <div class="vhead" style="padding-top:0"><h3>Needs near you</h3><span class="xs muted">From verified NGOs and care units</span></div>
    <div class="needs">${DON_NEEDS.map((d,i)=>`<div class="need"><span class="nic" aria-hidden="true">${d.e}</span><div style="flex:1 1 180px;min-width:0"><b>${esc(d.need)}</b><div class="xs muted">${esc(d.org)} · needs about ${d.n}</div></div><button class="btn" data-dneed="${i}">I can give</button></div>`).join("")}</div>
    <div class="vhead" style="padding-top:0"><h3>Free near you</h3></div>
@@ -2099,7 +2094,7 @@ function openDonManage(id){const p=POSTS.find(x=>x.id===id);if(!p)return;
    <p class="xs muted">Look at trust and reviews, and meet in a public place for pick-up.</p></div>`,"Choose recipient");
   w.addEventListener("click",e=>{const t=e.target.closest("[data-dpick],[data-drcv]");if(!t)return;
     if(t.dataset.dpick){p.given=t.dataset.dpick;let ci=CONVS.findIndex(c=>c.u===p.given);if(ci<0){CONVS.unshift({u:p.given,unread:false,msgs:[]});ci=0}CONVS[ci].msgs.push({t:"me",x:`Hi! My ${p.item} is yours. ${p.pick||""}`});close();toast(`You chose ${U[p.given].n.split(" ")[0]}. A chat is open in Messages.`,true);route();return}
-    if(t.dataset.drcv!==undefined){p.received=true;COINS+=50;COIN_LOG.unshift(["+50",`Donated ${p.item}`,"now"]);syncCoins();updCoins();if(typeof ecoSwap==="function")ecoSwap(p.given);close();toast("Thank you for giving. +50 Swaapo Coins and a tree pledged.",true);route()}})}
+    if(t.dataset.drcv!==undefined){p.received=true;COINS+=50;COIN_LOG.unshift(["+50",`Donated ${p.item}`,"now"]);syncCoins();updCoins();if(typeof ecoSwap==="function")ecoSwap(p.given);close();toast("Thank you for giving. +50 Swaapo Coins.",true);route()}})}
 function openNeed(i){const d=DON_NEEDS[i];toast(`Great. Post your item and pick “Verified members and NGOs”, so ${d.org.split(",")[0]} can request it.`,true);setTimeout(()=>openCompose("donate"),300)}
 document.addEventListener("click",e=>{const t=e.target.closest("[data-dreq],[data-dman],[data-dnew],[data-df],[data-dneed]");if(!t)return;const d=t.dataset;
   if(d.dreq){openDonReq(d.dreq);return}if(d.dman){openDonManage(d.dman);return}
@@ -2180,7 +2175,7 @@ const OFFERS=[
  {id:"of5",b:"Nykd by Nykaa",cat:"Lingerie",deal:"Any 3 for ₹1,499",sub:"Bras, briefs and loungewear.",store:"Nykaa Luxe, Panampilly Nagar",area:"Panampilly Nagar",km:4.1,until:day(3,21,0),code:"SWAPNYKD",g:"linear-gradient(135deg,#6A1B4D,#D81B60)",women:true},
  {id:"of6",b:"Woodland",cat:"Outdoor",deal:"₹1,000 off over ₹4,999",sub:"Boots, jackets and backpacks.",store:"Woodland, Kaloor",area:"Kaloor",km:2.7,until:day(8,21,0),code:"SWAPWDL1K",g:"linear-gradient(135deg,#3A2E14,#6B5320)",coins:true},
  {id:"of7",b:"Nike",cat:"Sportswear",deal:"Early access: new football boots",sub:"Try them 2 days before launch. Pro Plus.",store:"Nike store, Lulu Mall",area:"Edappally",km:1.2,until:day(2,20,0),code:"SWAPNKEA",g:"linear-gradient(135deg,#1a1a1a,#FF5A1F)",plus:true},
- {id:"of8",b:"Puma",cat:"Footwear",deal:"Swap your old sneakers, get ₹800 off",sub:"Old pair goes to recycling. Counts towards Swaapo Green.",store:"Puma, Lulu Mall",area:"Edappally",km:1.3,until:day(10,21,0),code:"SWAPPUMAGRN",g:"linear-gradient(135deg,#0E6E6E,#2FB59C)"}
+ {id:"of8",b:"Puma",cat:"Footwear",deal:"Swap your old sneakers, get ₹800 off",sub:"Your old pair goes to recycling.",store:"Puma, Lulu Mall",area:"Edappally",km:1.3,until:day(10,21,0),code:"SWAPPUMAGRN",g:"linear-gradient(135deg,#0E6E6E,#2FB59C)"}
 ];
 let O_FILTER="all";const O_SAVED=new Set(),O_GOT=new Set();
 const oLeft=t=>{const m=Math.max(0,Math.round((t-Date.now())/MIN));return m<60?m+" min left":m<24*60?Math.floor(m/60)+" h left":"until "+new Date(t).toLocaleDateString("en-IN",{day:"numeric",month:"short"})};
@@ -2393,9 +2388,6 @@ function ecoBoxHTML(){
 function ecoSwap(k){
   const before=Math.floor(ECO.swaps/ECO.milestone);
   ECO.swaps++;MY_TREES++;
-  setTimeout(()=>toast(`A tree will be planted for your swap with ${U[k].n.split(" ")[0]}.`,true),1800);
-  if(Math.floor(ECO.swaps/ECO.milestone)>before)setTimeout(()=>toast(`${ECO.swaps.toLocaleString("en-IN")} swaps! That funds ${ECO.mealsPerMilestone.toLocaleString("en-IN")} meals and a clean-up drive.`,true),3800);
-  const eb=document.getElementById("ecobox");if(eb)eb.innerHTML=ecoBoxHTML();
 }
 function vImpact(){
   const nx=nextMilestone(),done=Math.floor(ECO.swaps/ECO.milestone),pct=Math.round((ECO.swaps%ECO.milestone)/ECO.milestone*100);
@@ -2703,7 +2695,7 @@ function showAuth(mode){
   let el=document.getElementById("auth");if(!el){el=document.createElement("div");el.id="auth";el.className="auth";el.setAttribute("role","dialog");el.setAttribute("aria-label","Log in or sign up");document.body.appendChild(el)}
   document.body.style.overflow="hidden";
   el.innerHTML=`<div class="authwrap"><div class="authbrand"><span class="brandlogo" role="img" aria-label="Swaapo"></span><h1>Don't Buy. Don't Sell.<br>Just Exchange.</h1><p class="muted">India's first exchange marketplace from God's Own Country.</p>
-     <ul><li><span><b>Swap what you don't use</b> for what you want, with people near you.</span></li><li><span><b>Earn Swaapo Coins</b> for every 5-star swap, and plant a tree with each one.</span></li><li><span><b>Verified auctions</b> to watch from 18 and bid on from 23.</span></li></ul></div>
+     <ul><li><span><b>Swap what you don't use</b> for what you want, with people near you.</span></li><li><span><b>Earn Swaapo Coins</b> for every 5-star swap.</span></li><li><span><b>Verified auctions</b> to watch from 18 and bid on from 23.</span></li></ul></div>
    <div class="glass authcard"><div class="authtabs" role="tablist"><button role="tab" aria-selected="${AUTH_MODE==="login"}" data-amode="login">Log in</button><button role="tab" aria-selected="${AUTH_MODE==="signup"}" data-amode="signup">Sign up</button></div>
    ${AUTH_MSG?`<div class="authbanner">${AUTH_MSG}</div>`:""}
    <div id="authbody"></div></div></div>`;
@@ -2836,7 +2828,7 @@ function vSettings(){
 const PRIV_DEF=()=>({vis:isTeen()?"followers":"public",dm:isTeen()?"followers":"everyone",area:"area",trust:true,online:true,search:true,mentions:true,ads:!isTeen(),trees:true,blocked:[]});
 const PRIV=()=>{const a=SESSION||DEMO_ACC;a.privacy={...PRIV_DEF(),...(a.privacy||{})};if(isTeen())a.privacy.ads=false;return a.privacy};
 const PRIV_SEG={vis:["Who can see your profile",[["public","Everyone"],["followers","Followers"],["private","Only you"]]],dm:["Who can message you",[["everyone","Everyone"],["followers","Followers"],["none","No one"]]],area:["Location on your profile",[["area","Area"],["city","City only"],["hidden","Hidden"]]]};
-const PRIV_TOG=[["trust","Show trust score to others","Your score still counts for swaps and auctions"],["online","Online status and read receipts","When off, you can't see others' either"],["search","Find me in search and “People near you”",""],["mentions","Allow mentions and tags","People can tag you in posts and comments"],["trees","Show Swaapo Green trees on my profile",""],["ads","Personalised ads","Uses your categories and area, never your messages. Always off under 18."]];
+const PRIV_TOG=[["trust","Show trust score to others","Your score still counts for swaps and auctions"],["online","Online status and read receipts","When off, you can't see others' either"],["search","Find me in search and “People near you”",""],["mentions","Allow mentions and tags","People can tag you in posts and comments"],["ads","Personalised ads","Uses your categories and area, never your messages. Always off under 18."]];
 const areaShown=()=>{const v=PRIV().area,ar=U.you.area||"";return !ar||v==="hidden"?"":" · "+esc(v==="city"?"Kochi":ar)};
 const privChips=()=>{const p=PRIV(),l={public:"Public profile",followers:"Followers only",private:"Private profile"};return `<div class="privchips"><span>${l[p.vis]}</span>${p.dm!=="everyone"?`<span>Messages: ${p.dm==="none"?"off":"followers"}</span>`:""}<a class="xs" href="#settings" style="font-weight:700">Privacy</a></div>`};
 function privacyHTML(a){const p=PRIV();

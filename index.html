@@ -499,8 +499,8 @@ details.qa p{margin-top:8px}
 .cv-edit{position:absolute;right:12px;top:12px;padding:6px 12px}
 .avwrap{position:relative;display:inline-block}
 .av-edit{position:absolute;right:-2px;bottom:4px;width:32px;height:32px;padding:0;display:grid;place-items:center;font-size:.9rem;z-index:2}
-.motion-av{position:relative;animation:avmove 4s ease-in-out infinite}
-.motion-av::before{content:"";position:absolute;inset:-6px;border-radius:50%;background:conic-gradient(var(--teal),var(--plum),var(--rose),var(--gold),var(--teal));z-index:-1;animation:spin 4s linear infinite;filter:drop-shadow(0 0 10px rgba(61,245,255,.5))}
+.motion-av{position:relative}
+.motion-av::before{content:"";position:absolute;inset:-6px;border-radius:50%;background:conic-gradient(var(--teal),var(--plum),var(--rose),var(--gold),var(--teal));z-index:-1;filter:drop-shadow(0 0 10px rgba(61,245,255,.5))}
 @keyframes avmove{0%,100%{transform:translateY(0) scale(1)}25%{transform:translateY(-4px) scale(1.03) rotate(-2deg)}50%{transform:translateY(0) scale(1)}75%{transform:translateY(-2px) scale(1.02) rotate(2deg)}}
 @keyframes spin{to{transform:rotate(360deg)}}
 .has-media{overflow:visible;background:#000}
@@ -2233,8 +2233,8 @@ function openCircle(){
 const MOTION={av:null,cover:null};
 const motionMedia=(m,cls)=>m.kind==="video"?`<video class="${cls}" src="${m.url}" autoplay muted loop playsinline data-loop4></video>`:`<img class="${cls} kb" src="${m.url}" alt="">`;
 function profAvatar(k){
-  const edit=k==="you"?'<button class="medit av-edit" data-motion="av" aria-label="Change motion profile picture"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></button>':"";
-  if(k==="you"&&MOTION.av)return `<span class="avwrap"><span class="av lg motion-av has-media" aria-hidden="true">${motionMedia(MOTION.av,"avm")}</span>${edit}</span>`;
+  const edit=k==="you"?'<button class="medit av-edit" data-motion="av" aria-label="Change profile picture"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></button>':"";
+  if(k==="you"&&MOTION.av)return `<span class="avwrap"><span class="av lg motion-av has-media" aria-hidden="true"><img class="avm" src="${MOTION.av.url}" alt=""></span>${edit}</span>`;
   return `<span class="avwrap">${av(k,"lg motion-av")}${edit}</span>`;
 }
 function coverHTML(k){
@@ -2248,13 +2248,13 @@ function bindMotion(){
 const _vProfile=vProfile;
 vProfile=function(k){_vProfile(k);bindMotion()};
 function pickMotion(slot){
-  const inp=document.createElement("input");inp.type="file";inp.accept="image/*,video/*";
+  const inp=document.createElement("input");inp.type="file";inp.accept=slot==="av"?"image/*":"image/*,video/*";
   inp.addEventListener("change",()=>{const f=inp.files[0];if(!f)return;
     if(f.size>25*1024*1024){toast("That file is over 25 MB. Try a shorter clip.");return}
-    const kind=f.type.startsWith("video")?"video":"image";
+    const kind=f.type.startsWith("video")?"video":"image";if(slot==="av"&&kind!=="image"){toast("Choose a photo for your profile picture.");return}
     if(MOTION[slot])URL.revokeObjectURL(MOTION[slot].url);
     MOTION[slot]={url:URL.createObjectURL(f),kind};if(slot==="av"&&SESSION){SESSION.photo=true;saveAccounts();setTimeout(checkBonus,400)}
-    toast(kind==="video"?"Motion set. The first 4 seconds play on a loop.":"Photo set, with a gentle 4-second motion.",true);route()});
+    toast(slot==="av"?"Profile photo set.":kind==="video"?"Cover set. The first 4 seconds play on a loop.":"Cover set, with a gentle 4-second motion.",true);route()});
   inp.click();
 }
 

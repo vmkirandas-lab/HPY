@@ -776,6 +776,18 @@ html[data-minor="1"] .tabs-b{grid-template-columns:repeat(4,1fr)}
 .pcgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}.pcgrid button{text-align:left;border:1px solid var(--glass-line);background:var(--glass);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;color:var(--ink);cursor:pointer}
 .jobs{display:flex;flex-direction:column;gap:8px}.job{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;border:1px solid var(--glass-line);border-radius:14px;padding:12px 14px}
 
+.rsbar{display:flex;gap:8px;flex-wrap:wrap;padding:0 16px 12px}.rsbar input,.rsbar select{border:1px solid var(--glass-line);background:var(--glass);color:var(--ink);border-radius:12px;padding:9px 12px}.rsbar input{flex:1 1 200px;min-width:0}.rsbar select option{background:var(--bg)}
+.rsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;padding:0 16px 16px}
+@media (max-width:520px){.rsgrid{grid-template-columns:1fr 1fr;gap:10px;padding:0 12px 14px}.rscard .rsimg{font-size:2.4rem}.rsprice{font-size:1rem}}
+.rscard{display:flex;flex-direction:column;text-align:left;border:1px solid var(--glass-line);border-radius:16px;overflow:hidden;background:var(--glass);color:var(--ink);cursor:pointer;padding:0}
+.rscard .rsimg{aspect-ratio:4/3;display:grid;place-items:center;font-size:3rem;background:var(--tile);background-size:cover;background-position:center;position:relative}
+.rscard .rsbody{padding:10px 12px 12px;display:flex;flex-direction:column;gap:3px}
+.rsprice{font-size:1.15rem;font-weight:800}
+.rstag{position:absolute;left:8px;top:8px;font-size:.66rem;font-weight:800;padding:2px 8px;border-radius:999px;background:rgba(0,0,0,.55);color:#fff}
+.rstag.sold{background:var(--rose)}
+.rsdet{display:flex;flex-direction:column;gap:12px}.rsdet .rsimg{aspect-ratio:16/9;border-radius:14px;display:grid;place-items:center;font-size:5rem;background:var(--tile);background-size:cover;background-position:center}
+.rsfacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}.rsfacts div{border:1px solid var(--glass-line);border-radius:12px;padding:8px 10px}.rsfacts span{display:block;font-size:.7rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+
 /* Gatherings & Offers */
 .gcard{display:flex;flex-direction:column;gap:10px;border:1px solid var(--glass-line);border-radius:18px;padding:14px;background:var(--glass)}
 .gtop{display:flex;gap:12px;align-items:flex-start}
@@ -890,6 +902,7 @@ h1,h2,h3{font-weight:800;letter-spacing:-.015em}
     <a class="nav" href="#events" data-v="events"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span class="lbl">Events &amp; Add-ons</span></a>
     <a class="nav" href="#gather" data-v="gather"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 9a2 2 0 0 0 0 4v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4a2 2 0 0 1 0-4V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1z"/><path d="M14 4v14" stroke-dasharray="2 2"/></svg><span class="lbl">Gatherings</span><span class="pro pro-tag">NEW</span></a>
     <a class="nav" href="#offers" data-v="offers"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg><span class="lbl">Offers</span><span class="pro pro-tag">NEW</span></a>
+    <a class="nav" href="#resell" data-v="resell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9h18"/><path d="M9.5 13h5M12 13v5"/></svg><span class="lbl">Resell</span><span class="pro pro-tag">NEW</span></a>
     <a class="nav" href="#donate" data-v="donate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/></svg><span class="lbl">Donate</span><span class="pro pro-tag">NEW</span></a>
     <a class="nav" href="#groups" data-v="groups"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.5a5 5 0 0 1 5.5 5"/></svg><span class="lbl">Groups</span></a>
     <a class="nav" href="#coins" data-v="coins"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5c-.6-.9-1.6-1.3-2.5-1.3-1.5 0-2.5.8-2.5 1.9 0 2.6 5 1.4 5 4 0 1.1-1.1 1.9-2.5 1.9-1 0-2-.4-2.6-1.3M12 7v1.2M12 15.8V17"/></svg><span class="lbl">Coins</span><span class="pro pro-tag" id="coin-tag">1,250</span></a>
@@ -1185,7 +1198,7 @@ function vFeed(){
    </div>
    <div class="glass composer">
      <div class="top">${av("you")}<button class="fake" data-compose>Swap it, ask for it, or auction it…</button></div>
-     <div class="acts"><button class="chipbtn" data-compose="item">Offer a swap</button><button class="chipbtn" data-compose="iso">Ask for something</button><button class="chipbtn gold" data-compose="auction">Start an auction <span class="pro">PRO</span></button><button class="chipbtn" data-compose="donate">Donate</button><button class="chipbtn" data-compose="done">Share a swap</button></div>
+     <div class="acts"><button class="chipbtn" data-compose="item">Offer a swap</button><button class="chipbtn" data-compose="iso">Ask for something</button><button class="chipbtn gold" data-compose="auction">Start an auction <span class="pro">PRO</span></button><button class="chipbtn" data-rsnew>Sell</button><button class="chipbtn" data-compose="donate">Donate</button><button class="chipbtn" data-compose="done">Share a swap</button></div>
    </div>
    <div class="glass ftabs" role="tablist">${[["foryou","For you"],["discover","Discover ✦"],...(canSeeAuctions()?[["auctions","Auctions"]]:[]),["nearby","Nearby"],["following","Following"]].map(([k,l])=>`<button role="tab" aria-selected="${feedTab===k}" data-ftab="${k}">${l}</button>`).join("")}</div>
    ${feedTab==="discover"?`<div class="glass" style="padding-top:12px">${masonryHTML(POSTS.filter(p=>p.type==="item"||p.type==="auction").filter(seeable))}</div>`:""}
@@ -1569,7 +1582,7 @@ function route(){
   const v=location.hash.slice(1)||"feed";
   document.querySelectorAll(".rail .nav[data-v]").forEach(a=>a.dataset.v===v?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current"));
   document.querySelectorAll(".tabs-b [data-go]").forEach(b=>b.dataset.go===v?b.setAttribute("aria-current","page"):b.removeAttribute("aria-current"));
-  ((["auctions","exclusive","brand"].includes(v)&&!canSeeAuctions())?{[v]:vAuctionGate}:{})[v]?vAuctionGate():({settings:vSettings,privacy:()=>vInfo("privacy"),"privacy-centre":()=>vInfo("centre"),terms:()=>vInfo("terms"),cookies:()=>vInfo("cookies"),developers:()=>vInfo("developers"),careers:()=>vInfo("careers"),donate:vDonate,gather:vGather,offers:vOffers,exclusive:vExclusive,brand:()=>vBrand(viewBrand),reels:vReels,addons:()=>evHub("addons"),create:vCreate,coins:vCoins,draws:vRewards,ads:EDITION==="web"?vAds:vWebOnly,about:EDITION==="web"?vAbout:vWebOnly,events:()=>evHub("events"),groups:vGroups,group:vGroup,how:vHow,safety:vSafety,help:vHelp,auctions:vAuctions,swipe:vSwipe,explore:vExplore,pro:vPro,messages:vMessages,alerts:()=>{vAlerts();setTimeout(()=>{ALERTS.forEach(a=>a.new=false);badges()},1500)},profile:()=>vProfile("you"),user:()=>vProfile(viewUser||"you")}[v]||vFeed)();
+  ((["auctions","exclusive","brand"].includes(v)&&!canSeeAuctions())?{[v]:vAuctionGate}:{})[v]?vAuctionGate():({settings:vSettings,resell:vResell,privacy:()=>vInfo("privacy"),"privacy-centre":()=>vInfo("centre"),terms:()=>vInfo("terms"),cookies:()=>vInfo("cookies"),developers:()=>vInfo("developers"),careers:()=>vInfo("careers"),donate:vDonate,gather:vGather,offers:vOffers,exclusive:vExclusive,brand:()=>vBrand(viewBrand),reels:vReels,addons:()=>evHub("addons"),create:vCreate,coins:vCoins,draws:vRewards,ads:EDITION==="web"?vAds:vWebOnly,about:EDITION==="web"?vAbout:vWebOnly,events:()=>evHub("events"),groups:vGroups,group:vGroup,how:vHow,safety:vSafety,help:vHelp,auctions:vAuctions,swipe:vSwipe,explore:vExplore,pro:vPro,messages:vMessages,alerts:()=>{vAlerts();setTimeout(()=>{ALERTS.forEach(a=>a.new=false);badges()},1500)},profile:()=>vProfile("you"),user:()=>vProfile(viewUser||"you")}[v]||vFeed)();
   rail();badges();
 }
 window.addEventListener("hashchange",()=>{document.querySelectorAll(".modal").forEach(m=>m.remove());window.scrollTo(0,0);route()});
@@ -1750,7 +1763,7 @@ function vHelp(){const q=helpQs();
   main.innerHTML=`<div class="glass"><div class="vhead"><h2>Help</h2></div><div style="padding:0 16px 16px">${q.map(([a,b])=>`<details class="qa"><summary>${a}</summary><p class="small muted">${b}</p></details>`).join("")}</div></div>`;
 }
 function openMore(){
-  const {w,close}=modal(`<div class="shead"><h3>More</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div><div class="sbody" style="gap:6px">${[["explore","Explore"],["events","Events & Add-ons"],["gather","Gatherings"],["offers","Offers near you"],["donate","Swaapo Donate"],["groups","Groups"],["reels","Reels"],...(canSeeAuctions()?[["exclusive","◆ Swaapo Exclusive"]]:[]),["swipe","Swipe to match"],["coins","Swaapo Coins"],["draws","Draws & Giveaways"],["messages","Messages"],...(EDITION==="web"?[["ads","Advertise"],["about","About Swaapo"]]:[]),["how","How it works"],["terms","Terms"],["privacy","Privacy Policy"],["privacy-centre","Privacy Centre"],["cookies","Cookies"],["developers","Developers"],["careers","Careers"],["safety","Safety"],["help","Help"],["settings","Account settings"]].map(([k,l])=>`<a class="nav" href="#${k}" style="border:1px solid var(--glass-line)">${l}</a>`).join("")}<button class="nav" data-logout style="border:1px solid var(--glass-line);color:var(--rose)">Log out</button></div>`,"More");
+  const {w,close}=modal(`<div class="shead"><h3>More</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div><div class="sbody" style="gap:6px">${[["explore","Explore"],["events","Events & Add-ons"],["gather","Gatherings"],["offers","Offers near you"],["resell","Swaapo Resell"],["donate","Swaapo Donate"],["groups","Groups"],["reels","Reels"],...(canSeeAuctions()?[["exclusive","◆ Swaapo Exclusive"]]:[]),["swipe","Swipe to match"],["coins","Swaapo Coins"],["draws","Draws & Giveaways"],["messages","Messages"],...(EDITION==="web"?[["ads","Advertise"],["about","About Swaapo"]]:[]),["how","How it works"],["terms","Terms"],["privacy","Privacy Policy"],["privacy-centre","Privacy Centre"],["cookies","Cookies"],["developers","Developers"],["careers","Careers"],["safety","Safety"],["help","Help"],["settings","Account settings"]].map(([k,l])=>`<a class="nav" href="#${k}" style="border:1px solid var(--glass-line)">${l}</a>`).join("")}<button class="nav" data-logout style="border:1px solid var(--glass-line);color:var(--rose)">Log out</button></div>`,"More");
   w.querySelectorAll("a").forEach(a=>a.addEventListener("click",close));
 }
 document.addEventListener("click",e=>{
@@ -1974,6 +1987,76 @@ function vCoins(){
    <p class="xs muted" style="padding:0 18px 18px">Swaapo Coins are rewards inside Swaapo. They have no cash value and can't be bought or sold.</p></div>`;
 }
 function earnCoins(k){setTimeout(syncCoins,0);const name=U[k].n,bonus=CIRCLE&&U[k].w?50:0;COINS+=100+bonus;COIN_LOG.unshift(["+100",`5-star swap with ${name}`,"now"]);if(bonus)COIN_LOG.unshift(["+50","Women's Circle bonus","now"]);const ct=document.getElementById("coin-tag");if(ct)ct.textContent=COINS.toLocaleString("en-IN");document.querySelectorAll(".coinpill b,.pcoin").forEach(b=>b.textContent=COINS.toLocaleString("en-IN"));toast(`★★★★★ swap with ${name}. +${100+bonus} ${bonus?" (Circle bonus)":""}`,true)}
+
+/* ================= Swaapo Resell: buy and sell used items near you ================= */
+const RS=[
+ {id:"rs1",u:"rahul",cat:"Electronics",e:"📱",item:"iPhone 12, 128 GB, blue",price:28500,neg:true,swap:false,cond:"Good",km:3,t:"2h",desc:"Battery health 86%. Bill and box available. Small scratch on the back glass.",views:214},
+ {id:"rs2",u:"vikram",cat:"Bike & Car",e:"🏍️",item:"Royal Enfield Classic 350 (2019)",price:132000,neg:true,swap:false,cond:"Good",km:6,t:"5h",desc:"28,000 km, single owner, all service records. Insurance valid till March.",views:540},
+ {id:"rs3",u:"anjali",cat:"Home",e:"🛋️",item:"3-seater sofa with cushions",price:9500,neg:true,swap:true,cond:"Like new",km:4,t:"1d",desc:"Moving to a smaller flat. Fabric is clean, no pets at home. Buyer collects.",views:132},
+ {id:"rs4",u:"fatima",cat:"Books",e:"📚",item:"NEET prep books, full set",price:1800,neg:false,swap:true,cond:"Good",km:12,t:"1d",desc:"Physics, chemistry and biology guides plus 10 years of solved papers. Some pencil notes.",views:98},
+ {id:"rs5",u:"sneha",cat:"Electronics",e:"💻",item:"MacBook Air M1, 8/256",price:52000,neg:true,swap:false,cond:"Like new",km:5,t:"3d",desc:"Battery cycle count 140. Charger and box included.",views:387},
+ {id:"rs6",u:"kiran",cat:"Sports",e:"🏏",item:"English willow cricket bat",price:3200,neg:true,swap:true,cond:"Good",km:18,t:"4d",desc:"Knocked in and oiled. Grip replaced last month.",views:61},
+ {id:"rs7",u:"arjun",cat:"Bike & Car",e:"🚗",item:"Maruti Swift VXi (2017)",price:415000,neg:true,swap:false,cond:"Good",km:7,t:"6d",desc:"Petrol, 54,000 km, second owner. New tyres. Test drive in Edappally.",views:902},
+ {id:"rs8",u:"meera",cat:"Fashion",e:"👗",item:"Designer lehenga, worn once",price:6500,neg:true,swap:true,cond:"Like new",km:3,t:"1w",desc:"Size M. Dry-cleaned. Dupatta and blouse included.",views:176,sold:true}
+];
+let RS_CAT="All",RS_SORT="near",RS_Q="",RS_MINE=false;const RS_SAVED=new Set();
+const rsImg=r=>r.photo?`style="background-image:url('${r.photo}')"`:"";
+function rsCard(r){return `<button class="rscard" data-rs="${r.id}" aria-label="${esc(r.item)}, ${inr(r.price)}"><span class="rsimg" ${rsImg(r)}>${r.photo?"":r.e}${r.sold?'<span class="rstag sold">Sold</span>':r.swap?'<span class="rstag">Swap OK</span>':""}</span><span class="rsbody"><span class="rsprice">${inr(r.price)}</span><span class="small" style="font-weight:700">${esc(r.item)}</span><span class="xs muted">${esc(U[r.u].area)} · ${r.km} km · ${esc(r.t)}</span></span></button>`}
+function vResell(){let list=RS.filter(r=>RS_MINE?r.u==="you":true).filter(r=>RS_CAT==="All"||r.cat===RS_CAT).filter(r=>!RS_Q||(r.item+" "+r.desc).toLowerCase().includes(RS_Q.toLowerCase()));
+  list=[...list].sort(RS_SORT==="low"?(a,b)=>a.price-b.price:RS_SORT==="high"?(a,b)=>b.price-a.price:RS_SORT==="new"?(a,b)=>RS.indexOf(a)-RS.indexOf(b):(a,b)=>a.km-b.km);
+  main.innerHTML=`<div class="glass"><div class="vhead"><div><span class="fmt">Swaapo Resell</span><h2 style="margin-top:8px">Buy and sell used items near you</h2><p class="small muted" style="margin-top:4px">Set your price, chat with buyers and meet nearby. Free to post. Prefer to exchange? Tick “Swap OK” and swappers can offer too.</p></div><button class="btn g" data-rsnew>+ Sell something</button></div>
+   <div class="rsbar"><input id="rs-q" type="search" placeholder="Search phones, bikes, sofas…" value="${esc(RS_Q)}" aria-label="Search Resell"><select id="rs-sort" aria-label="Sort"><option value="near" ${RS_SORT==="near"?"selected":""}>Nearest first</option><option value="new" ${RS_SORT==="new"?"selected":""}>Newest first</option><option value="low" ${RS_SORT==="low"?"selected":""}>Price: low to high</option><option value="high" ${RS_SORT==="high"?"selected":""}>Price: high to low</option></select></div>
+   <div class="chips"><button aria-pressed="${RS_MINE}" data-rsmine>My ads</button>${CATS.filter(c=>c!=="Medical & Care").map(c=>`<button aria-pressed="${!RS_MINE&&RS_CAT===c}" data-rscat="${c}">${c}</button>`).join("")}</div>
+   ${list.length?`<div class="rsgrid">${list.map(rsCard).join("")}</div>`:`<div class="empty"><b>${RS_MINE?"You haven't posted any ads":"No ads match"}</b><p class="small muted">${RS_MINE?"Sell something you don't use any more.":"Try another category or search."}</p><button class="btn g" data-rsnew>Sell something</button></div>`}
+   <div class="teenbox" style="margin:0 16px 16px"><b>Buy safely</b><div class="small muted">Meet in a public place and check the item before you pay. Never pay in advance or scan a QR code to “receive” money. For more costly items, pay with SwaapoSafe so your money is held until you confirm the item.</div></div></div>`;
+  const q=main.querySelector("#rs-q");q.addEventListener("input",()=>{RS_Q=q.value;clearTimeout(q._t);q._t=setTimeout(()=>{vResell();const n=main.querySelector("#rs-q");n.focus();n.setSelectionRange(n.value.length,n.value.length)},250)});
+  main.querySelector("#rs-sort").addEventListener("change",e=>{RS_SORT=e.target.value;vResell()})}
+function openRs(id){const r=RS.find(x=>x.id===id);if(!r)return;const mine=r.u==="you";r.views++;
+  const {w,close}=modal(`<div class="shead"><h3>${esc(r.item)}</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
+   <div class="sbody rsdet"><div class="rsimg" ${rsImg(r)}>${r.photo?"":r.e}</div>
+   <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><b style="font-size:1.6rem">${inr(r.price)}</b>${r.neg?'<span class="chip">Negotiable</span>':'<span class="chip">Fixed price</span>'}${r.swap?'<span class="chip">Swap OK</span>':""}${r.sold?'<span class="chip" style="color:var(--rose)">Sold</span>':""}</div>
+   <div class="rsfacts"><div><span>Condition</span>${esc(r.cond)}</div><div><span>Category</span>${esc(r.cat)}</div><div><span>Location</span>${esc(U[r.u].area)} · ${r.km} km</div><div><span>Posted</span>${esc(r.t)} ago · ${r.views} views</div></div>
+   <p>${esc(r.desc)}</p>
+   <div class="person">${av(r.u,"sm")}<div class="who">${nm(r.u)}<span class="xs muted" style="display:block">Trust ${U[r.u].trust} · ★ ${U[r.u].rating||"New"} · ${U[r.u].swaps} swaps</span></div></div>
+   ${mine?`<div style="display:flex;gap:8px;flex-wrap:wrap">${r.sold?"":`<button class="btn g" data-rssold="${r.id}">Mark as sold</button><button class="btn" data-rsprice="${r.id}">Change price</button>`}<button class="btn d" data-rsdel="${r.id}">Delete ad</button></div>`
+   :r.sold?'<p class="small muted">This item has been sold.</p>':`<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn g" data-rschat="${r.id}">Chat with seller</button>${r.neg?`<button class="btn" data-rsoffer="${r.id}">Make an offer</button>`:""}${r.swap?`<button class="btn" data-offerrs="${r.id}">Offer a swap</button>`:""}<button class="btn" data-rssave="${r.id}" aria-pressed="${RS_SAVED.has(r.id)}">${RS_SAVED.has(r.id)?"Saved":"Save"}</button></div>
+   <p class="xs muted">Never pay before you see the item. <button class="linkbtn" data-rsreport="${r.id}">Report this ad</button></p>`}</div>`,"Resell ad");
+  return {w,close}}
+function rsChat(r,text){let ci=CONVS.findIndex(c=>c.u===r.u);if(ci<0){CONVS.unshift({u:r.u,unread:false,msgs:[]});ci=0}CONVS[ci].msgs.push({t:"me",x:text});
+  setTimeout(()=>{CONVS[ci].msgs.push({t:"them",x:`Hi! Yes, the ${r.item} is available. When would you like to see it?`});CONVS[ci].unread=true;ALERTS.unshift({new:true,u:r.u,x:`replied about <b>${esc(r.item)}</b>`,t:"now",e:r.e,go:"messages"});badges()},2000)}
+function openRsNew(){if(!need18("Buying and selling on Resell is for members 18 and over."))return;if(!SESSION){toast("Log in to post an ad.");return}
+  let photo=null;
+  const {w,close}=modal(`<div class="shead"><h3>Sell something</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
+   <form class="sbody" novalidate><label class="drop" id="rn-drop" for="rn-photo">Add a photo<br><span class="xs">Daylight, show any wear</span></label><input type="file" id="rn-photo" accept="image/*" hidden>
+   <div class="field"><label for="rn-t">What are you selling?</label><input id="rn-t" maxlength="70" placeholder="e.g. Samsung 32-inch smart TV"></div>
+   <div class="two"><div class="field"><label for="rn-c">Category</label><select id="rn-c">${CATS.slice(1).filter(c=>c!=="Medical & Care").map(c=>`<option>${c}</option>`).join("")}</select></div><div class="field"><label for="rn-k">Condition</label><select id="rn-k"><option>New</option><option>Like new</option><option selected>Good</option><option>Fair</option></select></div></div>
+   <div class="field"><label for="rn-p">Price (₹)</label><input id="rn-p" type="number" min="1" step="1" inputmode="numeric" placeholder="5000"></div>
+   <label class="check"><input type="checkbox" id="rn-n" checked> Price is negotiable</label>
+   <label class="check"><input type="checkbox" id="rn-s"> Swap OK: I'll also consider swaps</label>
+   <div class="field"><label for="rn-d">Description</label><textarea id="rn-d" rows="3" maxlength="600" placeholder="Age, any faults, what's included, bill or warranty"></textarea></div>
+   <span class="err" hidden></span><button class="btn g" type="submit" style="padding:12px">Post ad</button><p class="xs muted" style="text-align:center">Free to post. No weapons, medicines, alcohol, tobacco, animals or anything illegal or counterfeit.</p></form>`,"Sell something");
+  w.querySelector("#rn-photo").addEventListener("change",e=>{const f=e.target.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{photo=rd.result;const d=w.querySelector("#rn-drop");d.style.backgroundImage=`url('${photo}')`;d.textContent=""};rd.readAsDataURL(f)});
+  w.querySelector("form").onsubmit=e=>{e.preventDefault();const $=x=>w.querySelector(x),er=w.querySelector(".err"),fail=m=>{er.textContent=m;er.hidden=false};
+    const t=$("#rn-t").value.trim(),p=Math.round(+$("#rn-p").value),d=$("#rn-d").value.trim(),c=$("#rn-c").value;
+    if(t.length<3)return fail("Say what you're selling.");if(!(p>0))return fail("Add a price.");if(p>10000000)return fail("For items over ₹1 crore, contact us first.");
+    if(MED_BANNED.test(t+" "+d)||/\b(gun|pistol|knife|alcohol|liquor|whisky|cigarette|vape|ganja|weed)\b/i.test(t+" "+d))return fail("That item can't be sold on Swaapo.");
+    const emo={Electronics:"📱",Books:"📚",Sports:"🚲",Home:"🪑",Fashion:"👕",Hobbies:"🎸",Kids:"🧸","Bike & Car":"🏍️"};
+    RS.unshift({id:"rs"+Date.now(),u:"you",cat:c,e:emo[c]||"📦",item:t,price:p,neg:$("#rn-n").checked,swap:$("#rn-s").checked,cond:$("#rn-k").value,km:0,t:"now",desc:d||"No description.",views:0,photo});
+    close();RS_MINE=true;RS_CAT="All";RS_Q="";toast("Your ad is live. Buyers near you can see it now.",true);go("resell")}}
+document.addEventListener("click",e=>{const t=e.target.closest("[data-rs],[data-rsnew],[data-rscat],[data-rsmine],[data-rschat],[data-rsoffer],[data-offerrs],[data-rssave],[data-rsreport],[data-rssold],[data-rsprice],[data-rsdel]");if(!t)return;const d=t.dataset;
+  const R=id=>RS.find(x=>x.id===id),closeAll=()=>document.querySelectorAll(".modal").forEach(m=>m.remove()),re=()=>{if(location.hash==="#resell")vResell()};
+  if(d.rs){openRs(d.rs);return}
+  if(d.rsnew!==undefined){openRsNew();return}
+  if(d.rscat){RS_CAT=d.rscat;RS_MINE=false;vResell();return}
+  if(d.rsmine!==undefined){RS_MINE=!RS_MINE;vResell();return}
+  if(d.rschat){if(!need18("Buying on Resell is for members 18 and over."))return;const r=R(d.rschat);rsChat(r,`Hi, is your ${r.item} still available?`);closeAll();toast("Message sent. Opening your chat.");go("messages");return}
+  if(d.rsoffer){if(!need18("Buying on Resell is for members 18 and over."))return;const r=R(d.rsoffer);const v=prompt(`Your offer for ${r.item} (asking ${inr(r.price)}):`,Math.round(r.price*.9));if(v===null)return;const n=Math.round(+v);if(!(n>0)){toast("Enter an amount in rupees.");return}if(n<r.price*.4){toast("That's well below the asking price. Try a fairer offer.");return}rsChat(r,`Hi! Would you take ${inr(n)} for the ${r.item}?`);closeAll();toast(`Offer of ${inr(n)} sent to ${U[r.u].n.split(" ")[0]}.`,true);return}
+  if(d.offerrs){const r=R(d.offerrs);closeAll();rsChat(r,`Hi! Would you swap your ${r.item} for my ${MY[0].n.toLowerCase()}?`);toast("Swap offer sent in chat.");return}
+  if(d.rssave){RS_SAVED.has(d.rssave)?RS_SAVED.delete(d.rssave):RS_SAVED.add(d.rssave);t.textContent=RS_SAVED.has(d.rssave)?"Saved":"Save";t.setAttribute("aria-pressed",RS_SAVED.has(d.rssave));toast(RS_SAVED.has(d.rssave)?"Saved":"Removed from saved");return}
+  if(d.rsreport){closeAll();toast("Thanks. Our team will review this ad within 24 hours.");return}
+  if(d.rssold){R(d.rssold).sold=true;closeAll();toast("Marked as sold. Congratulations!",true);re();return}
+  if(d.rsprice){const r=R(d.rsprice);const v=prompt("New price (₹):",r.price);if(v===null)return;const n=Math.round(+v);if(!(n>0)){toast("Enter an amount in rupees.");return}r.price=n;closeAll();toast("Price updated");re();return}
+  if(d.rsdel){if(!confirm("Delete this ad?"))return;RS.splice(RS.findIndex(x=>x.id===d.rsdel),1);closeAll();toast("Ad deleted");re()}});
 
 /* ================= Company pages: privacy, terms, cookies, developers, careers, about, help ================= */
 const LEGAL_DATE="28 October 2026";

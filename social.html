@@ -2974,7 +2974,7 @@ function showAuth(mode){
   let el=document.getElementById("auth");if(!el){el=document.createElement("div");el.id="auth";el.className="auth";el.setAttribute("role","dialog");el.setAttribute("aria-label","Log in or sign up");document.body.appendChild(el)}
   document.body.style.overflow="hidden";
   el.innerHTML=`<div class="authwrap"><div class="authbrand"><span class="brandlogo" role="img" aria-label="Swaapo"></span><h1>Don't Buy. Don't Sell.<br>Just Exchange.</h1><p class="muted">A new way to exchange, from God's Own Country.</p>
-     <ul><li><span><b>Swap what you don't use</b> for what you want, with people near you.</span></li><li><span><b>Earn Swaapo Coins</b> for every 5-star swap.</span></li><li><span><b>Verified auctions</b> to watch from 18 and bid on from 23.</span></li></ul></div>
+     <ul><li><span><b>Swap what you don't use</b> for what you want, with people near you.</span></li><li><span><b>Earn Swaapo Coins</b> for every 5-star swap.</span></li></ul></div>
    <div class="glass authcard"><div class="authtabs" role="tablist"><button role="tab" aria-selected="${AUTH_MODE==="login"}" data-amode="login">Log in</button><button role="tab" aria-selected="${AUTH_MODE==="signup"}" data-amode="signup">Sign up</button></div>
    ${AUTH_MSG?`<div class="authbanner">${AUTH_MSG}</div>`:""}
    <div id="authbody"></div></div></div>`;

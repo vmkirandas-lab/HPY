@@ -13,7 +13,6 @@ import admin from './routes/admin.js';
 import impact from './routes/impact.js';
 import brands from './routes/brands.js';
 import profile from './routes/profile.js';
-import core, { uploadDir } from './routes/core.js';
 
 export function createApp({ dbPath } = {}) {
   const db = openDb(dbPath);
@@ -22,8 +21,6 @@ export function createApp({ dbPath } = {}) {
 
   app.disable('x-powered-by');
   app.set('trust proxy', process.env.TRUST_PROXY === '1');
-  // Item photos arrive as data URLs, so only the listing route accepts a larger body.
-  app.use('/api/core/items', express.json({ limit: '2.5mb' }));
   app.use(express.json({ limit: '200kb' }));
   app.use((req, res, next) => {
     res.set({ 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer', 'X-Frame-Options': 'DENY' });
@@ -55,13 +52,11 @@ export function createApp({ dbPath } = {}) {
   });
   app.get('/api/config', (_req, res) => res.json({ features: db.setting('features'), maintenance: db.setting('maintenance'),
     plans: db.setting('plans'), coins: db.setting('coins'), impact: db.setting('impact'), categories: db.setting('categories'), limits: db.setting('limits') }));
-  for (const mod of [account, market, auctions, studio, community, impact, brands, profile, core]) app.use('/api', mod(db));
+  for (const mod of [account, market, auctions, studio, community, impact, brands, profile]) app.use('/api', mod(db));
   app.use('/api/admin', admin(db));
 
   app.use('/admin', express.static(fileURLToPath(new URL('../admin', import.meta.url))));
-  app.use('/uploads', express.static(uploadDir(), { index: false, fallthrough: false, maxAge: '30d',
-    setHeaders: res => res.set('Content-Security-Policy', "default-src 'none'") }));
-  app.use('/', express.static(fileURLToPath(new URL('../app', import.meta.url)), { index: 'index.html' }));
+  app.get('/', (_req, res) => res.redirect('/admin/'));
 
   app.use('/api', (_req, _res, next) => next(new HttpError(404, 'Not found.')));
   app.use((err, _req, res, _next) => {

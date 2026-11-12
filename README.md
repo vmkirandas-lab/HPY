@@ -4,23 +4,11 @@
 
 This repository holds the member app, the public website, the backend API with its staff Control Center, and the playbooks.
 
-## Swaapo Core: the four things we're building first
-
-`backend/app/index.html` is the focused app, built on four things only:
-
-1. **List an item.** A photo, a short description (up to 140 characters) and what you want in exchange (up to 80). That is all.
-2. **Match and swipe.** You see other people's items and they see yours. When both sides say yes, it's a match and both are notified.
-3. **Chat.** Matched members talk inside the app and fix the exchange: place, time and the condition of both items. Both confirm the plan, then both confirm the swap.
-4. **Profile and rating.** Every member has a profile. After a swap, both sides rate each other (1–5 stars and a comment). A rating stays hidden until both have rated, or for 14 days, so nobody rates in retaliation.
-
-Run the server (below) and open `http://localhost:8080/`. Opened as a plain file, the same page runs a preview with example people, kept in that browser tab.
-
 ## What's here
 
 | Path | What it is |
 |---|---|
-| `backend/app/index.html` | **Swaapo Core**, the focused app above. Served by the backend at `/`. |
-| `social.html` | The full concept app. One self-contained HTML/CSS/JS file (`EDITION="app"`). Open it in a browser to run it. |
+| `social.html` | The member app. One self-contained HTML/CSS/JS file (`EDITION="app"`). Open it in a browser to run it. |
 | `index.html` | The website. Generated from `social.html` with `EDITION="web"`, which adds the web-only pages (About, Advertise, Ads Manager). |
 | `backend/` | Node.js API (`/api`) and the staff Control Center (`/admin`). See [`backend/README.md`](backend/README.md). |
 | `assets/` | Brand files: `swaapo-logo.svg` (purple wordmark, light backgrounds), `swaapo-logo-white.svg` (dark backgrounds), `swaapo-mark.svg` (the mark on its own). |
@@ -37,7 +25,7 @@ Run the server (below) and open `http://localhost:8080/`. Opened as a plain file
 cd backend
 npm install
 npm run seed    # optional: example members, posts and auctions
-npm start       # Swaapo Core on http://localhost:8080/, API on /api, Control Center on /admin
+npm start       # API on http://localhost:8080/api, Control Center on http://localhost:8080/admin
 npm test        # end-to-end tests
 ```
 

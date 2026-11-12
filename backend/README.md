@@ -127,27 +127,6 @@ Every gate in the app is enforced again on the server, so it can't be bypassed.
   - CO₂e and landfill figures are labelled as estimates.
 - **Messages**: scam words are flagged for the sender and for moderators.
 
-## Swaapo Core API
-
-The focused app (`app/index.html`, served at `/`) uses these routes. All need a logged-in member; members under 18 also need guardian consent.
-
-| Route | What it does |
-|---|---|
-| `POST /api/core/items` | List an item: `photo` (JPEG, PNG or WebP data URL, up to 1.5 MB, checked by its bytes), `desc` (≤140), `wants` (≤80). Up to 20 active items. |
-| `GET /api/core/items/mine` · `DELETE /api/core/items/:id` | Your items with how many people said yes; remove one. |
-| `GET /api/core/deck` | Items to swipe on. People who already said yes to one of yours come first. You must list an item before you can swipe. |
-| `POST /api/core/swipes` | `{ itemId, dir: "yes" \| "no" }`. A yes back on someone who said yes to your item creates a match and notifies both. |
-| `GET /api/core/matches` · `GET /api/core/matches/:id` | Your chats, with both items, the plan, unread count and status (`open`, `agreed`, `completed`, `cancelled`). |
-| `GET/POST /api/core/matches/:id/messages` | Read (`?after=` for new ones) and send messages. Only the two matched members can. Payment-scam phrases are flagged. |
-| `POST /api/core/matches/:id/plan` · `/plan/confirm` | Propose place, time and condition; the other side confirms. |
-| `POST /api/core/matches/:id/done` · `/cancel` | Both confirm the swap happened (items become "swapped"), or either side cancels. |
-| `POST /api/core/matches/:id/rating` | `{ stars: 1–5, note }`, once, only after the swap is complete. |
-| `GET /api/core/users/:handle` | Profile: swaps, average rating, reviews, active items. |
-| `GET /api/core/summary` · `POST /api/core/notifications/seen` | Unread messages and new notifications (matches, plans, completed swaps, ratings). |
-| `POST /api/core/reports` | Report an item, a member or a chat to the moderation queue. |
-
-Photos are saved to `UPLOAD_DIR` (default `data/uploads`) and served from `/uploads`. Use object storage with image moderation in production.
-
 ## API overview
 
 Send `Authorization: Bearer <token>` with every request after logging in. Errors look like `{ "error": "Readable message", "code": "machine_code" }`.

@@ -1,6 +1,6 @@
 # Swaapo
 
-**Don't Buy. Don't Sell. Just Exchange.** India's first exchange marketplace from God's Own Country. A HPY initiative, made in Kochi.
+**Don't Buy. Don't Sell. Just Exchange.** A new way to exchange, from God's Own Country. A HPY initiative, made in Kochi.
 
 This repository holds the member app, the public website, the backend API with its staff Control Center, and the playbooks.
 

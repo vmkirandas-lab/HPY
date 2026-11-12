@@ -1819,7 +1819,7 @@ function openCampaign(){
 }
 /* ================= info pages ================= */
 const TAGLINE="Don't Buy. Don't Sell. Just Exchange.";
-const SUBLINE="India's first exchange marketplace from God's Own Country.";
+const SUBLINE="A new way to exchange, from God's Own Country.";
 function vAbout(){
   main.innerHTML=`<div class="glass" style="overflow:hidden">
    <div class="cover" style="height:auto;padding:34px 22px;display:flex;flex-direction:column;gap:10px;color:#fff"><span class="xs" style="letter-spacing:.16em;font-weight:800;opacity:.85">ABOUT SWAAPO</span><h2 style="font-size:clamp(1.7rem,4vw,2.4rem)">${TAGLINE}</h2><p style="opacity:.9">${SUBLINE}</p></div>
@@ -1827,7 +1827,7 @@ function vAbout(){
      <p>Swaapo began in Kochi with a simple idea: the things you no longer use could be exactly what someone nearby wants. Instead of buying new or selling old, you exchange.</p>
      <h3>The company</h3>
      <div class="owners">
-       <div class="owner gold"><span class="av lg" style="width:64px;height:64px;font-size:1.2rem;background:linear-gradient(135deg,#FFC857,#FFE29A)">HPY</span><div><span class="lbl-s" style="color:var(--gold-ink)">A HPY initiative</span><b style="font-family:var(--display);font-size:1.25rem">Swaapo</b><p class="small muted">India's first exchange marketplace, built by HPY.</p></div></div>
+       <div class="owner gold"><span class="av lg" style="width:64px;height:64px;font-size:1.2rem;background:linear-gradient(135deg,#FFC857,#FFE29A)">HPY</span><div><span class="lbl-s" style="color:var(--gold-ink)">A HPY initiative</span><b style="font-family:var(--display);font-size:1.25rem">Swaapo</b><p class="small muted">A new way to exchange, built by HPY.</p></div></div>
        <div class="owner"><span class="av lg" style="width:64px;height:64px;font-size:1.2rem;background:#DCCBF2">KL</span><div><span class="lbl-s">Based in</span><b style="font-family:var(--display);font-size:1.25rem">Kochi, Kerala</b><p class="small muted">God's Own Country, India.</p></div></div>
      </div>
      <h3>What we believe</h3>
@@ -1852,7 +1852,7 @@ function vSafety(){
    <div style="padding:0 18px 18px" class="small"><div class="vlist"><span>Never share an OTP, password or UPI PIN</span><span>Scanning a QR code is for paying, never for receiving</span><span>No “courier fee”, “deposit” or advance before an exchange</span><span>Be wary of pressure to move to WhatsApp</span></div>
    <p style="margin-top:12px">Cyber fraud helpline: <b>1930</b> · cybercrime.gov.in · Emergency: <b>112</b></p></div></div>`;
 }
-function helpQs(){return [["What is Swaapo?","India's first exchange marketplace from God's Own Country. Swap what you don't use for what you want."],["Is it free?","Yes. Listing, swiping, chatting and swapping are free. Swaps never involve money."],...(EDITION==="web"?[["Who runs Swaapo?","Swaapo is a HPY initiative, based in Kochi, Kerala."],["What if they don't show up?","Wait 15 minutes and message them in the chat. If they still don't come, go home and use Report a problem on the swap, choosing They didn't show up."]]:[["What if they don't show up?","Wait 15 minutes and message them in the chat. If they still don't come, go home and use Report a problem on the swap, choosing They didn't show up."]]),["Who can use Swaapo?","Anyone aged 15 or over. Members aged 15–17 need a parent or guardian to confirm their account with a code we send to the guardian's phone."],["How does a swap work?","Offer one of your items for theirs. They can accept, decline or counter-offer, and you can withdraw while they decide. Once you agree, plan the meet-up in the chat, swap in person, and both mark it complete. Then you rate each other."],["Can I add cash or coins to a swap?","No. Swaps are item for item. Never pay anyone or accept payment for a swap."],["What are Swaapo Coins?","A small thank-you reward. You get them when a swap is complete and you've both rated each other. They have no cash value and can't be bought, sold or traded."]];
+function helpQs(){return [["What is Swaapo?","A new way to exchange, from God's Own Country. Swap what you don't use for what you want."],["Is it free?","Yes. Listing, swiping, chatting and swapping are free. Swaps never involve money."],...(EDITION==="web"?[["Who runs Swaapo?","Swaapo is a HPY initiative, based in Kochi, Kerala."],["What if they don't show up?","Wait 15 minutes and message them in the chat. If they still don't come, go home and use Report a problem on the swap, choosing They didn't show up."]]:[["What if they don't show up?","Wait 15 minutes and message them in the chat. If they still don't come, go home and use Report a problem on the swap, choosing They didn't show up."]]),["Who can use Swaapo?","Anyone aged 15 or over. Members aged 15–17 need a parent or guardian to confirm their account with a code we send to the guardian's phone."],["How does a swap work?","Offer one of your items for theirs. They can accept, decline or counter-offer, and you can withdraw while they decide. Once you agree, plan the meet-up in the chat, swap in person, and both mark it complete. Then you rate each other."],["Can I add cash or coins to a swap?","No. Swaps are item for item. Never pay anyone or accept payment for a swap."],["What are Swaapo Coins?","A small thank-you reward. You get them when a swap is complete and you've both rated each other. They have no cash value and can't be bought, sold or traded."]];
 }
 function vHelp(){const q=helpQs();
   main.innerHTML=`<div class="glass"><div class="vhead"><h2>Help</h2></div><div style="padding:0 16px 16px">${q.map(([a,b])=>`<details class="qa"><summary>${a}</summary><p class="small muted">${b}</p></details>`).join("")}</div></div>`;
@@ -2263,7 +2263,7 @@ hideSoonNav();
 const LEGAL_DATE="28 October 2026";
 const DRAFT=`<p class="draft">Draft for legal review · last updated ${LEGAL_DATE}. This text has not yet been checked by a lawyer and isn't in force.</p>`;
 const INFO={
- about:{t:"About Swaapo",h:()=>`<p><b>Don't Buy. Don't Sell. Just Exchange.</b> Swaapo is India's first exchange marketplace from God's Own Country. People swap what they don't use for what they want, with people nearby.</p>
+ about:{t:"About Swaapo",h:()=>`<p><b>Don't Buy. Don't Sell. Just Exchange.</b> Swaapo is a new way to exchange, from God's Own Country. People swap what they don't use for what they want, with people nearby.</p>
   <h3>The company</h3><ul><li><b>Swaapo</b> is a HPY initiative.</li><li>Based in Kochi, Kerala, India.</li></ul>
   <h3>What we believe</h3><ul><li>Everything has value, even the things you've stopped using.</li><li>A fair exchange leaves two people happy.</li><li>Trust is earned through honest listings and real accountability.</li><li>Every swap is one less thing bought new.</li></ul>`},
  privacy:{t:"Privacy Policy",h:()=>`${DRAFT}
@@ -2308,7 +2308,7 @@ const INFO={
   <h3>Coming next</h3><ul><li>Partner keys for brands, NGOs and drop-off venues</li><li>Webhooks for offers, bids and donations</li><li>A sandbox with example data</li></ul>
   <h3>Rules</h3><ul><li>Respect members' privacy settings. Never scrape or store personal data.</li><li>Rate limits apply. Don't automate bids or offers.</li></ul>
   <p class="small muted">Partner API access opens after launch. Ask about it from the Help page.</p>`},
- careers:{t:"Careers",h:()=>`<p>Help people in India swap more and buy less. We're a small team in Kochi building India's first exchange marketplace.</p>
+ careers:{t:"Careers",h:()=>`<p>Help people in India swap more and buy less. We're a small team in Kochi building a new way to exchange.</p>
   <h3>Example roles we'll hire for</h3><div class="jobs">${[["Full-stack engineer (Node.js)","Kochi · Full-time"],["Mobile engineer (Android & iOS)","Kochi · Full-time"],["Trust & safety lead","Kochi · Full-time"],["Community manager, Kerala","Kochi · Full-time"],["Partnerships: brands and NGOs","Kochi · Full-time"]].map(([r,m])=>`<div class="job"><span><b>${r}</b><br><span class="xs muted">${m}</span></span><span class="xs muted">Opening soon</span></div>`).join("")}</div>
   <p class="small muted">These are planned roles, not open listings yet. Applications open with launch.</p>`},
  help:{t:"Help",h:()=>helpQs().map(([a,b])=>`<details class="qa"><summary>${a}</summary><p class="small muted">${b}</p></details>`).join("")}
@@ -2973,7 +2973,7 @@ function showAuth(mode){
   if(mode)AUTH_MODE=mode;document.querySelectorAll(".modal").forEach(m=>m.remove());
   let el=document.getElementById("auth");if(!el){el=document.createElement("div");el.id="auth";el.className="auth";el.setAttribute("role","dialog");el.setAttribute("aria-label","Log in or sign up");document.body.appendChild(el)}
   document.body.style.overflow="hidden";
-  el.innerHTML=`<div class="authwrap"><div class="authbrand"><span class="brandlogo" role="img" aria-label="Swaapo"></span><h1>Don't Buy. Don't Sell.<br>Just Exchange.</h1><p class="muted">India's first exchange marketplace from God's Own Country.</p>
+  el.innerHTML=`<div class="authwrap"><div class="authbrand"><span class="brandlogo" role="img" aria-label="Swaapo"></span><h1>Don't Buy. Don't Sell.<br>Just Exchange.</h1><p class="muted">A new way to exchange, from God's Own Country.</p>
      <ul><li><span><b>Swap what you don't use</b> for what you want, with people near you.</span></li><li><span><b>Earn Swaapo Coins</b> for every 5-star swap.</span></li><li><span><b>Verified auctions</b> to watch from 18 and bid on from 23.</span></li></ul></div>
    <div class="glass authcard"><div class="authtabs" role="tablist"><button role="tab" aria-selected="${AUTH_MODE==="login"}" data-amode="login">Log in</button><button role="tab" aria-selected="${AUTH_MODE==="signup"}" data-amode="signup">Sign up</button></div>
    ${AUTH_MSG?`<div class="authbanner">${AUTH_MSG}</div>`:""}

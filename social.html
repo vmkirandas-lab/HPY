@@ -722,6 +722,7 @@ h1,h2,h3{letter-spacing:.02em;font-weight:700}
 @media (max-width:420px){.pcoins{grid-template-columns:auto 1fr}.pc-side{grid-column:1/-1;flex-direction:row;justify-content:space-between;align-items:center;width:100%}}
 /* Accounts: login / sign-up */
 [hidden]{display:none!important}
+html[data-launch="mvp"] .right .adslot{display:none!important}
 html[data-minor="1"] .aucnav{display:none!important}
 html[data-minor="1"] .tabs-b{grid-template-columns:repeat(4,1fr)}
 .auth{position:fixed;inset:0;z-index:80;overflow-y:auto;background:radial-gradient(60vw 60vh at 0% 0%,rgba(154,77,255,.35),transparent 60%),radial-gradient(50vw 60vh at 100% 100%,rgba(61,245,255,.18),transparent 60%),var(--bg);padding-block:max(24px,env(safe-area-inset-top,0px)) 32px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -787,6 +788,11 @@ html[data-minor="1"] .tabs-b{grid-template-columns:repeat(4,1fr)}
 .rstag.sold{background:var(--rose)}
 .rsdet{display:flex;flex-direction:column;gap:12px}.rsdet .rsimg{aspect-ratio:16/9;border-radius:14px;display:grid;place-items:center;font-size:5rem;background:var(--tile);background-size:cover;background-position:center}
 .rsfacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}.rsfacts div{border:1px solid var(--glass-line);border-radius:12px;padding:8px 10px}.rsfacts span{display:block;font-size:.7rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+
+.ostep-box{display:flex;flex-direction:column;gap:10px;border:1px solid var(--glass-line);border-radius:16px;padding:14px}
+.ostep{list-style:none;margin:0;padding:0;display:grid;gap:8px}.ostep li{display:flex;flex-direction:column;gap:2px;padding:8px 10px;border-radius:12px;border:1px solid var(--glass-line);opacity:.6}
+.ostep li.ok{opacity:1;border-color:rgba(61,245,208,.4)}.ostep li.now{opacity:1;border-color:var(--gold)}
+.ostep-next{display:flex;flex-direction:column;gap:6px}
 
 /* Gatherings & Offers */
 .gcard{display:flex;flex-direction:column;gap:10px;border:1px solid var(--glass-line);border-radius:18px;padding:14px;background:var(--glass)}
@@ -883,7 +889,7 @@ h1,h2,h3{font-weight:800;letter-spacing:-.015em}
   <a class="logo" href="#feed" aria-label="Swaapo home"><span class="brandlogo" aria-hidden="true"></span><span class="brandmark" aria-hidden="true"></span><span class="brandname" aria-hidden="true">swaapo</span></a>
   <div style="display:flex;gap:2px">
     <button class="iconbtn" data-more aria-label="More"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
-    <a class="coinpill" id="mcoin" href="#coins" aria-label="Swaapo Coins"><i class="coin" aria-hidden="true"></i><b class="num">1,250</b></a>
+    <a class="coinpill" id="mcoin" href="#profile" aria-label="Swaapo Coins balance"><i class="coin" aria-hidden="true"></i><b class="num">1,250</b></a>
     <button class="iconbtn" data-go="alerts" aria-label="Notifications"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="dot" data-badge="alerts"></span></button>
     <button class="iconbtn" data-go="messages" aria-label="Messages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span class="dot" data-badge="messages"></span></button>
   </div>
@@ -911,7 +917,7 @@ h1,h2,h3{font-weight:800;letter-spacing:-.015em}
     <a class="nav" href="#alerts" data-v="alerts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="lbl">Notifications</span><span class="dot" data-badge="alerts"></span></a>
     <a class="nav" href="#profile" data-v="profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="lbl">Profile</span></a>
     <a class="nav webonly" href="#ads" data-v="ads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></svg><span class="lbl">Advertise</span></a>
-    <button class="cta" data-go="create" aria-label="Create"><span class="lbl">Create</span></button>
+    <button class="cta" data-compose="item" aria-label="List an item to swap"><span class="lbl">Create</span></button>
     <button class="nav" id="theme" style="margin-top:8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg><span class="lbl">Switch theme</span></button>
     <div class="railmore"><a class="nav sm webonly" href="#about" data-v="about"><span class="ic"></span><span class="lbl">About Swaapo</span></a><a class="nav sm" href="#how" data-v="how"><span class="ic"></span><span class="lbl">How it works</span></a><a class="nav sm" href="#safety" data-v="safety"><span class="ic"></span><span class="lbl">Safety</span></a><a class="nav sm" href="#help" data-v="help"><span class="ic"></span><span class="lbl">Help</span></a><a class="nav sm" href="#settings" data-v="settings"><span class="ic"></span><span class="lbl">Account settings</span></a><button class="nav sm" data-logout><span class="ic"></span><span class="lbl">Log out</span></button></div>
   </nav>
@@ -923,17 +929,17 @@ h1,h2,h3{font-weight:800;letter-spacing:-.015em}
     <div class="box glass adbox" id="sidead"></div>
     <div class="box glass" id="ending"></div>
     <div class="box glass"><h3>Your items</h3><div id="myitems" style="display:flex;flex-direction:column;gap:10px"></div><a href="#swipe" class="small" style="font-weight:800">Swipe for matches →</a></div>
-    <div class="box glass"><h3>Trending wants in Kochi</h3><div id="trends" style="display:flex;flex-direction:column;gap:6px"></div></div>
+    <div class="box glass"><h3 id="trends-h">Trending wants near you</h3><div id="trends" style="display:flex;flex-direction:column;gap:6px"></div></div>
     <a class="box glass adslot webonly" href="#ads"><span class="xs muted">Ad space</span><b>Your ad here</b><span class="small muted">Reach swappers across Kerala. From ₹60 per 1,000 views.</span><span class="small" style="color:var(--gold-ink);font-weight:800">Advertise on Swaapo →</span></a>
-    <p class="xs muted" style="padding:0 6px"><a href="#about" class="webonly">About · </a><a href="#events">Events</a> · <a href="#groups">Groups</a> · <a href="#safety">Safety</a> · <a href="#help">Help</a><a href="#ads" class="webonly"> · Advertise</a> <br><a href="#terms">Terms</a> · <a href="#privacy">Privacy</a> · <a href="#privacy-centre">Privacy Centre</a> · <a href="#cookies">Cookies</a> · <a href="#developers">Developers</a> · <a href="#careers">Careers</a><br><span class="brandlogo footlogo" role="img" aria-label="Swaapo"></span><b>Don't Buy. Don't Sell. Just Exchange.</b><br>© 2026 Swaapo · A <b>HPY</b> initiative<span class="webonly"> · Kochi, Kerala, India</span><br>Made with <span style="color:var(--rose)">❤</span> in Kochi, God's Own Country</p>
+    <p class="xs muted" style="padding:0 6px"><a href="#about" class="webonly">About · </a><a href="#safety">Safety</a> · <a href="#help">Help</a><a href="#ads" class="webonly"> · Advertise</a> <br><a href="#terms">Terms</a> · <a href="#privacy">Privacy</a> · <a href="#privacy-centre">Privacy Centre</a> · <a href="#cookies">Cookies</a> · <a href="#developers">Developers</a> · <a href="#careers">Careers</a><br><span class="brandlogo footlogo" role="img" aria-label="Swaapo"></span><b>Don't Buy. Don't Sell. Just Exchange.</b><br>© 2026 Swaapo · A <b>HPY</b> initiative<span class="webonly"> · Kochi, Kerala, India</span><br>Made with <span style="color:var(--rose)">❤</span> in Kochi, God's Own Country</p>
   </aside>
 </div>
 
 <nav class="tabs-b glass" aria-label="Tabs">
   <button data-go="feed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Home</span></button>
-  <button class="aucnav" data-go="auctions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m14 13-7.5 7.5a2.1 2.1 0 0 1-3-3L11 10"/><path d="m16 16 6-6M8 8l6-6M9 7l8 8M21 11l-8-8"/></svg><span>Auctions</span></button>
-  <button class="plus" data-go="create" aria-label="Create"><span>+</span><span>Create</span></button>
-  <button data-go="reels"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 8h18M8 3l3 5M14 3l3 5"/><path d="m10 12 5 3-5 3z" fill="currentColor"/></svg><span>Reels</span></button>
+  <button data-go="swipe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 12h6M12 9v6"/></svg>Swipe</button>
+  <button class="plus" data-compose="item" aria-label="List an item to swap"><span>+</span><span>Create</span></button>
+  <button data-go="messages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Messages</button>
   <button data-go="profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Profile</span></button>
 </nav>
 
@@ -958,7 +964,7 @@ const U={
  kkc:{n:"Kochi Kicks",h:"kochikicks",area:"Kochi",c:"#F2C6D2",bio:"Hand-painted sneakers. Every pair is one of one.",swaps:0,rating:4.8,fol:41300,fing:210,v:true,pro:"plus",trust:96,brand:"kkc"}
 };
 const BIDDERS=["meera","rahul","fatima","anjali","vikram","kiran","sneha","arjun"];
-const MY=[{id:"m1",n:"Engineering textbooks",s:"textbooks",e:"📚",k:["textbook","books","book"]},{id:"m2",n:"Study table",s:"study table",e:"🪑",k:["study table","table","desk"]}];
+let MY=[{id:"m1",n:"Engineering textbooks",s:"textbooks",e:"📚",k:["textbook","books","book"]},{id:"m2",n:"Study table",s:"study table",e:"🪑",k:["study table","table","desk"]}];
 const CATS=["All","Electronics","Books","Sports","Home","Fashion","Hobbies","Kids","Bike & Car","Medical & Care"];
 const FMT={
  live:{n:"Live drop",i:"",d:"10-minute live auction. Fast bids, fast finish."},
@@ -976,7 +982,16 @@ let AGE_N=27; /* from the verified date of birth at sign-up: 15–17 teen, 18–
 const isTeen=()=>AGE_N<18;
 const canSeeAuctions=()=>AGE_N>=18;
 const canBid=()=>AGE_N>=23;
-const seeable=p=>p.type!=="auction"||canSeeAuctions();
+/* Launch (MVP): only swaps and the trust layer. Everything below is built but hidden behind "Coming soon". */
+const LAUNCH_MVP=true;
+const SOON={reels:["Reels and Stories","Short videos of items and stories from people you follow."],auctions:["Auctions","Verified items sold by bidding. They'll use a licensed payment gateway, so Swaapo never holds your money."],exclusive:["Swaapo Exclusive","One-of-one pieces from verified brands."],brand:["Brand pages","Verified pages for brands."],offers:["Offers near you","Member offers from stores near you."],resell:["Resell","Buying and selling used items. Payments will go through a licensed payment gateway."],donate:["Swaapo Donate","Give things away to people and NGOs near you."],gather:["Gatherings","Find people to go to events with."],events:["Events","Swap meets and fairs near you."],addons:["Add-ons","Tools that connect Swaapo to other apps."],groups:["Groups","Communities for swaps around a place or hobby."],group:["Groups","Communities for swaps around a place or hobby."],draws:["Draws and giveaways","Free draws, giveaways and challenges."],create:["Creator studio","Draws, giveaways, challenges and videos for creators."],ads:["Advertise","Ads for local businesses."],coins:["The Coins page","Your coin balance stays on your profile."],pro:["Plans","Paid plans with extra features."]};
+const isSoon=v=>!!(LAUNCH_MVP&&SOON[v]);
+const HIDDEN_TYPES=["auction","promo","donate","video","shop"];
+// Where the member is, from their profile. Never assume a city.
+const myArea=()=>((typeof SESSION!=="undefined"&&SESSION&&SESSION.area)||U.you.area||"").trim();
+const myCity=()=>{const a=myArea();return a?a.split(",").pop().trim():""};
+const nearLabel=()=>myCity()?`in ${myCity()}`:"near you";
+const seeable=p=>(!LAUNCH_MVP||!HIDDEN_TYPES.includes(p.type))&&(p.type!=="auction"||canSeeAuctions())&&!isBlocked(p.u);
 function need23(reason){if(canBid())return true;
   if(!canSeeAuctions()){need18("Auctions are for members 18 and over.");return false}
   modal(`<div class="shead"><h3>Bidding opens at 23</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
@@ -1007,7 +1022,7 @@ let POSTS=[
  A({id:"a3",u:"arjun",t:"3h",fmt:"dutch",cat:"Sports",e:"🚲",item:"Btwin Rockrider ST100 MTB",cond:"Good",dutch:{s:14000,floor:8000,step:500,iv:4*MIN,t0:NOW-11*MIN},end:NOW+2*HR,watchers:58,likes:46,verified:["Bill / proof of purchase","Frame number checked"],text:"Price drops ₹500 every 4 minutes until someone grabs it. Floor is ₹8,000. How brave are you?"}),
  {id:"p3",type:"iso",u:"rahul",t:"4h",e:"🚲",want:"A bicycle for college",offer:"Redmi Note 11 (6/128) or a mechanical keyboard",text:"Need a decent cycle for the 4 km ride to college. Geared preferred.",likes:18,cm:[["kiran","I've got a Hero Sprint, check my profile"]]},
  A({id:"a4",u:"dev",t:"5h",fmt:"sealed",cat:"Hobbies",e:"🎞️",item:"Pentax K1000 film camera",cond:"Good",start:7000,end:NOW+20*HR,watchers:144,likes:97,sealedCount:11,verified:["Light meter tested","Photo inspection by our team"],text:"Sealed bids only. One shot each, highest wins at the reveal tomorrow evening. #filmisnotdead"}),
- {id:"p4",type:"tip",u:"team",t:"6h",title:"Bidding safely on Swaapo",tips:["Free members can watch, Pro members bid, and only verified items go up for auction","Your payment sits in SwaapoSafe escrow until you confirm the item","Never pay outside the app, and never share an OTP"],text:"Questions? Read the auction rules in Help.",likes:540,cm:[["anjali","Saving this"]]},
+ {id:"p4",type:"tip",u:"team",t:"6h",title:LAUNCH_MVP?"Swapping safely on Swaapo":"Bidding safely on Swaapo",tips:LAUNCH_MVP?["Meet in a busy public place, in daylight","Check the item before you swap","Swaps never involve money. Report anyone who asks you to pay"]:["Free members can watch, Pro members bid, and only verified items go up for auction","Your payment is held by our licensed payment partner until you confirm the item","Never pay outside the app, and never share an OTP"],text:"Questions? Read the auction rules in Help.",likes:540,cm:[["anjali","Saving this"]]},
  A({id:"a5",u:"sneha",t:"7h",fmt:"buynow",cat:"Electronics",e:"🎧",item:"Sony WH-1000XM4",cond:"Like new",start:9000,buyNow:15500,inc:250,end:NOW+26*HR,watchers:77,likes:65,verified:["Bill / proof of purchase","Serial number checked"],text:"Bid if you're patient, Buy Now if you're not. Box and case included.",bids:[{u:"vikram",a:10250,t:"2h"},{u:"meera",a:9500,t:"5h"}]}),
  {id:"md1",type:"item",u:"anjali",t:"1h",cat:"Medical & Care",e:"🦽",item:"Folding wheelchair (Karma)",cond:"Good",km:4,want:"Walker or commode chair",val:6500,care:true,text:"Used for my father's recovery for 3 months. Serviced and disinfected, brakes and footrests work fine. He's walking now, so we'd like a walker instead.",likes:58,cm:[["meera","So glad he's walking again!"]]},
  {id:"dn1",type:"donate",u:"fatima",t:"2h",cat:"Fashion",e:"👕",item:"Bag of kids' clothes, ages 4–6",cond:"Good",km:5,pick:"Pick up from Fort Kochi, or I can drop at a Swaapo drop-off point",who:"anyone",reqs:["anjali"],text:"Washed and folded: 20+ tees, shorts and two school uniforms. Free to any family who needs them. #donate",likes:44,cm:[]},
@@ -1042,6 +1057,8 @@ let ALERTS=[
  {new:false,u:"fatima",x:"started following you",t:"1d",follow:true},
  {new:false,u:"team",x:"Someone near you listed <b>headphones</b>, which is on your wish list",t:"2d",e:"🎧",go:"explore"}
 ];
+// The demo account keeps its example chats and alerts; every new account starts empty.
+const DEMO_STATE={convs:structuredClone(CONVS),alerts:structuredClone(ALERTS),my:structuredClone(MY),follow:[...FOLLOW]};
 let feedTab="foryou", exCat="All", exQ="", aFmt="all", profTab="items", activeConv=0, swipeIdx=0, viewUser=null;
 window._dmOpen=false;
 
@@ -1166,7 +1183,7 @@ function postHTML(p){
   }
   const shown=p.open_c?p.cm:p.cm.slice(-2);
   return `<article class="glass post" id="post-${p.id}">
-   <div class="phead">${av(p.u)}<div class="who">${nm(p.u)}<div class="time">@${esc(u.h)} · ${esc(p.t)}${p.type==="auction"?" · Auction":p.type==="iso"?" · Request":p.type==="donate"?" · Donation":""}</div></div>${followBtn}</div>
+   <div class="phead">${av(p.u)}<div class="who">${nm(p.u)}<div class="time">@${esc(u.h)} · ${esc(p.t)}${p.type==="auction"?" · Auction":p.type==="iso"?" · Request":p.type==="donate"?" · Donation":""}</div></div>${followBtn}${p.u!=="you"&&!u.off?`<button class="iconbtn" data-pmore="${p.id}" aria-label="Post options">⋯</button>`:""}</div>
    ${body}
    <div class="pacts">
      <button class="act ${p.liked?"liked":""}" data-like="${p.id}" aria-pressed="${p.liked}" aria-label="Like">${ICON.heart}</button>
@@ -1176,7 +1193,7 @@ function postHTML(p){
      ${cta}
    </div>
    <div class="likes">${fmtN(p.likes+(p.liked?1:0))} likes</div>
-   <div class="comments">${p.cm.length>2&&!p.open_c?`<button class="morec" data-morec="${p.id}">View all ${p.cm.length} comments</button>`:""}${shown.map(([k,x])=>`<div class="cm"><b>${esc(U[k].h)}</b>${linkify(x)}</div>`).join("")}</div>
+   <div class="comments">${p.cm.length>2&&!p.open_c?`<button class="morec" data-morec="${p.id}">View all ${p.cm.length} comments</button>`:""}${shown.filter(([k])=>!isBlocked(k)).map(([k,x])=>`<div class="cm"><b>${esc(U[k].h)}</b>${linkify(x)}</div>`).join("")}</div>
    <form class="cform" data-cform="${p.id}">${av("you","xs")}<input id="c-${p.id}" placeholder="Add a comment…" aria-label="Add a comment"><button type="submit">Post</button></form>
   </article>`;
 }
@@ -1191,20 +1208,21 @@ function vFeed(){
   list=list.filter(seeable);
   if(feedTab==="auctions")list=auctions().filter(a=>!ended(a)).sort((a,b)=>a.end-b.end);
   if(feedTab==="discover")list=[];
+  if(LAUNCH_MVP&&["discover","auctions"].includes(feedTab)){feedTab="foryou";list=POSTS.filter(seeable)}
   main.innerHTML=`${EDITION==="web"&&feedTab==="foryou"?welcomeHTML():""}
-   <div class="glass stories" aria-label="Stories">
+   ${LAUNCH_MVP?"":`<div class="glass stories" aria-label="Stories">
      <button class="story" data-compose><span class="ring" style="background:var(--glass-line)"><span style="color:var(--gold-ink);font-weight:800">+</span></span><small>Your story</small></button>
      ${STORIES.map((s,i)=>s.live&&!canSeeAuctions()?"":`<button class="story ${s.seen?"seen":""} ${s.live?"live":""}" data-story="${i}"><span class="ring"><span style="background:${U[s.u].c}">${s.e}</span></span>${s.live?'<span class="livepill">LIVE</span>':""}<small>${esc(U[s.u].h)}</small></button>${i===1&&!isTeen()?`<button class="story adstory" data-svad><span class="ring"><span style="background:#FFE29A"></span></span><span class="adtag" style="margin-top:-12px;z-index:1">AD</span><small>Sponsored</small></button>`:""}`).join("")}
-   </div>
+   </div>`}
    <div class="glass composer">
-     <div class="top">${av("you")}<button class="fake" data-compose>Swap it, ask for it, or auction it…</button></div>
-     <div class="acts"><button class="chipbtn" data-compose="item">Offer a swap</button><button class="chipbtn" data-compose="iso">Ask for something</button><button class="chipbtn gold" data-compose="auction">Start an auction <span class="pro">PRO</span></button><button class="chipbtn" data-rsnew>Sell</button><button class="chipbtn" data-compose="donate">Donate</button><button class="chipbtn" data-compose="done">Share a swap</button></div>
+     <div class="top">${av("you")}<button class="fake" data-compose>${LAUNCH_MVP?"What do you want to swap?":"Swap it, ask for it, or auction it…"}</button></div>
+     <div class="acts">${LAUNCH_MVP?`<button class="chipbtn" data-compose="item">List an item to swap</button>`:`<button class="chipbtn" data-compose="item">Offer a swap</button><button class="chipbtn" data-compose="iso">Ask for something</button><button class="chipbtn gold" data-compose="auction">Start an auction <span class="pro">PRO</span></button><button class="chipbtn" data-rsnew>Sell</button><button class="chipbtn" data-compose="donate">Donate</button><button class="chipbtn" data-compose="done">Share a swap</button>`}</div>
    </div>
-   <div class="glass ftabs" role="tablist">${[["foryou","For you"],["discover","Discover ✦"],...(canSeeAuctions()?[["auctions","Auctions"]]:[]),["nearby","Nearby"],["following","Following"]].map(([k,l])=>`<button role="tab" aria-selected="${feedTab===k}" data-ftab="${k}">${l}</button>`).join("")}</div>
+   <div class="glass ftabs" role="tablist">${[["foryou","For you"],...(LAUNCH_MVP?[]:[["discover","Discover ✦"]]),...(canSeeAuctions()&&!LAUNCH_MVP?[["auctions","Auctions"]]:[]),["nearby","Nearby"],["following","Following"]].map(([k,l])=>`<button role="tab" aria-selected="${feedTab===k}" data-ftab="${k}">${l}</button>`).join("")}</div>
    ${feedTab==="discover"?`<div class="glass" style="padding-top:12px">${masonryHTML(POSTS.filter(p=>p.type==="item"||p.type==="auction").filter(seeable))}</div>`:""}
    ${feedTab==="foryou"&&SESSION&&!SESSION.bonus?`<div class="glass" style="padding:14px 16px">${completionHTML(true)}</div>`:""}
-   ${feedTab==="foryou"?reelStripHTML():""}
-   ${feedTab==="discover"?"":list.length?list.map((p,i)=>postHTML(p)+(feedTab==="foryou"&&i===1?eventsSlideHTML():"")+(feedTab==="foryou"&&i===3?rewardsSlideHTML():"")+(feedTab==="foryou"&&i===5?groupsSlideHTML():"")+((i+1)%4===0&&!isTeen()?feedAdHTML(nextAd("feed")):"")).join(""):`<div class="glass empty"><b>Nothing here yet.</b><p class="muted small">Follow more traders or post what you have.</p></div>`}
+   ${feedTab==="foryou"&&!LAUNCH_MVP?reelStripHTML():""}
+   ${feedTab==="discover"?"":list.length?list.map((p,i)=>postHTML(p)+(LAUNCH_MVP?"":(feedTab==="foryou"&&i===1?eventsSlideHTML():"")+(feedTab==="foryou"&&i===3?rewardsSlideHTML():"")+(feedTab==="foryou"&&i===5?groupsSlideHTML():""))+((i+1)%4===0&&!isTeen()&&!LAUNCH_MVP?feedAdHTML(nextAd("feed")):"")).join(""):`<div class="glass empty"><b>Nothing here yet.</b><p class="muted small">Follow more traders or post what you have.</p></div>`}
    <div class="empty muted small">You're all caught up ✓<span class="brandlogo footlogo" role="img" aria-label="Swaapo" style="margin:4px auto 6px"></span><span class="xs">${TAGLINE}<br>Swaapo · A <b>HPY</b> initiative · Made with <span style="color:var(--rose)">❤</span> in Kochi</span></div>`;
 }
 function acardHTML(a){const f=FMT[a.fmt];
@@ -1217,7 +1235,7 @@ function vAuctions(){
   const list=all.filter(a=>aFmt==="all"||a.fmt===aFmt).sort((a,b)=>a.end-b.end);
   const hero=all.find(a=>a.fmt==="live")||all[0];
   main.innerHTML=`<div class="glass">
-   <div class="vhead"><div><span class="fmt">Auction House</span><h2 style="margin-top:8px">Bid on verified items</h2><p class="small muted" style="margin-top:4px">Every auction is run by a Pro seller, and every item is checked before it goes live. Payments wait in SwaapoSafe escrow until you confirm the item.</p></div>
+   <div class="vhead"><div><span class="fmt">Auction House</span><h2 style="margin-top:8px">Bid on verified items</h2><p class="small muted" style="margin-top:4px">Every auction is run by a Pro seller, and every item is checked before it goes live. Payments are held by our licensed payment partner until you confirm the item.</p></div>
      <button class="btn g" data-compose="auction">Sell by auction</button></div>
    <a class="execband" href="#exclusive"><span class="xgem" aria-hidden="true">◆</span><span><b>Swaapo Exclusive</b><br><span class="small muted">One-of-one pieces from verified brands. ${auctions().filter(a=>a.exec&&!ended(a)).length} live now.</span></span><span class="small" style="margin-left:auto;font-weight:800;color:var(--gold-ink)">Enter →</span></a>
    ${isTeen()?"":auctionAdHTML()}
@@ -1289,54 +1307,122 @@ function vPro(){
   </div>`;
 }
 function vMessages(){
-  const c=CONVS[activeConv];
+  const list=CONVS.filter(c=>!isBlocked(c.u));
+  if(!list.length){main.innerHTML=`<div class="glass"><div class="vhead"><h2>Messages</h2></div><div class="empty"><b>No messages yet</b><p class="small muted">When you offer a swap, or someone offers you one, the chat appears here.</p><a class="btn g" href="#swipe" style="text-decoration:none">Swipe to find swaps</a></div></div>`;return}
+  if(!list.includes(CONVS[activeConv]))activeConv=CONVS.indexOf(list[0]);
+  const c=CONVS[activeConv],them=U[c.u].n.split(" ")[0];
   main.innerHTML=`<div class="glass dm ${window._dmOpen?"open":""}">
    <div class="convs"><div class="vhead"><h2>Messages</h2></div>
-     ${CONVS.map((cv,i)=>{const last=cv.msgs[cv.msgs.length-1]||{x:""};const prev=last.t==="offer"?"Swap offer":last.x;
+     ${list.map(cv=>{const i=CONVS.indexOf(cv),last=cv.msgs[cv.msgs.length-1]||{x:""};const prev=last.t==="offer"?"Swap offer":last.x;
        return `<button class="conv" data-conv="${i}" aria-current="${i===activeConv}">${av(cv.u,"sm")}<span class="who"><b>${esc(U[cv.u].n)}</b><span>${esc(prev)}</span></span>${cv.unread?'<span class="unread" aria-label="Unread"></span>':""}</button>`}).join("")}
    </div>
    <div class="thread">
-     <div class="thead"><button class="iconbtn back" data-back aria-label="Back">←</button>${av(c.u,"sm")}<div style="min-width:0"><b>${esc(U[c.u].n)}</b>${U[c.u].v?'<span class="tick">✓</span>':""}<div class="xs muted">${esc(U[c.u].area)} · ★ ${U[c.u].rating} · Trust ${U[c.u].trust}</div>${CIRCLE&&U[c.u].w?'<div class="xs" style="color:var(--rose);font-weight:700">♀ Circle swap · +50 bonus coins</div>':""}</div>
-       <div class="callbtns"><button class="iconbtn" data-call="voice" aria-label="Voice call (Pro Plus)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></button><button class="iconbtn" data-call="video" aria-label="Video call (Pro Plus)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 8-6 4 6 4z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></button></div></div>
+     <div class="thead"><button class="iconbtn back" data-back aria-label="Back">←</button>${av(c.u,"sm")}<div style="min-width:0;flex:1"><button class="namebtn" data-user="${c.u}"><b>${esc(U[c.u].n)}</b></button>${U[c.u].v?'<span class="tick">✓</span>':""}<div class="xs muted">${esc(U[c.u].area)} · ★ ${U[c.u].rating} · Trust ${U[c.u].trust}</div>${CIRCLE&&U[c.u].w?'<div class="xs" style="color:var(--rose);font-weight:700">♀ Circle swap · +50 bonus coins</div>':""}</div>
+       <button class="iconbtn" data-cmore="${c.u}" aria-label="Chat options">⋯</button></div>
      <div class="msgs" id="msgs">
-       <div class="safe">Keep chats and payments on Swaapo. We'll never ask for your OTP.${isTeen()?"<br><b>Teen tip:</b> meet only in busy public places, and take a parent or guardian with you.":""}</div>
-       ${c.msgs.map((m,i)=>m.t==="offer"?`<div class="ocard"><span class="xs muted" style="text-align:center;font-weight:800">${m.from==="me"?"YOUR OFFER":"OFFER FROM "+esc(U[c.u].n.split(" ")[0].toUpperCase())}</span>
-         <div class="pair"><div><span class="lbl-s">${m.from==="me"?"You give":"They give"}</span><span class="e">${m.give[0]}</span><span class="xs">${esc(m.give[1])}</span></div><span class="x">⇄</span><div><span class="lbl-s">${m.from==="me"?"You get":"For your"}</span><span class="e">${m.get[0]}</span><span class="xs">${esc(m.get[1])}</span></div></div>
-         ${m.state==="pending"&&m.from==="them"?`<div style="display:flex;gap:8px"><button class="btn p" style="flex:1" data-accept="${i}">Accept</button><button class="btn" style="flex:1" data-decline="${i}">Decline</button></div>`:`<div class="status" style="color:${m.state==="accepted"?"var(--ok)":"var(--muted)"}">${m.state==="accepted"?"It's a match! Plan your meet-up below.":m.state==="declined"?"Declined":"Waiting for reply…"}</div>`}</div>`
-       :`<div class="bub ${m.t}">${esc(m.x)}</div>${m.warn?'<div class="warn">Careful. Never share OTPs or pay anyone outside the app.</div>':""}`).join("")}
+       <div class="safe">Keep chats on Swaapo. Swaps never need money, and we'll never ask for your OTP.${isTeen()?"<br><b>Teen tip:</b> meet only in busy public places, and take a parent or guardian with you.":""}</div>
+       ${c.msgs.map((m,i)=>m.t==="offer"?offerCardHTML(m,i,c):m.t==="sys"?`<p class="xs muted" style="text-align:center;margin:4px 0">${esc(m.x)}</p>`:`<div class="bub ${m.t}">${esc(m.x)}</div>${m.warn?'<div class="warn">Careful. Never share OTPs or pay anyone. Swaps on Swaapo never involve money.</div>':""}`).join("")}
      </div>
      <div class="quick">${["Is this still available?","Can you share another photo?","Where would suit you to meet?","Saturday morning works!"].map(q=>`<button data-quick="${esc(q)}">${esc(q)}</button>`).join("")}</div>
-     <form class="mform" id="mform"><input id="m-in" placeholder="Message ${esc(U[c.u].n.split(" ")[0])}…" aria-label="Message"><button type="submit">Send</button></form>
+     <form class="mform" id="mform"><input id="m-in" placeholder="Message ${esc(them)}…" aria-label="Message"><button type="submit">Send</button></form>
    </div></div>`;
   const ms=$("#msgs");ms.scrollTop=ms.scrollHeight;
   $("#mform").addEventListener("submit",e=>{e.preventDefault();const v=$("#m-in").value.trim();if(!v)return;
-    c.msgs.push({t:"me",x:v,warn:/\b(otp|upi|qr|advance|pin)\b/i.test(v)});vMessages();$("#m-in").focus();
-    setTimeout(()=>{c.msgs.push({t:"them",x:["Sounds good","Sure, let me check and get back to you","Perfect, see you then!"][Math.floor(Math.random()*3)]});if(location.hash==="#messages")vMessages()},1400)});
+    if(isBlocked(c.u)){toast("You've blocked this member.");return}
+    c.msgs.push({t:"me",x:v,warn:/\b(otp|upi|qr|advance|pin|pay|payment)\b/i.test(v)});vMessages();$("#m-in").focus();
+    later(c,1400,()=>c.msgs.push({t:"them",x:["Sounds good","Sure, let me check and get back to you","Perfect, see you then!"][Math.floor(Math.random()*3)]}));});
 }
+// Runs an example member's reply in this preview, unless you've blocked them since.
+function later(c,ms,fn){setTimeout(()=>{if(isBlocked(c.u))return;fn();c.unread=!(location.hash==="#messages"&&CONVS[activeConv]===c);saveConvs();badges();if(location.hash==="#messages")vMessages()},ms)}
+function saveConvs(){if(SESSION&&!SESSION.demo)saveAccounts()}
+const stars=n=>"★".repeat(n)+"☆".repeat(5-n);
+const meetTime=t=>new Date(t).toLocaleString("en-IN",{weekday:"short",day:"numeric",month:"short",hour:"numeric",minute:"2-digit"});
+// One swap from offer to rating. Every step has one clear next action and a way to report a problem.
+function offerCardHTML(m,i,c){
+  const them=esc(U[c.u].n.split(" ")[0]),act=(k,l,cls="")=>`<button class="btn ${cls}" style="flex:1" data-sw="${k}" data-i="${i}">${l}</button>`;
+  const head=m.from==="me"?(m.counter?"YOUR COUNTER-OFFER":"YOUR OFFER"):(m.counter?`COUNTER-OFFER FROM ${them.toUpperCase()}`:`OFFER FROM ${them.toUpperCase()}`);
+  let body="";
+  if(m.state==="pending")body=m.from==="them"?`<div style="display:flex;gap:8px;flex-wrap:wrap">${act("accept","Accept","p")}${act("counter","Counter-offer")}${act("decline","Decline")}</div>`
+    :`<div class="status">Waiting for ${them} to reply.</div><div style="display:flex">${act("withdraw","Withdraw offer")}</div>`;
+  else if(m.state==="countered")body=`<div class="status">Replaced by a counter-offer below.</div>`;
+  else if(m.state==="declined")body=`<div class="status">Declined.</div>`;
+  else if(m.state==="withdrawn")body=`<div class="status">Withdrawn.</div>`;
+  else if(m.state==="accepted"){
+    if(!m.plan)body=`<div class="status" style="color:var(--ok)">Swap agreed. Next step: agree where and when to meet.</div><div style="display:flex">${act("plan","Plan the meet-up","p")}</div>`;
+    else if(!m.planOk)body=`<div class="status">You proposed ${esc(m.plan.place)}, ${esc(meetTime(m.plan.time))}. Waiting for ${them} to confirm.</div><div style="display:flex">${act("plan","Change the plan")}</div>`;
+    else if(!m.doneMe)body=`<div class="status" style="color:var(--ok)">Meet-up: ${esc(m.plan.place)}, ${esc(meetTime(m.plan.time))}.</div>${m.doneThem?`<div class="status">${them} says the swap is done.</div>`:""}<div style="display:flex;gap:8px;flex-wrap:wrap">${act("done","Mark swap complete","p")}${act("plan","Change the plan")}</div>`;
+    else body=`<div class="status">You marked the swap complete. Waiting for ${them} to confirm.</div>`;
+  } else if(m.state==="completed"){
+    if(!m.rateMe)body=`<div class="status" style="color:var(--ok)">Swap complete. Rate ${them} to finish.</div><div style="display:flex">${act("rate",`Rate ${them}`,"p")}</div>`;
+    else if(!m.rateThem)body=`<div class="status">You rated ${them} <span class="stars">${stars(m.rateMe.stars)}</span>. Waiting for ${them}'s rating. Coins arrive once you've both rated.</div>`;
+    else body=`<div class="status" style="color:var(--ok)">You both rated. ${them} gave you <span class="stars">${stars(m.rateThem.stars)}</span>.${m.coins?` +${m.coins} Swaapo Coins.`:""}</div>`;
+  }
+  return `<div class="ocard"><span class="xs muted" style="text-align:center;font-weight:800">${head}</span>
+    <div class="pair"><div><span class="lbl-s">${m.from==="me"?"You give":"They give"}</span><span class="e">${m.give[0]}</span><span class="xs">${esc(m.give[1])}</span></div><span class="x">⇄</span><div><span class="lbl-s">${m.from==="me"?"You get":"For your"}</span><span class="e">${m.get[0]}</span><span class="xs">${esc(m.get[1])}</span></div></div>
+    ${body}<button class="linkbtn xs" style="align-self:center" data-sw="report" data-i="${i}">Report a problem</button></div>`;
+}
+async function swapAction(k,i){
+  const c=CONVS[activeConv],m=c.msgs[i],them=U[c.u].n.split(" ")[0];if(!m)return;
+  if(k==="report"){openReport({type:"swap",who:c.u,label:`Swap with ${U[c.u].n}: ${m.give[1]} ⇄ ${m.get[1]}`});return}
+  if(k==="accept"){m.state="accepted";c.msgs.push({t:"me",x:"Accepted! Let's plan the meet-up."});c.msgs.push({t:"sys",x:"Swap agreed. Next: plan the meet-up."})}
+  else if(k==="decline"){if(!await askConfirm({title:"Decline this offer?",body:`${esc(them)} will see that you declined.`,ok:"Decline",danger:true}))return;m.state="declined"}
+  else if(k==="withdraw"){if(!await askConfirm({title:"Withdraw your offer?",body:`${esc(them)} won't be able to accept it any more.`,ok:"Withdraw",danger:true}))return;m.state="withdrawn"}
+  else if(k==="counter"){const it=await pickMyItem(`Counter-offer to ${them}`,`Choose what you'll give for their ${m.give[1]}.`);if(!it)return;
+    m.state="countered";const co={t:"offer",from:"me",counter:true,give:[it.e,it.n],get:m.give,state:"pending",myItem:it.id};c.msgs.push(co);
+    later(c,2500,()=>{if(co.state!=="pending")return;co.state="accepted";c.msgs.push({t:"them",x:`Okay, your ${it.s} works for me. Let's plan the meet-up.`});ALERTS.unshift({new:true,u:c.u,x:"accepted your counter-offer",t:"now",e:it.e,go:"messages"})})}
+  else if(k==="plan"){const p=await planMeetup(m);if(!p)return;m.plan=p;m.planOk=false;c.msgs.push({t:"sys",x:`You proposed: ${p.place}, ${meetTime(p.time)}.`});
+    later(c,2000,()=>{if(m.plan!==p)return;m.planOk=true;c.msgs.push({t:"them",x:`Confirmed: ${p.place}, ${meetTime(p.time)}. See you there!`})})}
+  else if(k==="done"){if(!await askConfirm({title:"Mark the swap complete?",body:`Only confirm once you have ${esc(them)}'s item and they have yours. The swap completes when you've both confirmed.`,ok:"Yes, we've swapped"}))return;
+    m.doneMe=true;c.msgs.push({t:"sys",x:`You marked the swap complete. Waiting for ${them}.`});
+    later(c,2500,()=>{m.doneThem=true;m.state="completed";c.msgs.push({t:"sys",x:"Swap complete on both sides. Rate each other to finish."});MY=MY.filter(x=>x.id!==m.myItem);U.you.swaps++})}
+  else if(k==="rate"){const r=await rateSwap(them);if(!r)return;m.rateMe=r;c.msgs.push({t:"sys",x:`You rated ${them} ${stars(r.stars)}.`});
+    later(c,1500,()=>{m.rateThem={stars:5,note:"Smooth swap, item as described."};c.msgs.push({t:"sys",x:`${them} rated you. You've both rated, so your Swaapo Coins are here.`});m.coins=earnCoins(c.u)})}
+  saveConvs();vMessages();
+}
+function pickMyItem(title,sub){return new Promise(res=>{if(!MY.length){toast("List an item first.");return res(null)}
+  const {w,close}=modal(`<div class="shead"><h3>${esc(title)}</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div><form class="sbody"><p class="small muted">${esc(sub)}</p>${MY.map((it,i)=>`<label class="opt"><input type="radio" name="pk" value="${it.id}" ${i?"":"checked"}><span class="e">${it.e}</span><span><b>${esc(it.n)}</b></span></label>`).join("")}<button class="btn p" type="submit">Send counter-offer</button></form>`,title);
+  let done=false;w.querySelector("form").onsubmit=e=>{e.preventDefault();done=true;const id=w.querySelector("input[name=pk]:checked").value;close();res(MY.find(x=>x.id===id))};onClosed(w,()=>{if(!done)res(null)})})}
+function planMeetup(m){return new Promise(res=>{const d=new Date(m.plan?m.plan.time:Date.now()+864e5);if(!m.plan)d.setHours(11,0,0,0);
+  const loc=x=>new Date(x.getTime()-x.getTimezoneOffset()*60000).toISOString().slice(0,16);
+  const {w,close}=modal(`<div class="shead"><h3>Plan the meet-up</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div><form class="sbody" novalidate>
+    <div class="field"><label for="pm-p">Place</label><input id="pm-p" maxlength="100" value="${esc(m.plan?m.plan.place:"")}" placeholder="A busy public place, e.g. a mall entrance or metro station"></div>
+    <div class="field"><label for="pm-t">Date and time</label><input id="pm-t" type="datetime-local" min="${loc(new Date())}" value="${loc(d)}"></div>
+    <p class="xs muted">Meet in daylight in a public place, and check the item before you swap.</p><span class="err" hidden></span><button class="btn p" type="submit">Send plan</button></form>`,"Plan the meet-up");
+  let done=false;w.querySelector("form").onsubmit=e=>{e.preventDefault();const place=w.querySelector("#pm-p").value.trim(),t=Date.parse(w.querySelector("#pm-t").value),er=w.querySelector(".err");
+    if(!place){er.textContent="Add a public place to meet.";er.hidden=false;return}if(!t||t<Date.now()){er.textContent="Pick a time in the future.";er.hidden=false;return}
+    done=true;close();res({place,time:new Date(t).toISOString()})};onClosed(w,()=>{if(!done)res(null)})})}
+function rateSwap(them){return new Promise(res=>{let n=0;
+  const {w,close}=modal(`<div class="shead"><h3>Rate ${esc(them)}</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div><form class="sbody" novalidate>
+    <div class="rstars" role="radiogroup" aria-label="Rating" style="display:flex;gap:6px">${[1,2,3,4,5].map(i=>`<button type="button" data-st="${i}" aria-pressed="false" aria-label="${i} star${i>1?"s":""}" style="background:none;border:0;font-size:2rem;color:var(--muted);cursor:pointer">★</button>`).join("")}</div>
+    <div class="field"><label for="rt-n">Comment <span class="muted" style="font-weight:500">optional</span></label><input id="rt-n" maxlength="200" placeholder="e.g. On time, item exactly as described"></div>
+    <p class="xs muted">Your rating shows on ${esc(them)}'s profile once you've both rated.</p><span class="err" hidden></span><button class="btn p" type="submit">Submit rating</button></form>`,"Rate");
+  w.querySelectorAll("[data-st]").forEach(b=>b.onclick=()=>{n=+b.dataset.st;w.querySelectorAll("[data-st]").forEach(x=>{const on=+x.dataset.st<=n;x.setAttribute("aria-pressed",on);x.style.color=on?"var(--gold)":"var(--muted)"})});
+  let done=false;w.querySelector("form").onsubmit=e=>{e.preventDefault();if(!n){const er=w.querySelector(".err");er.textContent="Choose 1 to 5 stars.";er.hidden=false;return}done=true;close();res({stars:n,note:w.querySelector("#rt-n").value.trim()})};onClosed(w,()=>{if(!done)res(null)})})}
+const okAlert=a=>!isBlocked(a.u)&&!isSoon(a.go);
 function vAlerts(){
   const row=a=>`<div class="nt ${a.new?"new":""}" ${a.go?`data-go="${a.go}" role="link" tabindex="0" style="cursor:pointer"`:""}>${av(a.u,"sm")}<div class="txt"><b>${esc(U[a.u].n)}</b> ${a.x} <span class="time">${a.t}</span></div>${a.follow?`<button class="follow ${FOLLOW.has(a.u)?"on":""}" data-follow="${a.u}">${FOLLOW.has(a.u)?"Following":"Follow back"}</button>`:a.e?`<span class="thumb">${a.e}</span>`:""}</div>`;
   main.innerHTML=`<div class="glass"><div class="vhead"><h2>Notifications</h2><button class="btn" data-readall>Mark all read</button></div>
-   <div class="sect">New</div>${ALERTS.filter(a=>a.new).map(row).join("")||`<p class="small muted" style="padding:0 16px 10px">You're all caught up.</p>`}
-   <div class="sect">Earlier</div>${ALERTS.filter(a=>!a.new).map(row).join("")}</div>`;
+   <div class="sect">New</div>${ALERTS.filter(a=>a.new&&okAlert(a)).map(row).join("")||`<p class="small muted" style="padding:0 16px 10px">You're all caught up.</p>`}
+   <div class="sect">Earlier</div>${ALERTS.filter(a=>!a.new&&okAlert(a)).map(row).join("")||`<p class="small muted" style="padding:0 16px 10px">Nothing here yet. Offers, replies and new followers show up here.</p>`}</div>`;
 }
 function vProfile(k){
   k=k||"you";const u=U[k];const mine=POSTS.filter(p=>p.u===k&&(p.type==="item"||p.type==="auction"));
   const ptier=k==="you"?TIER:u.pro,isPro=!!(ptier&&ptier!=="free");
-  const reviews=k==="you"?[["arjun",5,"Smooth swap, great communicator"],["meera",5,"Books exactly as described"]]:[["you",5,"Friendly and on time"],["fatima",5,"Item exactly as described"],["rahul",4,"Good swap, a little late to the meet-up"]];
+  const reviews=k==="you"?(SESSION&&!SESSION.demo?[]:[["arjun",5,"Smooth swap, great communicator"],["meera",5,"Books exactly as described"]]):[["you",5,"Friendly and on time"],["fatima",5,"Item exactly as described"],["rahul",4,"Good swap, a little late to the meet-up"]];
   const wants=k==="you"?["Headphones","Monitor (24 inch)","Bicycle"]:[...new Set(mine.flatMap(p=>(p.want||"").split(",").map(s=>s.trim()).filter(Boolean)))];
   const items=k==="you"?[...mine.filter(seeable),...MY.map(m=>({id:m.id,e:m.e,item:m.n,mine:true}))]:mine;
   main.innerHTML=`<div class="glass" style="overflow:hidden">
    ${coverHTML(k)}
    <div class="pinfo">
-     <div class="toprow">${profAvatar(k)}${k==="you"?`<div style="display:flex;gap:8px"><a class="btn" href="#settings" style="text-decoration:none">Settings</a></div>`:`<div style="display:flex;gap:8px"><button class="btn" data-dm="${k}">Message</button><button class="btn p" data-follow="${k}">${FOLLOW.has(k)?"Following":"Follow"}</button></div>`}</div>
+     <div class="toprow">${profAvatar(k)}${k==="you"?`<div style="display:flex;gap:8px"><a class="btn" href="#settings" style="text-decoration:none">Settings</a></div>`:`<div style="display:flex;gap:8px"><button class="btn" data-dm="${k}">Message</button><button class="btn p" data-follow="${k}">${FOLLOW.has(k)?"Following":"Follow"}</button>${U[k].off?"":`<button class="btn" data-umore="${k}" aria-label="More options">⋯</button>`}</div>`}</div>
      <div><h2>${esc(u.n)}${u.v?' <span class="tick">✓</span>':""}${isPro?" "+tierBadge(ptier):""}</h2>${(k==="you"?CIRCLE:u.w)?'<span class="circle-b">♀ Women&#39;s Circle</span> ':""}<span class="small muted">@${esc(u.h)}${k==="you"?areaShown():u.area?" · "+esc(u.area):""} · Member since 2026</span>${k==="you"?privChips():""}</div>
      <p>${esc(u.bio)}</p>
-     ${k==="you"?`<a class="pcoins" href="#coins"><span class="pc-ic" aria-hidden="true"><i class="coin" aria-hidden="true"></i></span><span class="pc-main"><span class="lbl-s">Swaapo Coins</span><b class="pcoin">${COINS.toLocaleString("en-IN")}</b></span><span class="pc-side"><span class="pc-st">${COINS>=1000?"Unlocked for deals":`${(1000-COINS).toLocaleString("en-IN")} to unlock`}</span><span class="xs muted">${CIRCLE?"+150 with Circle members →":"+100 per 5-star swap →"}</span></span><i class="pc-bar"><i style="width:${Math.min(100,COINS/10)}%"></i></i></a>`:""}
-     ${k==="you"?planCardHTML():""}
+     ${k==="you"?`<a class="pcoins" href="${LAUNCH_MVP?"#profile":"#coins"}"><span class="pc-ic" aria-hidden="true"><i class="coin" aria-hidden="true"></i></span><span class="pc-main"><span class="lbl-s">Swaapo Coins</span><b class="pcoin">${COINS.toLocaleString("en-IN")}</b></span><span class="pc-side"><span class="pc-st">${COINS>=1000?"Unlocked for deals":`${(1000-COINS).toLocaleString("en-IN")} to unlock`}</span><span class="xs muted">${CIRCLE?"+150 with Circle members →":"+100 per 5-star swap →"}</span></span><i class="pc-bar"><i style="width:${Math.min(100,COINS/10)}%"></i></i></a>`:""}
+     ${k==="you"&&!LAUNCH_MVP?planCardHTML():""}
      <div class="trust"><b class="small">Trust score${k==="you"&&!PRIV().trust?' <span class="xs muted">· hidden from others</span>':""}</b><div class="meter"><i style="width:${u.trust}%"></i></div><b class="num">${u.trust}</b></div>
      <div class="stats"><div><b>${u.swaps}</b><span>Swaps</span></div><div><b>${u.rating?"★ "+u.rating:"—"}</b><span>Rating</span></div><div><b>${fmtN(u.fol+(k!=="you"&&FOLLOW.has(k)?1:0))}</b><span>Followers</span></div><div><b>${fmtN(u.fing)}</b><span>Following</span></div></div>
    </div>
-   <div class="ptabs" role="tablist">${[["items","Has"],["wants","Wants"],...(k==="you"?[["saved","Saved"],["boards","Boards"]]:[]),["reviews","Reviews"]].map(([t,l])=>`<button role="tab" aria-selected="${profTab===t}" data-ptab="${t}" data-pk="${k}">${l}</button>`).join("")}</div>
+   <div class="ptabs" role="tablist">${[["items","Has"],["wants","Wants"],...(k==="you"?[["saved","Saved"],...(LAUNCH_MVP?[]:[["boards","Boards"]])]:[]),["reviews","Reviews"]].map(([t,l])=>`<button role="tab" aria-selected="${profTab===t}" data-ptab="${t}" data-pk="${k}">${l}</button>`).join("")}</div>
    ${profTab==="items"?(items.length?`<div class="grid" style="padding-top:12px">${items.map(p=>`<button class="tile" ${p.mine?"":p.type==="auction"?`data-auction="${p.id}"`:`data-open="${p.id}"`} style="${imgStyle(p)}" aria-label="${esc(p.item)}">${p.photo?"":p.e}<span class="w">${p.type==="auction"?"":""}${esc(p.item)}</span></button>`).join("")}</div>`:`<div class="empty"><b>No items yet</b></div>`)
    :profTab==="wants"?`<div class="wantlist">${wants.map(w=>`<div><span>${esc(w)}</span>${k==="you"?'<span class="xs muted">Alerts on</span>':`<button class="btn" data-dm="${k}">I have this</button>`}</div>`).join("")||'<p class="muted small">Open to offers.</p>'}</div>`
    :profTab==="saved"&&k==="you"?savedHTML()
@@ -1365,12 +1451,13 @@ function upgradeGate(min,reason){
 function setTier(k){if(k!=="free"&&!need18("Paid plans are for members 18 and over. Your Teen account stays on Free."))return;TIER=k;rail();toast(k==="free"?"You're on Free.":`Welcome to ${TIERS[k].n}`,k!=="free");if(location.hash==="#pro"||location.hash==="#profile")route();document.querySelectorAll("[id^=adet-]").forEach(h=>{const a=POSTS.find(p=>p.id===h.id.slice(5));if(a)renderAuctionBody(a)})}
 function need(t,reason){if(has(t))return true;upgradeGate(t,reason);return false}
 function openCompose(kind="item"){
+  if(LAUNCH_MVP)kind="item"; // at launch, Create is a swap listing only
   if(kind==="auction"&&!need23("Selling by auction is for members 23 and over."))return;
   if(kind==="auction"&&!need("pro","Swapping is free forever. Selling by auction needs Pro, with your item verified first."))return;
   if(kind==="auction"&&TIER==="pro"&&auctions().filter(a=>a.u==="you").length>=3){upgradeGate("plus","Pro includes 3 auctions a month, and you've used them all. Pro Plus is unlimited.");return}
-  const {w,close}=modal(`<div class="shead"><h3>Create</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
+  const {w,close}=modal(`<div class="shead"><h3>${LAUNCH_MVP?"List an item to swap":"Create"}</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
   <form class="sbody" id="cform" novalidate>
-   <div class="ptype" role="radiogroup" aria-label="Post type">
+   <div class="ptype" role="radiogroup" aria-label="Post type" ${LAUNCH_MVP?"hidden":""}>
      <label><input type="radio" name="pt" value="item" ${kind==="item"?"checked":""}><br>Offer a swap</label>
      <label><input type="radio" name="pt" value="iso" ${kind==="iso"?"checked":""}><br>Ask for it</label>
      <label><input type="radio" name="pt" value="donate" ${kind==="donate"?"checked":""}><br>Donate</label>
@@ -1413,7 +1500,7 @@ function openCompose(kind="item"){
       <div class="field"><span class="lab">Auction format</span><div class="fmtpick" role="radiogroup" aria-label="Auction format">${Object.entries(FMT).map(([k,v],i)=>{const lock=PLUS_FMTS.includes(k)&&!has("plus");return `<label ${lock?'style="opacity:.55"':""}><input type="radio" name="af" value="${k}" ${i===1?"checked":""} ${lock?"disabled":""}>${v.i} ${v.n} ${lock?'<span class="pro" style="margin:0">PRO+</span>':""}<small>${v.d}</small></label>`}).join("")}</div>${has("plus")?"":`<p class="hint">Live drop, Sealed bid, Price drop and Swap or Bid need Pro Plus. <a href="#pro">See plans</a></p>`}</div>
       <div class="three" id="af-fields"></div>
       <div class="field"><label for="cp-dur">Runs for</label><select id="cp-dur"><option value="10">10 minutes (Live)</option><option value="60">1 hour</option><option value="1440" selected>24 hours</option><option value="4320">3 days</option><option value="10080">7 days</option></select></div>
-      <p class="hint">5% fee only if it sells. The winner pays into SwaapoSafe escrow, and you're paid when they confirm the item.</p></div>`;
+      <p class="hint">5% fee only if it sells. The winner pays through our licensed payment partner, and you're paid when they confirm the item. Swaapo never holds the money.</p></div>`;
     const cs=w.querySelector("#cp-cat");if(cs){const careBox=()=>{let b=w.querySelector("#care-box");if(cs.value!=="Medical & Care"){if(b)b.remove();return}if(!b){cs.closest(".two").insertAdjacentHTML("afterend",CARE_RULES);}};cs.addEventListener("change",careBox);careBox()}
     const ph=w.querySelector("#cp-photo");if(ph)ph.addEventListener("change",e=>{const fl=e.target.files[0];if(!fl)return;const r=new FileReader();r.onload=()=>{photo=r.result;const d=w.querySelector("#cp-drop");d.style.backgroundImage=`url('${photo}')`;d.textContent=""};r.readAsDataURL(fl)});
     if(t==="auction"){const af=()=>{const v=w.querySelector("input[name=af]:checked").value;const ff=w.querySelector("#af-fields");
@@ -1444,25 +1531,27 @@ function openCompose(kind="item"){
       const cat=w.querySelector("#cp-cat").value,mins=+w.querySelector("#cp-dur").value;
       const a=A({...base,fmt,cat,e:emo[cat],item,cond:"Verified",start,inc:num("ap-inc")||Math.max(50,Math.round(start*.05/50)*50),reserve:num("ap-res")||start,buyNow:fmt==="buynow"?(num("ap-bn")||undefined):undefined,end:Date.now()+mins*MIN,watchers:0,sealedCount:0,verified:["Proof of purchase (pending review)","Ownership declared"],text:text||`Up for auction: ${item}. ${FMT[fmt].d}`,bids:[]});
       if(fmt==="dutch"){const fl=num("ap-floor")||Math.round(start*.6);a.dutch={s:start,floor:Math.min(fl,start),step:num("ap-step")||Math.max(50,Math.round(start*.03/50)*50),iv:4*MIN,t0:Date.now()}}
-      POSTS.unshift(a);close();toast("Your auction is live Bids will start rolling in.",true);
+      POSTS.unshift(a);close();toast("Your auction is live. Bids will start rolling in.",true);
       setTimeout(()=>{if(ended(a))return;if(a.fmt==="dutch"){a.watchers+=6}else if(a.fmt==="sealed"){a.watchers+=5;a.sealedCount=2}else{a.bids.unshift({u:"rahul",a:a.start,t:"now"});a.watchers+=7;ALERTS.unshift({new:true,u:"rahul",x:`placed the first bid on your <b>${esc(item)}</b>: ${inr(a.start)}`,t:"now",e:a.e,go:"pro"})}refreshAuction(a);badges()},4000);
       feedTab="foryou";go("feed");window.scrollTo(0,0);return;
     }
     if(t==="donate"){const cat=w.querySelector("#cp-cat").value;const p={...base,type:"donate",cat,e:emo[cat],item,cond:w.querySelector("#cp-cond").value,km:0,pick:want,who:w.querySelector("#cp-who").value,reqs:[],care:cat==="Medical & Care",text:text||`Free to a good home: ${item}.`};POSTS.unshift(p);close();feedTab="foryou";go("feed");toast("Your donation is live. You'll choose who gets it.",true);window.scrollTo(0,0);
       setTimeout(()=>{p.reqs.push("anjali","kiran");ALERTS.unshift({new:true,u:"anjali",x:`and 1 other asked for your donation <b>${esc(item)}</b>`,t:"now",e:p.e,go:"donate"});badges();if(["#feed","","#donate"].includes(location.hash))route()},3500);return}
-    if(t==="item"){const cat=w.querySelector("#cp-cat").value;POSTS.unshift({...base,type:"item",cat,e:emo[cat],item,care:cat==="Medical & Care",cond:w.querySelector("#cp-cond").value,km:0,want,open:!want,text:text||`Up for swap: ${item}.`})}
-    else if(t==="iso")POSTS.unshift({...base,type:"iso",e:"🔍",want:item,offer:want,text:text||`Anyone near Kochi have ${item}?`});
+    if(t==="item"){const cat=w.querySelector("#cp-cat").value;MY.unshift({id:base.id,n:item,s:item.toLowerCase(),e:emo[cat],k:item.toLowerCase().split(/[^a-z0-9]+/).filter(x=>x.length>3)});POSTS.unshift({...base,type:"item",cat,e:emo[cat],item,care:cat==="Medical & Care",cond:w.querySelector("#cp-cond").value,km:0,want,open:!want,text:text||`Up for swap: ${item}.`})}
+    else if(t==="iso")POSTS.unshift({...base,type:"iso",e:"🔍",want:item,offer:want,text:text||`Anyone ${nearLabel()} have ${item}?`});
     else{const wi=w.querySelector("#cp-with").value;POSTS.unshift({...base,type:"done",with:wi,a:["📦",item],b:["🎁",want],stars:5,text:text||`Swapped my ${item} for ${want} with @${U[wi].h}`})}
     close();feedTab="foryou";go("feed");toast("Posted! It's at the top of your feed.");window.scrollTo(0,0);
   });
 }
 function openOffer(pid,pick){
-  const p=POSTS.find(x=>x.id===pid);if(!p)return;const m=matchOf(p.want);pick=pick||(m&&m.id)||MY[0].id;
+  const p=POSTS.find(x=>x.id===pid);if(!p)return;
+  if(isBlocked(p.u)){toast("You've blocked this member. Unblock them to offer a swap.");return}
+  if(!MY.length){toast("List an item first, so you have something to offer.");openCompose("item");return}
+  const m=matchOf(p.want);pick=pick||(m&&m.id)||MY[0].id;
   const {w,close}=modal(`<div class="shead"><h3>Offer a swap to ${esc(U[p.u].n.split(" ")[0])}</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
    <form class="sbody" id="oform">
     <div class="pair"><div><span class="lbl-s">You get</span><span class="e">${p.e}</span><span class="small">${esc(p.item||p.want)}</span></div><span class="x">⇄</span><div><span class="lbl-s">You give</span><span class="e" id="o-e">?</span><span class="small" id="o-n"></span></div></div>
     ${MY.map(it=>`<label class="opt"><input type="radio" name="o" value="${it.id}" ${it.id===pick?"checked":""}><span class="e">${it.e}</span><span><b>${esc(it.n)}</b>${matchOf(p.want)===it?'<br><span class="xs" style="color:var(--teal-ink);font-weight:800">On their wish list</span>':""}</span></label>`).join("")}
-    ${COINS>=1000?`<div class="field"><label for="o-coins">Add Swaapo Coins <span class="muted" style="font-weight:500">optional · you have ${COINS.toLocaleString("en-IN")}</span></label><input id="o-coins" type="number" min="0" max="${COINS}" step="100" placeholder="0"><span class="hint">Balance the deal with coins.</span></div>`:`<p class="xs muted">Reach 1,000 Swaapo Coins to add coins to your offers.</p>`}
     <div class="field"><label for="o-note">Note <span class="muted" style="font-weight:500">optional</span></label><input id="o-note" placeholder="Say hi and why it's a good match"></div>
     <button class="btn p" type="submit" style="padding:12px">Send Offer</button><p class="xs muted" style="text-align:center">Nothing is exchanged unless you both agree.</p>
    </form>`,"Offer a swap");
@@ -1471,10 +1560,10 @@ function openOffer(pid,pick){
   w.querySelector("#oform").addEventListener("submit",e=>{e.preventDefault();
     const it=MY.find(x=>x.id===w.querySelector("input[name=o]:checked").value);const note=w.querySelector("#o-note").value.trim();
     let ci=CONVS.findIndex(c=>c.u===p.u);if(ci<0){CONVS.unshift({u:p.u,unread:false,msgs:[]});ci=0}
-    const ce=w.querySelector("#o-coins");const coins=ce?Math.max(0,Math.min(COINS,Math.round((+ce.value||0)/100)*100)):0;
-    const c=CONVS[ci];c.msgs.push({t:"offer",from:"me",give:[it.e,it.n+(coins?` + ${coins.toLocaleString("en-IN")}`:"")],get:[p.e,p.item||p.want],state:"sent",coins});if(note)c.msgs.push({t:"me",x:note});
-    close();toast(`Offer sent! We'll let you know when ${U[p.u].n.split(" ")[0]} replies.`);
-    setTimeout(()=>{c.msgs.push({t:"them",x:`Ooh, your ${it.s} could work! Let me think about it`});c.unread=true;ALERTS.unshift({new:true,u:p.u,x:"replied to your offer",t:"now",e:it.e,go:"messages"});badges();if(location.hash==="#messages")vMessages()},2500);
+    const c=CONVS[ci],offer={t:"offer",from:"me",give:[it.e,it.n],get:[p.e,p.item||p.want],state:"pending",myItem:it.id};c.msgs.push(offer);if(note)c.msgs.push({t:"me",x:note});
+    close();toast(`Offer sent. We'll tell you when ${U[p.u].n.split(" ")[0]} replies.`);
+    // Example members answer on their own in this preview.
+    later(c,2500,()=>{if(offer.state!=="pending")return;offer.state="accepted";c.msgs.push({t:"them",x:`Deal! Your ${it.s} is just what I wanted. Let's plan the meet-up.`});ALERTS.unshift({new:true,u:p.u,x:`accepted your swap offer for <b>${esc(p.item||p.want)}</b>`,t:"now",e:p.e,go:"messages"})});
   });
 }
 function openPost(pid){const p=POSTS.find(x=>x.id===pid);if(!p)return;
@@ -1495,18 +1584,20 @@ function renderAuctionBody(a){
   const t=topBid(a),isEnded=ended(a),mine=a.u==="you",youTop=t&&t.u==="you";
   let action="";
   if(!isEnded&&!mine&&!canBid()){action=`<div class="teenbox"><b>Watching live · bidding opens at 23</b><div class="small muted">Members 18–22 can watch the bids and the countdown. Bidding and buying by auction open at 23.</div></div>`}
-  else if(isEnded){action=`<div class="warn" style="text-align:center;font-weight:800">${a.sold?(a.soldTo==="you"?"You won! Your payment goes into SwaapoSafe escrow until you confirm the item.":"Sold"):"This auction has ended."}</div>`}
+  else if(isEnded&&(youWon(a)||mine&&soldTo(a))){action=orderHTML(a)}
+  else if(isEnded){action=`<div class="warn" style="text-align:center;font-weight:800">${a.sold?"Sold":"This auction has ended."}</div>`}
   else if(mine){action=`<div class="warn">This is your auction. You'll be notified about every bid.</div>`}
-  else if(a.fmt==="dutch"){action=`<button class="btn g" style="padding:13px;font-size:1rem" data-buydutch="${a.id}">Buy now at <span data-aprice="${a.id}">${inr(dutchPrice(a))}</span></button><p class="xs muted">The price drops ${inr(a.dutch.step)} every few minutes until it reaches the ${inr(a.dutch.floor)} floor.</p>`}
+  else if(a.fmt==="dutch"){action=`${!has("pro")?'<div class="warn"><b>Buying needs Pro.</b> You can watch the price drop.</div>':""}<button class="btn g" style="padding:13px;font-size:1rem" data-buydutch="${a.id}" ${has("pro")?"":"disabled"}>Buy now at <span data-aprice="${a.id}">${inr(dutchPrice(a))}</span></button><p class="xs muted">The price drops ${inr(a.dutch.step)} every few minutes until it reaches the ${inr(a.dutch.floor)} floor.</p>`}
   else if(a.fmt==="sealed"){action=a.mySealed?`<div class="warn">Your sealed bid of <b>${inr(a.mySealed)}</b> is in. Bids are revealed when the timer ends.</div>`:`<div class="bidin"><input id="bid-in" type="number" min="${a.start}" step="50" placeholder="Your secret bid (min ${inr(a.start)})" aria-label="Sealed bid amount"><button class="btn g" data-seal="${a.id}">Seal bid</button></div><p class="xs muted">One bid only. No one, including the seller, sees it before the reveal.</p>`}
   else{
     const n=minNext(a);const showAuto=autoOn??!!a.myMax;
-    action=`${!has("pro")?`<div class="warn">You're on Free, so you can watch this auction. <button class="btn g" style="padding:4px 12px;margin-left:6px" data-tier="pro">Go Pro to bid</button></div>`:""}${youTop?`<div class="warn" style="color:var(--ok);font-weight:800">You're the top bidder</div>`:""}
-     <div class="quickbids">${[n,n+a.inc,n+a.inc*3].map(v=>`<button data-qbid="${v}" data-aid="${a.id}">${inr(v)}</button>`).join("")}</div>
-     <div class="bidin"><input id="bid-in" type="number" min="${n}" step="${a.inc}" placeholder="Or enter ${inr(n)} or more" aria-label="Bid amount"><button class="btn g" data-bid="${a.id}">Place bid</button></div>
-     <label class="toggle"><span>Auto-bid up to a maximum ${has("plus")?"":'<span class="pro">PRO+</span>'}<br><span class="xs muted" style="font-weight:500">We bid for you, one step at a time</span></span><span class="switch"><input type="checkbox" id="auto-on" ${showAuto?"checked":""}><i></i></span></label>
+    const lock=!has("pro"),dis=lock?"disabled":"",autoLock=!has("plus");
+    action=`${lock?`<div class="warn"><b>Bidding needs Pro.</b> You're on Free, so you can watch this auction and its bids. <button class="btn g" style="padding:4px 12px;margin-left:6px" data-tier="pro">See Pro</button></div>`:""}${youTop?`<div class="warn" style="color:var(--ok);font-weight:800">You're the top bidder</div>`:""}
+     <div class="quickbids">${[n,n+a.inc,n+a.inc*3].map(v=>`<button data-qbid="${v}" data-aid="${a.id}" ${dis} title="${lock?"Bidding needs Pro":""}">${inr(v)}</button>`).join("")}</div>
+     <div class="bidin"><input id="bid-in" type="number" min="${n}" step="${a.inc}" placeholder="Or enter ${inr(n)} or more" aria-label="Bid amount" ${dis}><button class="btn g" data-bid="${a.id}" ${dis}>Place bid</button></div>
+     <label class="toggle"><span>Auto-bid up to a maximum ${autoLock?'<span class="pro">PRO+</span>':""}<br><span class="xs muted" style="font-weight:500">${autoLock?"Auto-bid needs Pro Plus":"We bid for you, one step at a time"}</span></span><span class="switch"><input type="checkbox" id="auto-on" ${showAuto?"checked":""} ${autoLock?"disabled":""}><i></i></span></label>
      <div class="bidin" id="auto-row" ${showAuto?"":"hidden"}><input id="auto-max" type="number" step="${a.inc}" value="${typedMax||a.myMax||n+a.inc*6}" aria-label="Maximum auto-bid"><button class="btn" data-automax="${a.id}">${a.myMax?"Update max":"Save max"}</button></div>
-     ${a.buyNow&&(!t||t.a<a.buyNow)?`<button class="btn" style="padding:11px" data-buynow="${a.id}">Buy Now for ${inr(a.buyNow)}</button>`:""}
+     ${a.buyNow&&(!t||t.a<a.buyNow)?`<button class="btn" style="padding:11px" data-buynow="${a.id}" ${dis}>Buy Now for ${inr(a.buyNow)}${lock?" · needs Pro":""}</button>`:""}
      ${a.fmt==="swapbid"?`<button class="btn p" style="padding:11px" data-swapbid="${a.id}">⇄ Offer a swap instead</button>`:""}`;
   }
   const hist=a.fmt==="sealed"?`<p class="small muted">${a.sealedCount} sealed bids so far. Amounts stay hidden until the reveal.</p>`:a.fmt==="dutch"?`<p class="small muted">No bidding in a price drop. The first person to buy wins.</p>`
@@ -1525,7 +1616,7 @@ function renderAuctionBody(a){
      <div><span class="lbl-s" style="color:var(--gold-ink);margin-bottom:6px">${a.fmt==="sealed"?"Sealed bids":a.fmt==="dutch"?"How it works":"Bid history"}</span>${hist}</div>
      ${a.swaps&&a.swaps.length?`<div><span class="lbl-s" style="margin-bottom:6px">Swap offers</span>${a.swaps.map(s=>`<div class="person small">${av(s.u,"xs")}<span>${s.u==="you"?"You":esc(U[s.u].h)} offered <b>${s.e} ${esc(s.n)}</b></span></div>`).join("")}</div>`:""}
      <div><span class="lbl-s" style="margin-bottom:6px">Verified by Swaapo</span><div class="vlist">${a.verified.map(v=>`<span>${esc(v)}</span>`).join("")}</div></div>
-     <p class="xs muted">Bids are binding. A bid in the last 2 minutes adds 2 minutes. The winner pays into SwaapoSafe escrow, and the seller is paid after the item is confirmed.</p>
+     <p class="xs muted">Bids are binding. A bid in the last 2 minutes adds 2 minutes. The winner pays through our licensed payment partner, which holds the money until the buyer confirms the item. Swaapo never holds your money.</p>
    </div></div>`;
   const auto=host.querySelector("#auto-on");if(auto)auto.addEventListener("change",e=>{host.querySelector("#auto-row").hidden=!e.target.checked;if(!e.target.checked)a.myMax=0});
   if(typed&&host.querySelector("#bid-in"))host.querySelector("#bid-in").value=typed;
@@ -1561,17 +1652,19 @@ function openStory(i){
 function rail(){
   const ct=document.getElementById("coin-tag");if(ct)ct.textContent=COINS.toLocaleString("en-IN");document.querySelectorAll(".coinpill b").forEach(b=>b.textContent=COINS.toLocaleString("en-IN"));
   const end=auctions().filter(a=>!ended(a)).sort((a,b)=>a.end-b.end).slice(0,3);
-  $("#sidead").hidden=isTeen();if(!isTeen())$("#sidead").innerHTML=sideAdHTML();
+  $("#sidead").hidden=isTeen()||LAUNCH_MVP;if(!isTeen()&&!LAUNCH_MVP)$("#sidead").innerHTML=sideAdHTML();
 
-  $("#ending").hidden=!canSeeAuctions();document.documentElement.dataset.minor=isTeen()?"1":"";
+  $("#ending").hidden=!canSeeAuctions()||LAUNCH_MVP;document.documentElement.dataset.minor=isTeen()?"1":"";
   $("#ending").innerHTML=`<h3>Ending soon</h3>${end.map(a=>`<button class="person trend" data-auction="${a.id}" style="align-items:center"><span class="av sm" style="background:var(--tile);font-size:1.1rem">${a.e}</span><span class="who"><b>${esc(a.item)}</b><span class="xs muted"><span data-aprice="${a.id}">${inr(curPrice(a))}</span> · <span data-end="${a.id}">${left(a.end-Date.now())}</span></span></span></button>`).join("")}<a href="#auctions" class="small" style="font-weight:800;color:var(--gold-ink)">Auction House →</a>`;
-  $("#myitems").innerHTML=MY.map(m=>{const n=POSTS.filter(p=>p.type==="item"&&p.u!=="you"&&matchOf(p.want)===m).length;
+  $("#myitems").innerHTML=MY.length?"":'<p class="small muted" style="margin:0">Nothing listed yet. <button class="linkbtn" data-compose="item">List an item</button></p>';
+  if(MY.length)$("#myitems").innerHTML=MY.map(m=>{const n=POSTS.filter(p=>p.type==="item"&&p.u!=="you"&&matchOf(p.want)===m).length;
     return `<div class="person"><span class="av sm" style="background:var(--tile);font-size:1.1rem">${m.e}</span><div class="who"><b>${esc(m.n)}</b><span class="xs muted">${n} ${n===1?"person wants":"people want"} this</span></div></div>`}).join("");
+  $("#trends-h").textContent=`Trending wants ${nearLabel()}`;
   $("#trends").innerHTML=[["Bicycle",34],["Headphones",28],["Vintage watch",21],["Study table",19],["Camera",12]].map(([w,n],i)=>`<button class="trend" data-search="${w}"><span><span class="xs muted">${i+1} · Wanted</span><br><b>${w}</b></span><span class="xs muted" style="align-self:center">${n} posts</span></button>`).join("");
   const pt=$("#pro-tag");if(pt)pt.textContent=TIER==="plus"?"PRO+":TIER==="pro"?"PRO":"FREE";
 }
 function badges(){
-  const m=CONVS.filter(c=>c.unread).length,a=ALERTS.filter(x=>x.new).length;
+  const m=CONVS.filter(c=>c.unread&&!isBlocked(c.u)).length,a=ALERTS.filter(x=>x.new&&okAlert(x)).length;
   document.querySelectorAll('[data-badge="messages"]').forEach(d=>{d.textContent=m;d.hidden=!m});
   document.querySelectorAll('[data-badge="alerts"]').forEach(d=>{d.textContent=a;d.hidden=!a});
 }
@@ -1580,6 +1673,7 @@ function badges(){
 function go(v){if(location.hash==="#"+v)route();else location.hash=v}
 function route(){
   const v=location.hash.slice(1)||"feed";
+  if(isSoon(v)){vSoon(v);rail();badges();return}
   document.querySelectorAll(".rail .nav[data-v]").forEach(a=>a.dataset.v===v?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current"));
   document.querySelectorAll(".tabs-b [data-go]").forEach(b=>b.dataset.go===v?b.setAttribute("aria-current","page"):b.removeAttribute("aria-current"));
   ((["auctions","exclusive","brand"].includes(v)&&!canSeeAuctions())?{[v]:vAuctionGate}:{})[v]?vAuctionGate():({settings:vSettings,resell:vResell,privacy:()=>vInfo("privacy"),"privacy-centre":()=>vInfo("centre"),terms:()=>vInfo("terms"),cookies:()=>vInfo("cookies"),developers:()=>vInfo("developers"),careers:()=>vInfo("careers"),donate:vDonate,gather:vGather,offers:vOffers,exclusive:vExclusive,brand:()=>vBrand(viewBrand),reels:vReels,addons:()=>evHub("addons"),create:vCreate,coins:vCoins,draws:vRewards,ads:EDITION==="web"?vAds:vWebOnly,about:EDITION==="web"?vAbout:vWebOnly,events:()=>evHub("events"),groups:vGroups,group:vGroup,how:vHow,safety:vSafety,help:vHelp,auctions:vAuctions,swipe:vSwipe,explore:vExplore,pro:vPro,messages:vMessages,alerts:()=>{vAlerts();setTimeout(()=>{ALERTS.forEach(a=>a.new=false);badges()},1500)},profile:()=>vProfile("you"),user:()=>vProfile(viewUser||"you")}[v]||vFeed)();
@@ -1615,17 +1709,16 @@ document.addEventListener("click",e=>{
   if(d.qbid){const a=P(d.aid);if(placeBid(a,+d.qbid))refreshAuction(a);return}
   if(d.bid){const a=P(d.bid);const inp=document.getElementById("bid-in");const v=+inp.value;if(!v){toast(`Enter a bid of ${inr(minNext(a))} or more.`);return}if(placeBid(a,v)){inp.value="";refreshAuction(a)}return}
   if(d.automax){if(!need23("Bidding and buying by auction are for members 23 and over. You can still watch."))return;if(!need("plus","Auto-bid is a Pro Plus feature. We bid for you, one step at a time, up to your maximum."))return;const a=P(d.automax);const v=+document.getElementById("auto-max").value;if(!v||v<minNext(a)){toast(`Set a maximum of at least ${inr(minNext(a))}.`);return}a.myMax=v;if(!topBid(a)||topBid(a).u!=="you")placeBid(a,minNext(a),true);toast(`Auto-bid on, up to ${inr(v)}`,true);refreshAuction(a);return}
-  if(d.buynow){if(!need23("Bidding and buying by auction are for members 23 and over. You can still watch."))return;if(!need("pro","Buying from auctions needs Pro or Pro Plus."))return;const a=P(d.buynow);a.bids.unshift({u:"you",a:a.buyNow,t:"now"});a.sold=true;a.soldTo="you";toast("It's yours! Pay into SwaapoSafe escrow to complete.",true);refreshAuction(a);rerenderPost(a.id);return}
-  if(d.buydutch){if(!need23("Bidding and buying by auction are for members 23 and over. You can still watch."))return;if(!need("pro","Buying from auctions needs Pro or Pro Plus."))return;const a=P(d.buydutch);const pr=dutchPrice(a);a.dutch.s=pr;a.sold=true;a.soldTo="you";toast(`Bought at ${inr(pr)}. Pay into SwaapoSafe escrow to complete.`,true);refreshAuction(a);rerenderPost(a.id);return}
+  if(d.buynow){if(!need23("Bidding and buying by auction are for members 23 and over. You can still watch."))return;if(!need("pro","Buying from auctions needs Pro or Pro Plus."))return;const a=P(d.buynow);a.bids.unshift({u:"you",a:a.buyNow,t:"now"});a.sold=true;a.soldTo="you";toast("It's yours. Next step: pay to complete the order.",true);refreshAuction(a);rerenderPost(a.id);return}
+  if(d.buydutch){if(!need23("Bidding and buying by auction are for members 23 and over. You can still watch."))return;if(!need("pro","Buying from auctions needs Pro or Pro Plus."))return;const a=P(d.buydutch);const pr=dutchPrice(a);a.dutch.s=pr;a.sold=true;a.soldTo="you";toast(`Bought at ${inr(pr)}. Next step: pay to complete the order.`,true);refreshAuction(a);rerenderPost(a.id);return}
   if(d.seal){if(!need23("Bidding and buying by auction are for members 23 and over. You can still watch."))return;if(!need("pro","Sealed bids need Pro or Pro Plus."))return;const a=P(d.seal);const v=+document.getElementById("bid-in").value;if(!v||v<a.start){toast(`Your sealed bid must be at least ${inr(a.start)}.`);return}a.mySealed=v;a.sealedCount++;toast("Sealed. Good luck at the reveal!",true);refreshAuction(a);return}
   if(d.swapbid){if(!need23("Bidding and buying by auction are for members 23 and over. You can still watch."))return;if(!need("pro","Taking part in auctions needs Pro or Pro Plus."))return;const a=P(d.swapbid);a.swaps=a.swaps||[];if(!a.swaps.some(s=>s.u==="you")){a.swaps.push({u:"you",e:MY[0].e,n:MY[0].n});toast(`Swap offered: your ${MY[0].s}`)}renderAuctionBody(a);return}
   if(d.conv){activeConv=+d.conv;CONVS[activeConv].unread=false;window._dmOpen=true;vMessages();badges();return}
   if(d.back!==undefined){window._dmOpen=false;vMessages();return}
   if(d.quick){$("#m-in").value=d.quick;$("#m-in").focus();return}
-  if(d.accept!==undefined){const c=CONVS[activeConv];c.msgs[+d.accept].state="accepted";c.msgs.push({t:"me",x:"Accepted! When and where works for you?"});vMessages();toast("It's a match!");const nm2=U[c.u].n;setTimeout(()=>{c.msgs.push({t:"them",x:"Swap done! Rated you ★★★★★"});earnCoins(c.u);ecoSwap(c.u);if(location.hash==="#messages")vMessages()},3500);return}
-  if(d.decline!==undefined){CONVS[activeConv].msgs[+d.decline].state="declined";vMessages();return}
   if(d.readall!==undefined){ALERTS.forEach(a=>a.new=false);vAlerts();badges();return}
   if(d.ptab){profTab=d.ptab;vProfile(d.pk);return}
+  if(d.dm&&isBlocked(d.dm)){toast("You've blocked this member. Unblock them to send a message.");return}
   if(d.dm){let ci=CONVS.findIndex(c=>c.u===d.dm);if(ci<0){CONVS.unshift({u:d.dm,unread:false,msgs:[]});ci=0}activeConv=ci;window._dmOpen=true;go("messages");return}
   if(d.go){go(d.go);return}
 });
@@ -1721,7 +1814,7 @@ function openCampaign(){
     if(d.budget<100)return fail("The minimum daily budget is ₹100.");
     if(d.days<1)return fail("Run it for at least 1 day.");
     const c={...d,id:"c"+Date.now(),own:true,status:"In review",imp:0,clicks:0};CAMPS.unshift(c);close();toast("Submitted. Our team reviews ads before they go live.",true);go("ads");
-    setTimeout(()=>{c.status="Active";toast(`“${c.hd}” is live Check the feed.`,true);if(location.hash==="#ads")vAds()},3500);
+    setTimeout(()=>{c.status="Active";toast(`“${c.hd}” is live. Check the feed.`,true);if(location.hash==="#ads")vAds()},3500);
   });
 }
 /* ================= info pages ================= */
@@ -1752,18 +1845,20 @@ function vHow(){
 }
 function vSafety(){
   main.innerHTML=`<div class="glass"><div class="vhead"><div><h2>Swap safely</h2><p class="small muted">Most exchanges go smoothly. A few habits make sure yours does too.</p></div></div>
-   <div class="fmts"><div><b>Before</b><span class="small muted">Read the listing, ask questions, check the profile and trust score.</span></div><div><b>During</b><span class="small muted">Meet in public, in daylight. Test items before you swap.</span></div><div><b>After</b><span class="small muted">Mark it complete, rate honestly, and report problems within 7 days.</span></div><div><b>Auctions</b><span class="small muted">Pay only through SwaapoSafe escrow. Never pay outside the app.</span></div></div>
+   <div class="fmts"><div><b>Before</b><span class="small muted">Read the listing, ask questions, check the profile and trust score.</span></div><div><b>During</b><span class="small muted">Meet in public, in daylight. Test items before you swap.</span></div><div><b>After</b><span class="small muted">Mark it complete, rate honestly, and report problems within 7 days.</span></div><div><b>Money</b><span class="small muted">Swaps never involve money. Never pay anyone, and report anyone who asks.</span></div></div>
+   <div class="vhead" style="padding-top:0"><h3>If they don't show up</h3></div>
+   <div style="padding:0 18px 4px" class="small"><div class="vlist"><span>Wait 15 minutes, then message them in the Swaapo chat</span><span>Don't leave your item with anyone else, and don't go to a second, private place</span><span>If they still don't come, go home. You haven't lost anything</span><span>Use “Report a problem” on the swap and choose “They didn't show up”. Repeated no-shows lose trust and can be suspended</span></div></div>
    <div class="vhead" style="padding-top:0"><h3>Spot a scam</h3></div>
-   <div style="padding:0 18px 18px" class="small"><div class="vlist"><span>Never share an OTP, password or UPI PIN</span><span>Scanning a QR code is for paying, never for receiving</span><span>No “courier fee” or “deposit” before an exchange</span><span>Be wary of pressure to move to WhatsApp</span></div>
+   <div style="padding:0 18px 18px" class="small"><div class="vlist"><span>Never share an OTP, password or UPI PIN</span><span>Scanning a QR code is for paying, never for receiving</span><span>No “courier fee”, “deposit” or advance before an exchange</span><span>Be wary of pressure to move to WhatsApp</span></div>
    <p style="margin-top:12px">Cyber fraud helpline: <b>1930</b> · cybercrime.gov.in · Emergency: <b>112</b></p></div></div>`;
 }
-function helpQs(){return [["What is Swaapo?","India's first exchange marketplace from God's Own Country. Swap what you don't use for what you want."],["Is it free?","Yes. Free lets you browse, like, comment, chat and swap. Pro adds bidding and up to 3 auctions a month. Pro Plus unlocks everything."],...(EDITION==="web"?[["Who runs Swaapo?","Swaapo is a HPY initiative, based in Kochi, Kerala."],["How do I advertise?","Open Advertise, create a campaign, choose your ad spaces and budget, and submit it for review."]]:[["How do I advertise?","Ads are managed on Swaapo Web. Open it on a computer and choose Advertise."]]),["Who can use Swaapo?","Anyone aged 15 or over. Members aged 15–17 join with a parent or guardian's consent and can browse, chat, swap, join groups and events, and watch live auctions. Bidding, auctions, paid plans and draws are for members 18 and over."],["Is the Lucky Draw a lottery?","No. Lotteries need a paid ticket, and only state governments can run them in India. Swaapo draws and giveaways are always free to enter, for every plan, and paying never improves your chances."],["What are Events and Groups?","Events are swap meets, fairs and live auctions you can RSVP to. Groups are communities around the things you swap, like cycles, books or toys."],["Can I add cash to a swap?","No cash. Every 5-star swap earns 100 Swaapo Coins, and once you have 1,000 you can add coins to balance a deal."],["What are Swaapo Coins?","Rewards you earn from 5-star swaps and can use in your deals. In the future, Swaapo Coins may become a digital currency."]];
+function helpQs(){return [["What is Swaapo?","India's first exchange marketplace from God's Own Country. Swap what you don't use for what you want."],["Is it free?","Yes. Listing, swiping, chatting and swapping are free. Swaps never involve money."],...(EDITION==="web"?[["Who runs Swaapo?","Swaapo is a HPY initiative, based in Kochi, Kerala."],["What if they don't show up?","Wait 15 minutes and message them in the chat. If they still don't come, go home and use Report a problem on the swap, choosing They didn't show up."]]:[["What if they don't show up?","Wait 15 minutes and message them in the chat. If they still don't come, go home and use Report a problem on the swap, choosing They didn't show up."]]),["Who can use Swaapo?","Anyone aged 15 or over. Members aged 15–17 need a parent or guardian to confirm their account with a code we send to the guardian's phone."],["How does a swap work?","Offer one of your items for theirs. They can accept, decline or counter-offer, and you can withdraw while they decide. Once you agree, plan the meet-up in the chat, swap in person, and both mark it complete. Then you rate each other."],["Can I add cash or coins to a swap?","No. Swaps are item for item. Never pay anyone or accept payment for a swap."],["What are Swaapo Coins?","A small thank-you reward. You get them when a swap is complete and you've both rated each other. They have no cash value and can't be bought, sold or traded."]];
 }
 function vHelp(){const q=helpQs();
   main.innerHTML=`<div class="glass"><div class="vhead"><h2>Help</h2></div><div style="padding:0 16px 16px">${q.map(([a,b])=>`<details class="qa"><summary>${a}</summary><p class="small muted">${b}</p></details>`).join("")}</div></div>`;
 }
 function openMore(){
-  const {w,close}=modal(`<div class="shead"><h3>More</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div><div class="sbody" style="gap:6px">${[["explore","Explore"],["events","Events & Add-ons"],["gather","Gatherings"],["offers","Offers near you"],["resell","Swaapo Resell"],["donate","Swaapo Donate"],["groups","Groups"],["reels","Reels"],...(canSeeAuctions()?[["exclusive","◆ Swaapo Exclusive"]]:[]),["swipe","Swipe to match"],["coins","Swaapo Coins"],["draws","Draws & Giveaways"],["messages","Messages"],...(EDITION==="web"?[["ads","Advertise"],["about","About Swaapo"]]:[]),["how","How it works"],["terms","Terms"],["privacy","Privacy Policy"],["privacy-centre","Privacy Centre"],["cookies","Cookies"],["developers","Developers"],["careers","Careers"],["safety","Safety"],["help","Help"],["settings","Account settings"]].map(([k,l])=>`<a class="nav" href="#${k}" style="border:1px solid var(--glass-line)">${l}</a>`).join("")}<button class="nav" data-logout style="border:1px solid var(--glass-line);color:var(--rose)">Log out</button></div>`,"More");
+  const {w,close}=modal(`<div class="shead"><h3>More</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div><div class="sbody" style="gap:6px">${[["explore","Explore"],["events","Events & Add-ons"],["gather","Gatherings"],["offers","Offers near you"],["resell","Swaapo Resell"],["donate","Swaapo Donate"],["groups","Groups"],["reels","Reels"],...(canSeeAuctions()?[["exclusive","◆ Swaapo Exclusive"]]:[]),["swipe","Swipe to match"],["coins","Swaapo Coins"],["draws","Draws & Giveaways"],["messages","Messages"],...(EDITION==="web"?[["ads","Advertise"],["about","About Swaapo"]]:[]),["how","How it works"],["terms","Terms"],["privacy","Privacy Policy"],["privacy-centre","Privacy Centre"],["cookies","Cookies"],["developers","Developers"],["careers","Careers"],["safety","Safety"],["help","Help"],["settings","Account settings"]].filter(([k])=>!isSoon(k)).map(([k,l])=>`<a class="nav" href="#${k}" style="border:1px solid var(--glass-line)">${l}</a>`).join("")}<button class="nav" data-logout style="border:1px solid var(--glass-line);color:var(--rose)">Log out</button></div>`,"More");
   w.querySelectorAll("a").forEach(a=>a.addEventListener("click",close));
 }
 document.addEventListener("click",e=>{
@@ -1794,14 +1889,16 @@ function welcomeHTML(){return `<div class="glass welcome"><span class="xs" style
 /* ================= events & groups ================= */
 const WEB_URL="https://claude.ai/artifact/TeYxUMXdchPKHzxwrvSpXJ";
 const EV_GRAD=["linear-gradient(135deg,#6A3AA0,#0E6E6E)","linear-gradient(135deg,#3A2E14,#B08A3E)","linear-gradient(135deg,#0B3B39,#2FB59C)","linear-gradient(135deg,#5A1F3B,#E07A5F)","linear-gradient(135deg,#1C2A5A,#6A3AA0)"];
+// Example events are dated relative to today. With the backend, they come from GET /api/events.
+const evWhen=(days,time)=>`${new Date(NOW+days*864e5).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}).replace(",","")} · ${time}`;
 let EVENTS=[
- {id:"e1",t:"Fort Kochi Sunday Swap Meet",e:"🏖️",when:"Sun 26 Oct · 4–7 pm",where:"Vasco da Gama Square, Fort Kochi",host:"team",kind:"Swap meet",going:186,int:240,g:0,d:"Bring 3 things you don't use and leave with 3 you'll love. Volunteers help match swaps on the spot. Free entry."},
- {id:"e2",t:"Textbook Swap Fair",e:"📚",when:"Sat 1 Nov · 10 am–2 pm",where:"Town Hall, Ernakulam North",host:"fatima",kind:"Swap fair",going:312,int:410,g:1,grp:"g5",d:"Engineering, medical, school and competitive-exam books. Swap last year's books for this year's."},
- {id:"e3",t:"Live Auction Night: Vintage Watches",e:"⌚",when:"Fri 31 Oct · 9 pm",where:"Online · Auction House",host:"dev",kind:"Live auction",going:540,int:820,g:4,grp:"g3",live:true,d:"Six restored watches, ten minutes each. Pro and Pro Plus members can bid. Everyone can watch."},
- {id:"e4",t:"Kids' Toy Swap Morning",e:"🧸",when:"Sat 8 Nov · 9–11 am",where:"Community Hall, Kaloor",host:"anjali",kind:"Swap meet",going:95,int:150,g:3,grp:"g4",d:"Toys, books and ride-ons for ages 1–10. Clean and complete toys only, please."},
- {id:"e5",t:"Cycle Swap & Repair Day",e:"🚲",when:"Sun 9 Nov · 7–10 am",where:"Infopark Phase 1, Kakkanad",host:"arjun",kind:"Workshop",going:128,int:200,g:2,grp:"g1",d:"Free tune-ups, then swap bikes, parts and gear. Morning ride for anyone who wants to join."},
- {id:"e6",t:"Cherai Beach Clean-up",e:"🏖️",when:"Sun 16 Nov · 6:30–9 am",where:"Cherai Beach, Vypin",host:"team",kind:"Clean-up",going:214,int:330,g:2,d:"Community clean-up drive. Gloves, bags and breakfast provided. Plastic collected goes to a certified recycler, and we post the weight after."},
- {id:"e7",t:"Vembanad Lake Shore Clean-up",e:"🛶",when:"Sat 29 Nov · 7–10 am",where:"Thanneermukkom, Alappuzha",host:"team",kind:"Clean-up",going:156,int:240,g:0,d:"Funded by our 10,000-swap milestone. We clear plastic from the shore and canals with a local fishermen's group."}
+ {id:"e1",t:"Fort Kochi Sunday Swap Meet",e:"🏖️",when:evWhen(2,"4–7 pm"),where:"Vasco da Gama Square, Fort Kochi",host:"team",kind:"Swap meet",going:186,int:240,g:0,d:"Bring 3 things you don't use and leave with 3 you'll love. Volunteers help match swaps on the spot. Free entry."},
+ {id:"e2",t:"Textbook Swap Fair",e:"📚",when:evWhen(6,"10 am–2 pm"),where:"Town Hall, Ernakulam North",host:"fatima",kind:"Swap fair",going:312,int:410,g:1,grp:"g5",d:"Engineering, medical, school and competitive-exam books. Swap last year's books for this year's."},
+ {id:"e3",t:"Live Auction Night: Vintage Watches",e:"⌚",when:evWhen(4,"9 pm"),where:"Online · Auction House",host:"dev",kind:"Live auction",going:540,int:820,g:4,grp:"g3",live:true,d:"Six restored watches, ten minutes each. Pro and Pro Plus members can bid. Everyone can watch."},
+ {id:"e4",t:"Kids' Toy Swap Morning",e:"🧸",when:evWhen(13,"9–11 am"),where:"Community Hall, Kaloor",host:"anjali",kind:"Swap meet",going:95,int:150,g:3,grp:"g4",d:"Toys, books and ride-ons for ages 1–10. Clean and complete toys only, please."},
+ {id:"e5",t:"Cycle Swap & Repair Day",e:"🚲",when:evWhen(14,"7–10 am"),where:"Infopark Phase 1, Kakkanad",host:"arjun",kind:"Workshop",going:128,int:200,g:2,grp:"g1",d:"Free tune-ups, then swap bikes, parts and gear. Morning ride for anyone who wants to join."},
+ {id:"e6",t:"Cherai Beach Clean-up",e:"🏖️",when:evWhen(21,"6:30–9 am"),where:"Cherai Beach, Vypin",host:"team",kind:"Clean-up",going:214,int:330,g:2,d:"Community clean-up drive. Gloves, bags and breakfast provided. Plastic collected goes to a certified recycler, and we post the weight after."},
+ {id:"e7",t:"Vembanad Lake Shore Clean-up",e:"🛶",when:evWhen(34,"7–10 am"),where:"Thanneermukkom, Alappuzha",host:"team",kind:"Clean-up",going:156,int:240,g:0,d:"Funded by our 10,000-swap milestone. We clear plastic from the shore and canals with a local fishermen's group."}
 ].map(e=>({...e,me:null}));
 let GROUPS=[
  {id:"g1",n:"Kochi Cycle Swappers",e:"🚲",m:1240,d:"Bikes, parts, gear and Sunday rides around Kochi.",cat:"Sports",joined:true,g:2,feed:[["arjun","Anyone have a 26T rear derailleur? Can swap a spare saddle."],["kiran","Cycle Swap & Repair Day is on 9 Nov. See you there!"]]},
@@ -1843,7 +1940,7 @@ function openNewEvent(){
    <div class="field"><label for="ev-t">Event name</label><input id="ev-t" maxlength="60" placeholder="e.g., Panampilly Nagar Book Swap"></div>
    <div class="two"><div class="field"><label for="ev-k">Type</label><select id="ev-k"><option>Swap meet</option><option>Swap fair</option><option>Live auction</option><option>Workshop</option><option>Meet-up</option></select></div>
    <div class="field"><label for="ev-e">Icon</label><select id="ev-e">${["🔁","📚","🧸","🚲","🪴","⌚","🎸","👗","📷"].map(x=>`<option>${x}</option>`).join("")}</select></div></div>
-   <div class="two"><div class="field"><label for="ev-w">When</label><input id="ev-w" placeholder="e.g., Sat 15 Nov · 10 am"></div><div class="field"><label for="ev-p">Where</label><input id="ev-p" placeholder="e.g., Marine Drive, Kochi"></div></div>
+   <div class="two"><div class="field"><label for="ev-w">When</label><input id="ev-w" placeholder="e.g., Saturday · 10 am"></div><div class="field"><label for="ev-p">Where</label><input id="ev-p" placeholder="e.g., Marine Drive, Kochi"></div></div>
    <div class="field"><label for="ev-g">Post in group (optional)</label><select id="ev-g"><option value="">No group</option>${GROUPS.filter(g=>g.joined).map(g=>`<option value="${g.id}">${esc(g.n)}</option>`).join("")}</select></div>
    <div class="field"><label for="ev-d">Details</label><textarea id="ev-d" placeholder="What to bring, who it's for, any rules"></textarea></div>
    <span class="err" id="ev-err" hidden></span><button class="btn g" type="submit" style="padding:12px">Publish event</button></form>`,"Create event");
@@ -1887,7 +1984,7 @@ function vWebOnly(){
 function refreshCommunity(){const h=location.hash.slice(1)||"feed";if(h==="events")vEvents();else if(h==="groups")vGroups();else if(h==="group")vGroup();else document.querySelectorAll(".slider").forEach((sl,i)=>{const x=sl.scrollLeft;const isEv=sl.closest(".slide").querySelector("h3").textContent.includes("Events");sl.innerHTML=isEv?EVENTS.map(e=>evCard(e)).join(""):GROUPS.map(grpCard).join("");sl.scrollLeft=x})}
 document.addEventListener("click",e=>{
   const t=e.target.closest("[data-rsvp],[data-event],[data-evcal],[data-newevent],[data-group],[data-join],[data-newgroup]");if(!t)return;const d=t.dataset;
-  if(d.rsvp){const ev=EVENTS.find(x=>x.id===d.rsvp);ev.me=ev.me===d.r?null:d.r;toast(ev.me==="going"?"You're going We'll remind you the day before.":ev.me==="int"?"Marked as interested ★":"RSVP removed");refreshCommunity();if(document.querySelector(".modal")){document.querySelector(".modal").remove();openEvent(ev.id)}return}
+  if(d.rsvp){const ev=EVENTS.find(x=>x.id===d.rsvp);ev.me=ev.me===d.r?null:d.r;toast(ev.me==="going"?"You're going. We'll remind you the day before.":ev.me==="int"?"Marked as interested ★":"RSVP removed");refreshCommunity();if(document.querySelector(".modal")){document.querySelector(".modal").remove();openEvent(ev.id)}return}
   if(d.event){openEvent(d.event);return}
   if(d.evcal){toast("Added to your calendar (preview)");return}
   if(d.newevent!==undefined){openNewEvent();return}
@@ -1908,13 +2005,12 @@ let GIVEAWAYS=[
 ];
 const QUIZ={q:"This Seiko 5 automatic was made in which decade?",e:"⌚",opts:["1960s","1970s","1990s"],ans:1,prize:"1 month of Pro Plus",answered:null};
 let STORY_SENT=false;
-let BOXES=[{id:"bx1",cat:"Books",e:"📚",min:500,left:12,c:"#DCCBF2"},{id:"bx2",cat:"Electronics accessories",e:"🎧",min:1500,left:5,c:"#C9D8F5"},{id:"bx3",cat:"Kids & toys",e:"🧸",min:800,left:8,c:"#F3D2A8"}];
 let rTab="draw";
 function drawEntries(){return DRAW_WAYS.reduce((s,w)=>s+(DRAW.done[w[0]]?w[4]:0),0)}
 function rewardsSlideHTML(){return `<div class="glass slide"><div class="slidehead"><h3>This week's Lucky Draw</h3><a href="#draws" class="small" style="font-weight:800">Enter free →</a></div>
   <div style="padding:0 16px;display:flex;gap:14px;align-items:center"><span class="drawimg" style="width:84px;height:84px;font-size:2.6rem">${DRAW.e}</span><div style="min-width:0"><b>Win a ${esc(DRAW.prize)}</b><div class="small muted">Sponsored by ${esc(DRAW.sponsor)} · ${DRAW.total.toLocaleString("en-IN")} entries · ends in <span class="num" data-drawend>${left(DRAW.end-Date.now())}</span></div><div class="xs" style="color:var(--teal-ink);font-weight:800;margin-top:2px">Free to enter. No purchase or plan needed.</div></div></div></div>`}
 function vRewards(){
-  const tabs=[["draw","Lucky Draw"],["give","Giveaways"],["skill","Challenges"],["box","Mystery Box"]];
+  const tabs=[["draw","Lucky Draw"],["give","Giveaways"],["skill","Challenges"]];
   let body="";
   if(rTab==="draw"){const me=drawEntries();body=`
    <div class="drawhero"><span class="drawimg">${DRAW.e}</span><div style="min-width:0;flex:1"><span class="fmt">Lucky Draw · this week</span><h2 style="margin:8px 0 4px;font-size:1.5rem">Win a ${esc(DRAW.prize)}</h2><p class="small muted">Sponsored by ${esc(DRAW.sponsor)} (example sponsor)</p>
@@ -1930,8 +2026,6 @@ function vRewards(){
      ${QUIZ.answered!==null?`<span class="small" style="font-weight:800;color:${QUIZ.answered===QUIZ.ans?"var(--ok)":"var(--rose)"}">${QUIZ.answered===QUIZ.ans?"Correct! You're in the draw.":"Not quite. It's the 1970s."}</span>`:""}</div></div>
    <div class="evcard"><div class="evbd" style="gap:8px"><span class="fmt" style="align-self:flex-start">Story · judged</span><span style="font-size:2.4rem"></span><b>Best swap story of the month</b><span class="xs muted">Tell us about a swap that made your day. A panel picks the winner for creativity and usefulness. Prize: featured on Swaapo and a sponsor voucher.</span>
      ${STORY_SENT?`<div class="warn">✓ Story submitted. Results on 1 November.</div>`:`<form id="storyf" style="display:flex;flex-direction:column;gap:8px"><textarea id="story-in" maxlength="400" placeholder="My best swap was…" style="border:1px solid var(--glass-line);background:var(--glass);border-radius:12px;padding:10px;min-height:80px;color:var(--ink);font:inherit"></textarea><button class="btn g" type="submit" style="align-self:flex-start">Submit story</button></form>`}</div></div></div>`;
-  if(rTab==="box")body=`<div class="vhead" style="padding-top:0"><p class="small muted">Swap one of your items for a sealed box. You always see the category and minimum value first, and you can return it within 48 hours. No money involved.</p><span class="vbadge" style="background:var(--warn-bg);color:var(--gold-ink)">Pilot · legal review pending</span></div>
-   <div class="evgrid">${BOXES.map(b=>`<div class="evcard"><div class="evcover" style="background:linear-gradient(135deg,${b.c},rgba(139,92,246,.35));color:#161A2B"><span class="eve"></span><span style="position:absolute;bottom:10px;right:12px;font-size:1.6rem">${b.e}</span></div><div class="evbd"><b>${esc(b.cat)} box</b><span class="xs muted">Minimum value ${inr(b.min)} · ${b.left} boxes left</span><button class="btn g" style="padding:6px 12px;align-self:flex-start;margin-top:4px" data-box="${b.id}" ${b.left?"":"disabled"}>Swap for a box</button></div></div>`).join("")}</div>`;
   main.innerHTML=`<div class="glass">
    ${isTeen()?`<div class="teenbox" style="margin:16px 16px 0"><b>Teen account</b><div class="small muted">Draws, giveaways and challenges are for members 18 and over. You can look around, but can't enter.</div></div>`:""}<div class="vhead"><div><span class="fmt">Draws &amp; Giveaways</span><h2 style="margin-top:8px">Win things, free</h2><p class="small muted" style="margin-top:4px">Every draw and giveaway on Swaapo is free to enter, for every plan. There are no tickets or paid entries.</p></div><button class="btn" data-rules>Official rules</button></div>
    <div class="chips">${tabs.map(([k,l])=>`<button aria-pressed="${rTab===k}" data-rtab="${k}">${l}</button>`).join("")}</div>
@@ -1955,14 +2049,13 @@ function openRules(){
 setInterval(()=>{document.querySelectorAll("[data-drawend]").forEach(el=>el.textContent=left(DRAW.end-Date.now()));document.querySelectorAll("[data-gend]").forEach(el=>{const g=GIVEAWAYS.find(x=>x.id===el.dataset.gend);if(g)el.textContent=left(g.end-Date.now())})},1000);
 
 document.addEventListener("click",e=>{
-  const t=e.target.closest("[data-way],[data-give],[data-quiz],[data-box],[data-rtab],[data-rules]");if(!t)return;const d=t.dataset;
+  const t=e.target.closest("[data-way],[data-give],[data-quiz],[data-rtab],[data-rules]");if(!t)return;const d=t.dataset;
   if((d.way||d.give||d.quiz!==undefined||d.box)&&!need18("Draws, giveaways, challenges and the Mystery Box are for members 18 and over."))return;
   if(d.rtab){rTab=d.rtab;vRewards();return}
   if(d.rules!==undefined){openRules();return}
   if(d.way){DRAW.done[d.way]=true;const w=DRAW_WAYS.find(x=>x[0]===d.way);toast(`+${w[4]} ${w[4]>1?"entries":"entry"}`,true);vRewards();return}
   if(d.give){const g=GIVEAWAYS.find(x=>x.id===d.give);g.entered=true;toast(`You're in the ${g.biz} giveaway`,true);vRewards();return}
   if(d.quiz!==undefined){QUIZ.answered=+d.quiz;vRewards();return}
-  if(d.box){const b=BOXES.find(x=>x.id===d.box);b.left--;toast(`Box swap requested. We'll check your item before swapping it for the ${b.cat} box.`,true);vRewards();return}
 });
 
 
@@ -1979,36 +2072,34 @@ function vCoins(){
      <div><b>Earn</b><span class="small muted">Every swap rated ★★★★★ earns you <b>100 coins</b>.</span></div>
      <div><b>Unlock at 1,000</b><span class="small muted">With 1,000 coins or more, you can use coins in your deals.</span></div>
      <div><b>⇄ Swap with coins</b><span class="small muted">Have a camera but want a motorbike? Offer the camera plus coins, or coins on their own if you have enough.</span></div>
-     <div class="future"><b>Coming in the future</b><span class="small muted">Swaapo Coins as a digital currency. Stay tuned.</span></div>
    </div>
    ${circleHTML()}
    <div class="vhead" style="padding-top:0"><h3>Activity</h3></div>
    <div style="padding:0 16px 16px;display:flex;flex-direction:column;gap:8px">${COIN_LOG.map(([a,t,d])=>`<div class="way"><span class="wi"></span><div style="flex:1;min-width:0"><b class="small">${esc(t)}</b><div class="xs muted">${d} ago</div></div><b class="num" style="color:${a.startsWith("+")?"var(--ok)":"var(--muted)"}">${a}</b></div>`).join("")}</div>
    <p class="xs muted" style="padding:0 18px 18px">Swaapo Coins are rewards inside Swaapo. They have no cash value and can't be bought or sold.</p></div>`;
 }
-function earnCoins(k){setTimeout(syncCoins,0);const name=U[k].n,bonus=CIRCLE&&U[k].w?50:0;COINS+=100+bonus;COIN_LOG.unshift(["+100",`5-star swap with ${name}`,"now"]);if(bonus)COIN_LOG.unshift(["+50","Women's Circle bonus","now"]);const ct=document.getElementById("coin-tag");if(ct)ct.textContent=COINS.toLocaleString("en-IN");document.querySelectorAll(".coinpill b,.pcoin").forEach(b=>b.textContent=COINS.toLocaleString("en-IN"));toast(`★★★★★ swap with ${name}. +${100+bonus} ${bonus?" (Circle bonus)":""}`,true)}
+function earnCoins(k){setTimeout(()=>{syncCoins();updCoins()},0);const name=U[k].n,bonus=CIRCLE&&U[k].w?50:0;COINS+=100+bonus;COIN_LOG.unshift(["+100",`Swap with ${name}, both rated`,"now"]);if(bonus)COIN_LOG.unshift(["+50","Women's Circle bonus","now"]);const ct=document.getElementById("coin-tag");if(ct)ct.textContent=COINS.toLocaleString("en-IN");document.querySelectorAll(".coinpill b,.pcoin").forEach(b=>b.textContent=COINS.toLocaleString("en-IN"));toast(`You've both rated. +${100+bonus} Swaapo Coins for your swap with ${name.split(" ")[0]}${bonus?", including the Circle bonus":""}.`,true);return 100+bonus}
 
 /* ================= Swaapo Resell: buy and sell used items near you ================= */
 const RS=[
- {id:"rs1",u:"rahul",cat:"Electronics",e:"📱",item:"iPhone 12, 128 GB, blue",price:28500,neg:true,swap:false,cond:"Good",km:3,t:"2h",desc:"Battery health 86%. Bill and box available. Small scratch on the back glass.",views:214},
- {id:"rs2",u:"vikram",cat:"Bike & Car",e:"🏍️",item:"Royal Enfield Classic 350 (2019)",price:132000,neg:true,swap:false,cond:"Good",km:6,t:"5h",desc:"28,000 km, single owner, all service records. Insurance valid till March.",views:540},
  {id:"rs3",u:"anjali",cat:"Home",e:"🛋️",item:"3-seater sofa with cushions",price:9500,neg:true,swap:true,cond:"Like new",km:4,t:"1d",desc:"Moving to a smaller flat. Fabric is clean, no pets at home. Buyer collects.",views:132},
  {id:"rs4",u:"fatima",cat:"Books",e:"📚",item:"NEET prep books, full set",price:1800,neg:false,swap:true,cond:"Good",km:12,t:"1d",desc:"Physics, chemistry and biology guides plus 10 years of solved papers. Some pencil notes.",views:98},
  {id:"rs5",u:"sneha",cat:"Electronics",e:"💻",item:"MacBook Air M1, 8/256",price:52000,neg:true,swap:false,cond:"Like new",km:5,t:"3d",desc:"Battery cycle count 140. Charger and box included.",views:387},
  {id:"rs6",u:"kiran",cat:"Sports",e:"🏏",item:"English willow cricket bat",price:3200,neg:true,swap:true,cond:"Good",km:18,t:"4d",desc:"Knocked in and oiled. Grip replaced last month.",views:61},
- {id:"rs7",u:"arjun",cat:"Bike & Car",e:"🚗",item:"Maruti Swift VXi (2017)",price:415000,neg:true,swap:false,cond:"Good",km:7,t:"6d",desc:"Petrol, 54,000 km, second owner. New tyres. Test drive in Edappally.",views:902},
  {id:"rs8",u:"meera",cat:"Fashion",e:"👗",item:"Designer lehenga, worn once",price:6500,neg:true,swap:true,cond:"Like new",km:3,t:"1w",desc:"Size M. Dry-cleaned. Dupatta and blouse included.",views:176,sold:true}
 ];
+// Phones and vehicles stay off Resell until we can verify ownership (IMEI check for phones, RC check for vehicles).
+const RS_NEEDS_CHECK=/\b(phones?|iphone|smartphone|mobile|galaxy|redmi|oneplus|pixel|cars?|bikes?|motorbike|motorcycle|scooters?|scooty|vehicle|activa|enfield|maruti|hyundai)\b/i;
 let RS_CAT="All",RS_SORT="near",RS_Q="",RS_MINE=false;const RS_SAVED=new Set();
 const rsImg=r=>r.photo?`style="background-image:url('${r.photo}')"`:"";
 function rsCard(r){return `<button class="rscard" data-rs="${r.id}" aria-label="${esc(r.item)}, ${inr(r.price)}"><span class="rsimg" ${rsImg(r)}>${r.photo?"":r.e}${r.sold?'<span class="rstag sold">Sold</span>':r.swap?'<span class="rstag">Swap OK</span>':""}</span><span class="rsbody"><span class="rsprice">${inr(r.price)}</span><span class="small" style="font-weight:700">${esc(r.item)}</span><span class="xs muted">${esc(U[r.u].area)} · ${r.km} km · ${esc(r.t)}</span></span></button>`}
 function vResell(){let list=RS.filter(r=>RS_MINE?r.u==="you":true).filter(r=>RS_CAT==="All"||r.cat===RS_CAT).filter(r=>!RS_Q||(r.item+" "+r.desc).toLowerCase().includes(RS_Q.toLowerCase()));
   list=[...list].sort(RS_SORT==="low"?(a,b)=>a.price-b.price:RS_SORT==="high"?(a,b)=>b.price-a.price:RS_SORT==="new"?(a,b)=>RS.indexOf(a)-RS.indexOf(b):(a,b)=>a.km-b.km);
   main.innerHTML=`<div class="glass"><div class="vhead"><div><span class="fmt">Swaapo Resell</span><h2 style="margin-top:8px">Buy and sell used items near you</h2><p class="small muted" style="margin-top:4px">Set your price, chat with buyers and meet nearby. Free to post. Prefer to exchange? Tick “Swap OK” and swappers can offer too.</p></div><button class="btn g" data-rsnew>+ Sell something</button></div>
-   <div class="rsbar"><input id="rs-q" type="search" placeholder="Search phones, bikes, sofas…" value="${esc(RS_Q)}" aria-label="Search Resell"><select id="rs-sort" aria-label="Sort"><option value="near" ${RS_SORT==="near"?"selected":""}>Nearest first</option><option value="new" ${RS_SORT==="new"?"selected":""}>Newest first</option><option value="low" ${RS_SORT==="low"?"selected":""}>Price: low to high</option><option value="high" ${RS_SORT==="high"?"selected":""}>Price: high to low</option></select></div>
-   <div class="chips"><button aria-pressed="${RS_MINE}" data-rsmine>My ads</button>${CATS.filter(c=>c!=="Medical & Care").map(c=>`<button aria-pressed="${!RS_MINE&&RS_CAT===c}" data-rscat="${c}">${c}</button>`).join("")}</div>
+   <div class="rsbar"><input id="rs-q" type="search" placeholder="Search books, furniture, gadgets…" value="${esc(RS_Q)}" aria-label="Search Resell"><select id="rs-sort" aria-label="Sort"><option value="near" ${RS_SORT==="near"?"selected":""}>Nearest first</option><option value="new" ${RS_SORT==="new"?"selected":""}>Newest first</option><option value="low" ${RS_SORT==="low"?"selected":""}>Price: low to high</option><option value="high" ${RS_SORT==="high"?"selected":""}>Price: high to low</option></select></div>
+   <div class="chips"><button aria-pressed="${RS_MINE}" data-rsmine>My ads</button>${CATS.filter(c=>c!=="Medical & Care"&&c!=="Bike & Car").map(c=>`<button aria-pressed="${!RS_MINE&&RS_CAT===c}" data-rscat="${c}">${c}</button>`).join("")}</div>
    ${list.length?`<div class="rsgrid">${list.map(rsCard).join("")}</div>`:`<div class="empty"><b>${RS_MINE?"You haven't posted any ads":"No ads match"}</b><p class="small muted">${RS_MINE?"Sell something you don't use any more.":"Try another category or search."}</p><button class="btn g" data-rsnew>Sell something</button></div>`}
-   <div class="teenbox" style="margin:0 16px 16px"><b>Buy safely</b><div class="small muted">Meet in a public place and check the item before you pay. Never pay in advance or scan a QR code to “receive” money. For more costly items, pay with SwaapoSafe so your money is held until you confirm the item.</div></div></div>`;
+   <div class="teenbox" style="margin:0 16px 16px"><b>Buy safely</b><div class="small muted">Meet in a public place and check the item before you pay. Never pay in advance or scan a QR code to “receive” money. Payments will go through our licensed payment partner, which holds the money until you confirm the item. Swaapo never holds it.</div></div></div>`;
   const q=main.querySelector("#rs-q");q.addEventListener("input",()=>{RS_Q=q.value;clearTimeout(q._t);q._t=setTimeout(()=>{vResell();const n=main.querySelector("#rs-q");n.focus();n.setSelectionRange(n.value.length,n.value.length)},250)});
   main.querySelector("#rs-sort").addEventListener("change",e=>{RS_SORT=e.target.value;vResell()})}
 function openRs(id){const r=RS.find(x=>x.id===id);if(!r)return;const mine=r.u==="you";r.views++;
@@ -2029,7 +2120,7 @@ function openRsNew(){if(!need18("Buying and selling on Resell is for members 18 
   const {w,close}=modal(`<div class="shead"><h3>Sell something</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
    <form class="sbody" novalidate><label class="drop" id="rn-drop" for="rn-photo">Add a photo<br><span class="xs">Daylight, show any wear</span></label><input type="file" id="rn-photo" accept="image/*" hidden>
    <div class="field"><label for="rn-t">What are you selling?</label><input id="rn-t" maxlength="70" placeholder="e.g. Samsung 32-inch smart TV"></div>
-   <div class="two"><div class="field"><label for="rn-c">Category</label><select id="rn-c">${CATS.slice(1).filter(c=>c!=="Medical & Care").map(c=>`<option>${c}</option>`).join("")}</select></div><div class="field"><label for="rn-k">Condition</label><select id="rn-k"><option>New</option><option>Like new</option><option selected>Good</option><option>Fair</option></select></div></div>
+   <div class="two"><div class="field"><label for="rn-c">Category</label><select id="rn-c">${CATS.slice(1).filter(c=>c!=="Medical & Care"&&c!=="Bike & Car").map(c=>`<option>${c}</option>`).join("")}</select></div><div class="field"><label for="rn-k">Condition</label><select id="rn-k"><option>New</option><option>Like new</option><option selected>Good</option><option>Fair</option></select></div></div>
    <div class="field"><label for="rn-p">Price (₹)</label><input id="rn-p" type="number" min="1" step="1" inputmode="numeric" placeholder="5000"></div>
    <label class="check"><input type="checkbox" id="rn-n" checked> Price is negotiable</label>
    <label class="check"><input type="checkbox" id="rn-s"> Swap OK: I'll also consider swaps</label>
@@ -2039,6 +2130,7 @@ function openRsNew(){if(!need18("Buying and selling on Resell is for members 18 
   w.querySelector("form").onsubmit=e=>{e.preventDefault();const $=x=>w.querySelector(x),er=w.querySelector(".err"),fail=m=>{er.textContent=m;er.hidden=false};
     const t=$("#rn-t").value.trim(),p=Math.round(+$("#rn-p").value),d=$("#rn-d").value.trim(),c=$("#rn-c").value;
     if(t.length<3)return fail("Say what you're selling.");if(!(p>0))return fail("Add a price.");if(p>10000000)return fail("For items over ₹1 crore, contact us first.");
+    if(RS_NEEDS_CHECK.test(t+" "+d))return fail("Phones and vehicles need an ownership check (IMEI for phones, RC for vehicles) before they can be sold. They can't be listed on Resell yet.");
     if(MED_BANNED.test(t+" "+d)||/\b(gun|pistol|knife|alcohol|liquor|whisky|cigarette|vape|ganja|weed)\b/i.test(t+" "+d))return fail("That item can't be sold on Swaapo.");
     const emo={Electronics:"📱",Books:"📚",Sports:"🚲",Home:"🪑",Fashion:"👕",Hobbies:"🎸",Kids:"🧸","Bike & Car":"🏍️"};
     RS.unshift({id:"rs"+Date.now(),u:"you",cat:c,e:emo[c]||"📦",item:t,price:p,neg:$("#rn-n").checked,swap:$("#rn-s").checked,cond:$("#rn-k").value,km:0,t:"now",desc:d||"No description.",views:0,photo});
@@ -2050,13 +2142,122 @@ document.addEventListener("click",e=>{const t=e.target.closest("[data-rs],[data-
   if(d.rscat){RS_CAT=d.rscat;RS_MINE=false;vResell();return}
   if(d.rsmine!==undefined){RS_MINE=!RS_MINE;vResell();return}
   if(d.rschat){if(!need18("Buying on Resell is for members 18 and over."))return;const r=R(d.rschat);rsChat(r,`Hi, is your ${r.item} still available?`);closeAll();toast("Message sent. Opening your chat.");go("messages");return}
-  if(d.rsoffer){if(!need18("Buying on Resell is for members 18 and over."))return;const r=R(d.rsoffer);const v=prompt(`Your offer for ${r.item} (asking ${inr(r.price)}):`,Math.round(r.price*.9));if(v===null)return;const n=Math.round(+v);if(!(n>0)){toast("Enter an amount in rupees.");return}if(n<r.price*.4){toast("That's well below the asking price. Try a fairer offer.");return}rsChat(r,`Hi! Would you take ${inr(n)} for the ${r.item}?`);closeAll();toast(`Offer of ${inr(n)} sent to ${U[r.u].n.split(" ")[0]}.`,true);return}
+  if(d.rsoffer){if(!need18("Buying on Resell is for members 18 and over."))return;const r=R(d.rsoffer);closeAll();
+    askInput({title:"Make an offer",label:`Your offer for ${r.item} (asking ${inr(r.price)})`,type:"number",value:String(Math.round(r.price*.9)),ok:"Send offer",
+      validate:v=>{const n=Math.round(+v);return !(n>0)?"Enter an amount in rupees.":n<r.price*.4?"That's well below the asking price. Try a fairer offer.":null}})
+      .then(v=>{if(v===null)return;const n=Math.round(+v);rsChat(r,`Hi! Would you take ${inr(n)} for the ${r.item}?`);toast(`Offer of ${inr(n)} sent to ${U[r.u].n.split(" ")[0]}.`,true)});return}
   if(d.offerrs){const r=R(d.offerrs);closeAll();rsChat(r,`Hi! Would you swap your ${r.item} for my ${MY[0].n.toLowerCase()}?`);toast("Swap offer sent in chat.");return}
   if(d.rssave){RS_SAVED.has(d.rssave)?RS_SAVED.delete(d.rssave):RS_SAVED.add(d.rssave);t.textContent=RS_SAVED.has(d.rssave)?"Saved":"Save";t.setAttribute("aria-pressed",RS_SAVED.has(d.rssave));toast(RS_SAVED.has(d.rssave)?"Saved":"Removed from saved");return}
   if(d.rsreport){closeAll();toast("Thanks. Our team will review this ad within 24 hours.");return}
   if(d.rssold){R(d.rssold).sold=true;closeAll();toast("Marked as sold. Congratulations!",true);re();return}
-  if(d.rsprice){const r=R(d.rsprice);const v=prompt("New price (₹):",r.price);if(v===null)return;const n=Math.round(+v);if(!(n>0)){toast("Enter an amount in rupees.");return}r.price=n;closeAll();toast("Price updated");re();return}
-  if(d.rsdel){if(!confirm("Delete this ad?"))return;RS.splice(RS.findIndex(x=>x.id===d.rsdel),1);closeAll();toast("Ad deleted");re()}});
+  if(d.rsprice){const r=R(d.rsprice);closeAll();askInput({title:"Change price",label:"New price (₹)",type:"number",value:String(r.price),ok:"Update price",validate:v=>Math.round(+v)>0?null:"Enter an amount in rupees."})
+      .then(v=>{if(v===null)return;r.price=Math.round(+v);toast("Price updated");re()});return}
+  if(d.rsdel){const id=d.rsdel;closeAll();askConfirm({title:"Delete this ad?",body:"Buyers won't see it any more.",ok:"Delete ad",danger:true}).then(ok=>{if(!ok)return;RS.splice(RS.findIndex(x=>x.id===id),1);toast("Ad deleted");re()})}});
+
+/* ================= Shared dialogs, reports and blocking ================= */
+function onClosed(w,fn){const o=new MutationObserver(()=>{if(!document.body.contains(w)){o.disconnect();fn()}});o.observe(document.body,{childList:true})}
+// In-app replacements for the browser's confirm() and prompt().
+function askConfirm({title,body="",ok="Confirm",danger=false}){return new Promise(res=>{
+  const {w,close}=modal(`<div class="shead"><h3>${esc(title)}</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div><div class="sbody">${body?`<p class="small">${body}</p>`:""}<div style="display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap"><button class="btn" data-x>Cancel</button><button class="btn ${danger?"d":"p"}" data-ok>${esc(ok)}</button></div></div>`,title);
+  let done=false;w.querySelector("[data-ok]").onclick=()=>{done=true;close();res(true)};onClosed(w,()=>{if(!done)res(false)})})}
+function askInput({title,label,type="text",value="",placeholder="",ok="Save",hint="",validate}){return new Promise(res=>{
+  const {w,close}=modal(`<div class="shead"><h3>${esc(title)}</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div><form class="sbody" novalidate><div class="field"><label for="ai-v">${esc(label)}</label>${type==="textarea"?`<textarea id="ai-v" rows="3" maxlength="500" placeholder="${esc(placeholder)}">${esc(value)}</textarea>`:`<input id="ai-v" type="${type}" ${type==="number"?'inputmode="numeric" min="1"':""} value="${esc(value)}" placeholder="${esc(placeholder)}">`}${hint?`<span class="hint">${esc(hint)}</span>`:""}</div><span class="err" hidden></span><div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn" type="button" data-x>Cancel</button><button class="btn p" type="submit">${esc(ok)}</button></div></form>`,title);
+  let done=false;w.querySelector("form").onsubmit=e=>{e.preventDefault();const v=w.querySelector("#ai-v").value.trim(),msg=validate?validate(v):null;if(msg){const er=w.querySelector(".err");er.textContent=msg;er.hidden=false;return}done=true;close();res(v)};onClosed(w,()=>{if(!done)res(null)})})}
+
+// One report component for posts, profiles, chats, swaps and orders, feeding one review queue.
+let REPORTS=[];
+const REPORT_REASONS={post:["Scam or asks for money","Fake or misleading listing","Prohibited item","Harassment or hate","Something else"],
+  profile:["Scam or asks for money","Fake profile or impersonation","They didn't show up","Harassment or hate","Something else"],
+  chat:["Scam or asks for money","They didn't show up","Harassment or hate","Spam","Something else"],
+  swap:["They didn't show up","Item not as described","They changed the deal","Scam or asks for money","Something else"],
+  order:["Not paid","Not shipped","Item not as described","Damaged or missing","Something else"]};
+const REPORT_NAMES={post:"post",profile:"profile",chat:"conversation",swap:"swap",order:"order"};
+function openReport({type,who,label}){
+  const reasons=REPORT_REASONS[type],canBlock=who&&who!=="you"&&U[who]&&!isBlocked(who);
+  const {w,close}=modal(`<div class="shead"><h3>Report a problem</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div><form class="sbody" novalidate>
+    <p class="small muted">${esc(label)}</p>
+    <fieldset style="border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:6px"><legend class="small" style="font-weight:800;margin-bottom:6px">What's wrong with this ${REPORT_NAMES[type]}?</legend>
+      ${reasons.map((r,i)=>`<label class="check"><input type="radio" name="rr" value="${esc(r)}" ${i?"":"checked"}> ${esc(r)}</label>`).join("")}</fieldset>
+    <div class="field"><label for="rr-d">Details <span class="muted" style="font-weight:500">optional</span></label><textarea id="rr-d" rows="3" maxlength="500" placeholder="What happened?"></textarea></div>
+    ${canBlock?`<label class="check"><input type="checkbox" id="rr-b"> Also block ${esc(U[who].n)}</label>`:""}
+    <p class="xs muted">Our team reviews every report within 24 hours. The other person isn't told who reported them.</p>
+    <button class="btn p" type="submit">Send report</button></form>`,"Report a problem");
+  w.querySelector("form").onsubmit=e=>{e.preventDefault();
+    REPORTS.unshift({id:"r"+Date.now(),type,label,who:who||null,reason:w.querySelector("input[name=rr]:checked").value,details:w.querySelector("#rr-d").value.trim(),at:new Date().toISOString(),status:"In review"});
+    if(SESSION){SESSION.reports=REPORTS;saveAccounts()}
+    const b=w.querySelector("#rr-b");if(b&&b.checked)blockUser(who);
+    close();toast("Report sent. Our team reviews every report within 24 hours.");if(location.hash==="#settings")vSettings()}}
+function reportsHTML(){return `<div class="vhead"><h3>Your reports</h3></div><div class="idseg">${REPORTS.length?REPORTS.map(r=>`<div class="adm" style="align-items:flex-start"><div style="flex:1;min-width:0"><b class="small">${esc(r.reason)}</b><div class="xs muted">${esc(r.label)} · ${new Date(r.at).toLocaleDateString("en-IN",{day:"numeric",month:"short"})}</div></div><span class="pgst rev">${esc(r.status)}</span></div>`).join(""):'<p class="small muted" style="margin:0">You haven\'t reported anything. Use "Report a problem" on any post, profile, chat or swap.</p>'}</div>`}
+
+// Blocking hides their posts, comments, profile and chats, and stops messages both ways.
+const isBlocked=k=>!!(k&&k!=="you"&&typeof PRIV==="function"&&(PRIV().blocked||[]).includes(k));
+function blockUser(k){const p=PRIV();if(!p.blocked.includes(k))p.blocked.push(k);FOLLOW.delete(k);saveAccounts();toast(`You blocked ${U[k].n}. You won't see each other's posts or messages.`);if(!document.querySelector(".modal"))route()}
+function unblockUser(k){const p=PRIV();p.blocked=p.blocked.filter(x=>x!==k);saveAccounts();toast(`Unblocked ${U[k].n}`);if(!document.querySelector(".modal"))route()}
+function memberMenu(k,{post,chat}={}){
+  const n=U[k].n,b=isBlocked(k);
+  const {w,close}=modal(`<div class="shead"><h3>${esc(n)}</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div><div class="sbody" style="gap:8px">
+    ${post?`<button class="btn" data-mm="rpost">Report this post</button>`:""}${chat?`<button class="btn" data-mm="rchat">Report this conversation</button>`:""}
+    <button class="btn" data-mm="rprof">Report ${esc(n.split(" ")[0])}'s profile</button>
+    <button class="btn ${b?"":"d"}" data-mm="block">${b?"Unblock":"Block"} ${esc(n.split(" ")[0])}</button>
+    <button class="btn" data-mm="view">View profile</button></div>`,"Member options");
+  w.addEventListener("click",async e=>{const t=e.target.closest("[data-mm]");if(!t)return;const a=t.dataset.mm;close();
+    if(a==="rpost")openReport({type:"post",who:k,label:`${n}'s post: ${post.item||post.text||""}`.slice(0,90)});
+    if(a==="rchat")openReport({type:"chat",who:k,label:`Conversation with ${n}`});
+    if(a==="rprof")openReport({type:"profile",who:k,label:`${n} (@${U[k].h})`});
+    if(a==="view"){viewUser=k;go("user")}
+    if(a==="block"){if(b)unblockUser(k);else if(await askConfirm({title:`Block ${n}?`,body:`You won't see each other's posts, and neither of you can message the other. ${esc(n.split(" ")[0])} isn't told.`,ok:"Block",danger:true}))blockUser(k)}})}
+document.addEventListener("click",e=>{const t=e.target.closest("[data-sw],[data-pmore],[data-cmore],[data-umore],[data-unblock]");if(!t)return;const d=t.dataset;
+  if(d.sw){swapAction(d.sw,+d.i);return}
+  if(d.pmore){const p=POSTS.find(x=>x.id===d.pmore);if(p)memberMenu(p.u,{post:p});return}
+  if(d.cmore){memberMenu(d.cmore,{chat:true});return}
+  if(d.umore){memberMenu(d.umore);return}
+  if(d.unblock){unblockUser(d.unblock)}});
+
+/* ================= Guardian confirmation for members aged 15–17 ================= */
+// The account stays inactive until the parent or guardian enters the code sent to their phone.
+function guardianStep(acc){
+  showAuth("signup");const card=document.querySelector("#auth .authcard");if(!card)return;
+  const masked=acc.guardian.replace(/^\+91(\d{2})\d{5}(\d{3})$/,"+91 $1•••••$2");
+  card.innerHTML=`<form class="sbody" id="gst" novalidate style="padding:0"><h3 style="margin:0">Ask your parent or guardian</h3>
+    <p class="small muted">We sent a 6-digit code to <b>${esc(masked)}</b>. Your account starts once they give you the code and you enter it here. It lets them know you've joined Swaapo.</p>
+    <div class="field"><label for="gst-c">Code from your parent or guardian</label><input id="gst-c" class="otp" inputmode="numeric" autocomplete="off" maxlength="6" placeholder="••••••"></div>
+    <span class="err" hidden></span><button class="btn g" type="submit" style="padding:12px">Confirm and start</button>
+    <p class="authnote"><button type="button" class="linkbtn" id="gst-r">Send the code again</button> · <button type="button" class="linkbtn" data-amode="login">Back to log in</button></p></form>`;
+  const er=card.querySelector(".err"),fail=m=>{er.textContent=m;er.hidden=false};
+  const send=()=>sendOtp(acc.guardian,"guardian");send();
+  card.querySelector("#gst-r").onclick=()=>{er.hidden=true;send()};
+  card.querySelector("#gst").onsubmit=e=>{e.preventDefault();er.hidden=true;const m=checkOtp(card.querySelector("#gst-c").value.trim());if(m)return fail(m);
+    acc.status="active";acc.guardianConfirmed=new Date().toISOString();saveAccounts();signIn(acc,"new");setTimeout(()=>{toast("Your parent or guardian confirmed your account. Welcome!",true);openOnboarding()},700)}}
+
+/* ================= Auction orders: pay, ship, confirm, payout ================= */
+// A won auction becomes one order. Money is held by a licensed payment partner, never by Swaapo.
+const soldTo=a=>a.soldTo||(ended(a)&&topBid(a)&&topBid(a).u)||null;
+const youWon=a=>soldTo(a)==="you"&&a.u!=="you";
+const ORDER_STEPS=[["Pay","Pay through our licensed payment partner. It holds the money until you confirm the item."],["Seller ships","The seller packs the item and adds tracking."],["Confirm","Check the item and confirm it arrived as described."],["Payout","The payment partner releases the money to the seller."]];
+function orderHTML(a){const o=a.order||(a.order={step:0}),buyer=youWon(a),price=inr(topBid(a)?topBid(a).a:curPrice(a));
+  const next=buyer?[`<button class="btn g" data-ord="pay" data-aid="${a.id}">Pay ${price}</button>`,'<span class="small muted">Waiting for the seller to ship. We\'ll notify you.</span>',`<button class="btn g" data-ord="received" data-aid="${a.id}">I received it as described</button>`,'<span class="small muted">Releasing the payment to the seller.</span>','<span class="small">Order complete. The seller has been paid.</span>'][o.step]
+    :['<span class="small muted">Waiting for the buyer to pay.</span>',`<button class="btn g" data-ord="ship" data-aid="${a.id}">Add tracking and mark shipped</button>`,'<span class="small muted">Waiting for the buyer to confirm.</span>','<span class="small muted">Your payout is on its way.</span>','<span class="small">Order complete. You\'ve been paid, less the fee for your plan.</span>'][o.step];
+  return `<div class="ostep-box"><b>${buyer?"You won":"Sold"} · ${price}</b>
+    <ol class="ostep">${ORDER_STEPS.map(([t,d],i)=>`<li class="${i<o.step?"ok":i===o.step?"now":""}"><b>${i<o.step?"✓ ":""}${t}</b><span class="xs muted">${d}</span>${o.track&&i===1?`<span class="xs">Tracking: ${esc(o.track)}</span>`:""}</li>`).join("")}</ol>
+    <div class="ostep-next">${o.step<4?`<span class="xs muted">Next step</span>`:""}${next}</div>
+    <button class="linkbtn xs" data-ord="report" data-aid="${a.id}">Report a problem with this order</button></div>`}
+document.addEventListener("click",async e=>{const t=e.target.closest("[data-ord]");if(!t)return;const a=POSTS.find(p=>p.id===t.dataset.aid);if(!a)return;const o=a.order||(a.order={step:0}),k=t.dataset.ord;
+  const step=(n,msg)=>{o.step=n;if(msg)toast(msg,true);refreshAuction(a);rerenderPost(a.id)};
+  if(k==="report"){openReport({type:"order",who:youWon(a)?a.u:soldTo(a),label:`Order: ${a.item}`});return}
+  if(k==="pay"){if(!await askConfirm({title:`Pay ${inr(topBid(a)?topBid(a).a:curPrice(a))}?`,body:"In this preview no money moves. On Swaapo, our licensed payment partner holds it until you confirm the item.",ok:"Pay now"}))return;
+    step(1,"Paid. The seller has been told to ship.");setTimeout(()=>{if(o.step===1){o.track="DTDC D1234567";step(2,`${U[a.u].n.split(" ")[0]} shipped your ${a.item}.`)}},2500);return}
+  if(k==="ship"){const tr=await askInput({title:"Add tracking",label:"Courier and tracking number",placeholder:"e.g. DTDC D1234567",ok:"Mark shipped",validate:v=>v.length<4?"Add the courier and tracking number.":null});if(tr===null)return;o.track=tr;step(2,"Marked shipped. The buyer will confirm when it arrives.");
+    setTimeout(()=>{if(o.step===2)step(4,"The buyer confirmed. Your payout is on its way.")},3000);return}
+  if(k==="received"){if(!await askConfirm({title:"Confirm you received it?",body:"Only confirm once you've checked the item. The seller is paid after you confirm. If something's wrong, report a problem instead.",ok:"Yes, it's as described"}))return;step(3,"Thanks. The seller is being paid.");setTimeout(()=>{if(o.step===3)step(4)},1500)}});
+
+/* ================= Coming soon (hidden for launch) ================= */
+function vSoon(v){const [t,d]=SOON[v];
+  main.innerHTML=`<div class="glass"><div class="empty" style="padding:48px 20px;gap:12px"><span class="pill" style="font-size:.75rem;font-weight:800;padding:4px 12px;border-radius:999px;border:1px solid var(--glass-line)">Coming soon</span>
+   <h2>${esc(t)}</h2><p class="small muted" style="max-width:420px">${esc(d)} We're launching with swaps first, so this isn't available yet.</p>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center"><a class="btn g" href="#swipe" style="text-decoration:none">Swipe to swap</a><a class="btn" href="#feed" style="text-decoration:none">Back to home</a></div></div></div>`}
+function hideSoonNav(){if(!LAUNCH_MVP)return;document.documentElement.dataset.launch="mvp";
+  Object.keys(SOON).forEach(k=>document.querySelectorAll(`.rail a[href="#${k}"],.right a[href="#${k}"],.tabs-b [data-go="${k}"]`).forEach(el=>{el.hidden=true}))}
+hideSoonNav();
 
 /* ================= Company pages: privacy, terms, cookies, developers, careers, about, help ================= */
 const LEGAL_DATE="28 October 2026";
@@ -2069,28 +2270,28 @@ const INFO={
   <p>This policy explains what personal data Swaapo collects, why, and the choices you have. Swaapo is run by HPY in Kochi, Kerala, India, and follows the Digital Personal Data Protection Act, 2023 (DPDP Act) and the Information Technology Act, 2000.</p>
   <h3>What we collect</h3><table><tr><th>Data</th><th>Why</th></tr>
    <tr><td>Name, username, mobile number, email, date of birth</td><td>To create your account, log you in, confirm your age group and keep accounts genuine</td></tr>
-   <tr><td>ID check result: the ID type and its last 4 digits</td><td>To verify you (optional, adds trust). We never store a full Aadhaar or ID number.</td></tr>
+   <tr><td>For members aged 15–17: a parent or guardian's mobile number</td><td>To send them a code so they can confirm the account</td></tr>
    <tr><td>Area, bio, photos, listings, posts, messages, reviews</td><td>To run your profile, show your items to people nearby and let you swap</td></tr>
-   <tr><td>Swaps, bids, Swaapo Coins, escrow payments</td><td>To complete exchanges and auctions, pay rewards, and keep records the law requires</td></tr>
+   <tr><td>Swaps, ratings, reports and Swaapo Coins</td><td>To complete exchanges, build trust, keep members safe and pay rewards</td></tr>
    <tr><td>Device and usage data, reports</td><td>To keep Swaapo safe, stop fraud and fix problems</td></tr></table>
-  <h3>Who we share it with</h3><ul><li>Other members see your public profile and listings, as set in Privacy controls.</li><li>Service providers that work for us: SMS and email, ID checks (DigiLocker or a licensed e-KYC partner), payments and escrow, hosting. They may only use your data to provide that service.</li><li>Authorities, when the law requires it.</li></ul><p>We don't sell your personal data.</p>
-  <h3>Children</h3><p>You must be 15 or older to join. Members aged 15–17 need a parent or guardian's consent, see no ads, and can't see auctions, paid plans or draws.</p>
-  <h3>How long we keep it</h3><p>While your account is open. When you delete your account, it's removed after a 30-day grace period. Auction, escrow and tax records are kept for as long as the law requires, without your name where possible.</p>
+  <h3>Who we share it with</h3><ul><li>Other members see your public profile and listings, as set in Privacy controls.</li><li>Service providers that work for us: SMS, email and hosting. They may only use your data to provide that service.</li><li>Authorities, when the law requires it.</li></ul><p>We don't sell your personal data.</p>
+  <h3>Children</h3><p>You must be 15 or older to join. Members aged 15–17 need a parent or guardian's consent, see no ads, and need a parent or guardian to confirm their account before it starts.</p>
+  <h3>How long we keep it</h3><p>While your account is open. When you delete your account, it's removed after a 30-day grace period. Reports and safety records are kept for as long as the law requires, without your name where possible.</p>
   <h3>Your rights</h3><ul><li>See a summary of your data and how it's used</li><li>Correct or update it</li><li>Erase it by deleting your account</li><li>Withdraw consent you've given</li><li>Nominate someone to act for you</li><li>Raise a grievance with our Grievance Officer, and then with the Data Protection Board of India</li></ul><p>Use the <a href="#privacy-centre" data-info="centre">Privacy Centre</a> to do these.</p>
   <h3>Grievance Officer</h3><p>Name and contact details will be published here before launch. We reply within the time the law allows.</p>`},
  centre:{t:"Privacy Centre",h:()=>`<p>Control what you share and how your data is used. ${SESSION?"":"<b>Log in to use these controls.</b>"}</p>
-  <div class="pcgrid">${[["settings","Privacy controls","Who sees your profile, who can message you, your location and more."],["settings","Download your data","Get a copy of your profile, listings, messages and coin history."],["settings","Blocked accounts","Block or unblock people."],["settings","ID verification","See what's stored: the ID type and last 4 digits only."],["cookies","Cookie settings","Choose which storage this site may use."],["settings","Delete your account","Erased after a 30-day grace period."]].map(([g,t,d])=>`<button data-pcgo="${g}"><b>${t}</b><span class="xs muted">${d}</span></button>`).join("")}</div>
+  <div class="pcgrid">${[["settings","Privacy controls","Who sees your profile, who can message you, your location and more."],["settings","Download your data","Get a copy of your profile, listings, messages and coin history."],["settings","Blocked accounts","Block or unblock people."],["settings","Your reports","See the reports you've made and their status."],["cookies","Cookie settings","Choose which storage this site may use."],["settings","Delete your account","Erased after a 30-day grace period."]].map(([g,t,d])=>`<button data-pcgo="${g}"><b>${t}</b><span class="xs muted">${d}</span></button>`).join("")}</div>
   <p class="small muted">Read the full <a href="#privacy" data-info="privacy">Privacy Policy</a>. Questions or complaints go to our Grievance Officer.</p>`},
  terms:{t:"Terms & Conditions",h:()=>`${DRAFT}
   <p>These terms apply when you use the Swaapo app or website. By creating an account you agree to them.</p>
-  <h3>1. Who can use Swaapo</h3><ul><li>You must be 15 or older. Members aged 15–17 need a parent or guardian's consent.</li><li>Auctions are visible from 18. Bidding, buying and selling by auction start at 23.</li><li>One account per person and per mobile number. Your details must be true.</li></ul>
+  <h3>1. Who can use Swaapo</h3><ul><li>You must be 15 or older. Members aged 15–17 need a parent or guardian to confirm the account with a code sent to the guardian's phone.</li><li>One account per person and per mobile number. Your details must be true.</li></ul>
   <h3>2. Swapping</h3><ul><li>Swaapo connects members; the exchange is between you and the other member. Describe items honestly, including any wear or faults.</li><li>Meet in a public place and check items before you swap.</li></ul>
   <h3>3. Items you can't list</h3><ul><li>Anything illegal, stolen, counterfeit or recalled</li><li>Weapons, drugs, alcohol, tobacco and vapes</li><li>Medicines, injections, needles, test strips and opened medical consumables</li><li>Live animals, and adult content</li></ul><p>Medical &amp; Care items must be cleaned, disinfected and safe to use.</p>
-  <h3>4. Auctions and SwaapoSafe</h3><ul><li>Only verified items can be auctioned. A bid is a promise to buy if you win.</li><li>The winner pays into SwaapoSafe escrow. The seller is paid after the buyer confirms the item, less the fee for their plan.</li><li>Never pay outside Swaapo.</li></ul>
-  <h3>5. Swaapo Coins, draws and donations</h3><ul><li>Swaapo Coins are rewards with no cash value. They can't be bought, sold or exchanged for money.</li><li>Draws and giveaways are always free to enter. Swaapo runs no lotteries.</li><li>Donated items are free and can't be resold on Swaapo.</li></ul>
-  <h3>6. Plans</h3><p>Pro and Pro Plus are monthly subscriptions for members 18 and over. You can cancel any time; the plan runs to the end of the period you paid for.</p>
+  <h3>4. No money at launch</h3><ul><li>Swaps are item for item. Swaapo doesn't take or hold payments, and you must never ask for or send money for a swap.</li><li>Paid features such as auctions or selling may come later. They will use a licensed payment gateway or escrow provider, and Swaapo will never hold your money itself.</li></ul>
+  <h3>5. Swaapo Coins</h3><ul><li>Swaapo Coins are a small reward, paid once a swap is complete and both members have rated it.</li><li>They have no cash value and can't be bought, sold, traded or exchanged for money.</li></ul>
+  <h3>6. Swaps and ratings</h3><p>An offer can be accepted, declined or countered, and you can withdraw it until it's accepted. A swap is complete only when both members confirm it. Each member then rates the other honestly.</p>
   <h3>7. Your content</h3><p>You own what you post. You let Swaapo show it on Swaapo and in our promotions of your listing. We may remove content that breaks these terms, and suspend accounts that repeatedly do.</p>
-  <h3>8. Liability</h3><p>Swaapo is an intermediary under the Information Technology Act, 2000. We aren't a party to swaps between members and don't guarantee items, but we act on reports and help resolve disputes through SwaapoSafe.</p>
+  <h3>8. Liability</h3><p>Swaapo is an intermediary under the Information Technology Act, 2000. We aren't a party to swaps between members and don't guarantee items, but we act on every report and can suspend members who break these terms.</p>
   <h3>9. Law and disputes</h3><p>These terms are governed by the laws of India. Courts in Kochi, Kerala have jurisdiction. Contact our Grievance Officer first.</p>`},
  cookies:{t:"Cookies & storage",h:()=>{const c=cookiePrefs();return `<p>Swaapo uses your browser's storage to keep you logged in and remember your settings. We don't use advertising or cross-site tracking cookies.</p>
   <table><tr><th>Type</th><th>What it's for</th><th></th></tr>
@@ -2209,21 +2410,21 @@ function gCard(g){const d=new Date(g.when),left=g.size-g.going.length-(G_MINE[g.
    ${mine?`<span class="gtag ok">${g.going.length}/${g.size} going</span>`:st==="in"?'<span class="gtag ok">✓ You\'re going</span>':st==="req"?'<span class="gtag gold">Requested</span>':left<=0?'<span class="gtag">Full</span>':`<button class="btn g" data-gjoin="${g.id}">Join · ₹${gShare(g).toLocaleString("en-IN")}</button>`}</div>
    ${g.note?`<p class="small muted" style="margin:0">“${esc(g.note)}”</p>`:""}</div>`}
 function vGather(){const list=GATHER.filter(gOk).filter(g=>G_FILTER==="all"||(G_FILTER==="women"?g.women:G_FILTER==="mine"?(g.u==="you"||G_MINE[g.id]):g.kind===G_FILTER)).sort((a,b)=>a.when-b.when);
-  main.innerHTML=`<div class="glass"><div class="vhead"><div><span class="fmt">Swaapo Gatherings</span><h2 style="margin-top:8px">Don't go alone. Go together.</h2><p class="small muted" style="margin-top:4px">Find people near you for a concert, match, party, movie or trip, and split the ticket. Your share waits in SwaapoSafe until the host shares the tickets.</p></div><button class="btn g" data-gnew>+ Start a gathering</button></div>
+  main.innerHTML=`<div class="glass"><div class="vhead"><div><span class="fmt">Swaapo Gatherings</span><h2 style="margin-top:8px">Don't go alone. Go together.</h2><p class="small muted" style="margin-top:4px">Find people near you for a concert, match, party, movie or trip, and split the ticket. Your share is held by our licensed payment partner until the host shares the tickets.</p></div><button class="btn g" data-gnew>+ Start a gathering</button></div>
    <div class="chips">${[["all","All"],["mine","Yours"],["women","♀ Women only"],...Object.entries(G_KINDS).filter(([k])=>!(isTeen()&&(k==="party"||k==="trip")))].map(([k,l])=>`<button aria-pressed="${G_FILTER===k}" data-gf="${k}">${l}</button>`).join("")}</div>
    ${list.length?`<div class="ggrid">${list.map(gCard).join("")}</div>`:`<div class="empty"><b>Nothing here yet</b><p class="small muted">Start a gathering and people near you can join.</p></div>`}
    <div class="vhead" style="padding-top:0"><h3>How it stays safe</h3></div>
-   <div class="fmts" style="padding:0 16px 16px"><div><b>Verified people</b><span class="small muted">Hosts need a verified phone and trust 40+. Every profile shows trust and reviews.</span></div><div><b>SwaapoSafe split</b><span class="small muted">Shares are held until the host uploads the tickets. Refunded if the host cancels.</span></div><div><b>Meet at the venue</b><span class="small muted">Meet in public. Share your plan with a friend from the gathering page.</span></div><div><b>Age and women-only</b><span class="small muted">Venues serving alcohol are 23+. Women-only gatherings are visible to Circle members.</span></div></div></div>`}
+   <div class="fmts" style="padding:0 16px 16px"><div><b>Verified people</b><span class="small muted">Hosts need a verified phone and trust 40+. Every profile shows trust and reviews.</span></div><div><b>Protected split</b><span class="small muted">Shares are held until the host uploads the tickets. Refunded if the host cancels.</span></div><div><b>Meet at the venue</b><span class="small muted">Meet in public. Share your plan with a friend from the gathering page.</span></div><div><b>Age and women-only</b><span class="small muted">Venues serving alcohol are 23+. Women-only gatherings are visible to Circle members.</span></div></div></div>`}
 function openGatherJoin(id){const g=GATHER.find(x=>x.id===id);if(!g)return;
   if(g.women&&!CIRCLE){toast("This one is women-only. Join Women's Circle to take part.");return}
   if(!SESSION){toast("Log in to join a gathering.");return}
   const {w,close}=modal(`<div class="shead"><h3>Join this gathering</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
    <form class="sbody" novalidate><b>${esc(g.t)}</b><div class="vlist"><span>${gWhen(g.when)}</span><span>${esc(g.where)}</span><span>Hosted by ${esc(U[g.u].n)} · trust ${U[g.u].trust}</span></div>
-   <div class="gsplit"><div><span class="xs muted">You pay</span><div class="share">₹${gShare(g).toLocaleString("en-IN")}</div></div><div class="xs muted" style="flex:1">Held in SwaapoSafe. Released to ${esc(U[g.u].n.split(" ")[0])} when the tickets are shared with you. Full refund if they cancel or don't accept you.</div></div>
+   <div class="gsplit"><div><span class="xs muted">You pay</span><div class="share">₹${gShare(g).toLocaleString("en-IN")}</div></div><div class="xs muted" style="flex:1">Held by our licensed payment partner. Released to ${esc(U[g.u].n.split(" ")[0])} when the tickets are shared with you. Full refund if they cancel or don't accept you.</div></div>
    <div class="field"><label for="gj-m">Say hello <span class="muted">(optional)</span></label><textarea id="gj-m" rows="2" maxlength="200" placeholder="Hi! I'd love to join. I'll be coming from Kakkanad."></textarea></div>
    <label class="toggle"><span>Share my plan with a friend<br><span class="xs muted">They get the time, place and host's profile</span></span><span class="switch"><input type="checkbox" checked><i></i></span></label>
    <button class="btn g" type="submit" style="padding:12px">Request to join · ₹${gShare(g).toLocaleString("en-IN")}</button><p class="xs muted" style="text-align:center">Example only. No real payment in this preview.</p></form>`,"Join gathering");
-  w.querySelector("form").onsubmit=e=>{e.preventDefault();const msg=w.querySelector("#gj-m").value.trim();G_MINE[g.id]="req";close();toast(`Request sent to ${U[g.u].n.split(" ")[0]}. Your share is held in SwaapoSafe.`,true);if(location.hash==="#gather")vGather();
+  w.querySelector("form").onsubmit=e=>{e.preventDefault();const msg=w.querySelector("#gj-m").value.trim();G_MINE[g.id]="req";close();toast(`Request sent to ${U[g.u].n.split(" ")[0]}. Your share is held by our licensed payment partner.`,true);if(location.hash==="#gather")vGather();
     setTimeout(()=>{G_MINE[g.id]="in";let ci=CONVS.findIndex(c=>c.u===g.u);if(ci<0){CONVS.unshift({u:g.u,unread:true,msgs:[]});ci=0}
       if(msg)CONVS[ci].msgs.push({t:"me",x:msg});CONVS[ci].msgs.push({t:"them",x:`You're in for “${g.t}”! I'll share the tickets here. Meet at ${g.where.split(",")[0]}.`});CONVS[ci].unread=true;
       ALERTS.unshift({new:true,u:g.u,x:`accepted you for <b>${esc(g.t)}</b>`,t:"now",e:"",go:"messages"});badges();toast(`${U[g.u].n.split(" ")[0]} accepted you. Check Messages.`,true);if(location.hash==="#gather")vGather()},2500)}}
@@ -2329,7 +2530,8 @@ function bindMotion(){
   document.querySelectorAll("video[data-loop4]").forEach(v=>{v.addEventListener("timeupdate",()=>{if(v.currentTime>=4)v.currentTime=0});if(still)v.pause()});
 }
 const _vProfile=vProfile;
-vProfile=function(k){_vProfile(k);bindMotion()};
+const _vProfileBlocked=k=>{main.innerHTML=`<div class="glass"><div class="empty" style="padding:40px 20px;gap:10px">${av(k,"lg")}<h2>You've blocked ${esc(U[k].n)}</h2><p class="small muted">You can't see each other's posts, and neither of you can message the other.</p><button class="btn" data-unblock="${k}">Unblock</button></div></div>`};
+vProfile=function(k){if(k&&k!=="you"&&isBlocked(k)){_vProfileBlocked(k);return}_vProfile(k);bindMotion()};
 function pickMotion(slot){
   const inp=document.createElement("input");inp.type="file";inp.accept=slot==="av"?"image/*":"image/*,video/*";
   inp.addEventListener("change",()=>{const f=inp.files[0];if(!f)return;
@@ -2350,7 +2552,7 @@ function promoMeta(p){
    :p.kind==="challenge"?`Prize: ${esc(p.prize)} · Judged by ${esc(p.judge)}`
    :`Minimum value ${inr(p.min)} · ${p.items} items inside · ${p.left} left · Swap for: ${esc(p.want)}`;
 }
-const STUDIO=[["auction","","Auction","Verified items, 7 formats"],["draw","","Lucky draw","Free entry, random winner"],["giveaway","","Giveaway","Give an item away"],["challenge","","Challenge","Skill contest with a prize"],["box","","Mystery box","Sealed box, value guaranteed"],["video","","Video","Up to 2 minutes"]];
+const STUDIO=[["auction","","Auction","Verified items, 7 formats"],["draw","","Lucky draw","Free entry, random winner"],["giveaway","","Giveaway","Give an item away"],["challenge","","Challenge","Skill contest with a prize"],["video","","Video","Up to 2 minutes"]];
 function vCreate(){
   const lock=isTeen()?'<span class="pro">18+</span>':has("plus")?"":'<span class="pro">PRO+</span>';const lockFor=k=>k==="auction"&&!canBid()&&!isTeen()?'<span class="pro">23+</span>':lock;
   main.innerHTML=`<div class="glass"><div class="vhead"><div><span class="fmt">Create</span><h2 style="margin-top:8px">What are you sharing today?</h2><p class="small muted" style="margin-top:4px">Swapping is free for everyone. Pro Plus members get the full creator studio.</p></div></div>
@@ -2446,7 +2648,7 @@ document.addEventListener("click",e=>{
   if(d.penter){const p=POSTS.find(x=>x.id===d.penter);if(!p||p.entered)return;
     if(!need18("Draws, giveaways, challenges and the Mystery Box are for members 18 and over."))return;
     p.entered=true;p.entries++;if(p.kind==="box")p.left=Math.max(0,p.left-1);rerenderPost(p.id);
-    toast(p.kind==="box"?"Box swap requested. We'll check your item first.":p.kind==="challenge"?"You're in the challenge Post your entry with #"+p.item.split(" ")[0].toLowerCase():"You're entered. Good luck!",true)}
+    toast(p.kind==="box"?"Box swap requested. We'll check your item first.":p.kind==="challenge"?"You're in the challenge. Post your entry with #"+p.item.split(" ")[0].toLowerCase():"You're entered. Good luck!",true)}
 });
 
 /* ================= Swaapo Green: every completed swap plants a tree ================= */
@@ -2623,7 +2825,7 @@ function storyTemplate(){
   modal(`<div class="shead"><h3>Story template</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
    <div class="sbody" style="align-items:center"><div style="width:220px;aspect-ratio:9/16;border-radius:22px;background:${PIN_G[4]};display:flex;flex-direction:column;justify-content:space-between;padding:16px;color:#fff;box-shadow:0 0 30px rgba(139,92,246,.4)">
      <span class="brandlogo" role="img" aria-label="Swaapo" style="height:26px;align-self:center"></span><div style="text-align:center"><div style="font-size:4rem">${p.e}</div><div style="font-weight:800;margin-top:6px">${esc(p.item)}</div><div class="xs" style="opacity:.85;margin-top:4px">⇄ Wants: ${esc(p.want||"Open to offers")}</div></div>
-     <div style="display:flex;justify-content:space-between;align-items:flex-end"><span class="xs">@you · Kochi</span><span style="width:46px;height:46px;border-radius:8px;background:repeating-linear-gradient(90deg,#fff 0 4px,#000 4px 7px),#fff;opacity:.9" aria-label="QR code placeholder"></span></div></div>
+     <div style="display:flex;justify-content:space-between;align-items:flex-end"><span class="xs">@${esc(U.you.h)}${myArea()?" · "+esc(myArea()):""}</span><span style="width:46px;height:46px;border-radius:8px;background:repeating-linear-gradient(90deg,#fff 0 4px,#000 4px 7px),#fff;opacity:.9" aria-label="QR code placeholder"></span></div></div>
    <p class="xs muted" style="text-align:center">Example template. In the app this saves as an image for your Instagram or WhatsApp story.</p></div>`,"Story template");
 }
 document.addEventListener("click",e=>{
@@ -2662,9 +2864,9 @@ function vExclusive(){
   main.innerHTML=`<div class="glass">
    <div class="xhero"><div class="lines"></div><span class="xchip">◆ SWAP EXCLUSIVE</span>
      <h2 style="margin-top:12px">One of one. From verified brands.</h2>
-     <p style="margin-top:8px">Brands release a single piece, made once and never repeated, and auction it on Swaapo. Every piece carries a Swaapo certificate number, and every payment waits in SwaapoSafe escrow until it reaches you.</p>
+     <p style="margin-top:8px">Brands release a single piece, made once and never repeated, and auction it on Swaapo. Every piece carries a Swaapo certificate number, and every payment is held by our licensed payment partner until it reaches you.</p>
      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><a class="btn g" href="#exclusive" data-xscroll style="text-decoration:none">Live now (${live.length})</a><button class="btn" data-brandapply>◆ Sell as a brand</button></div></div>
-   <div class="vhead"><h3>Live executive auctions</h3><span class="small muted">${!canBid()?"Watch only: bidding opens at 23":KYC?"✓ You're a verified bidder":"Verified bidders only"}</span></div>
+   <div class="vhead"><h3>Live Exclusive auctions</h3><span class="small muted">${!canBid()?"Watch only: bidding opens at 23":KYC?"✓ You're a verified bidder":"Verified bidders only"}</span></div>
    <div class="xgrid" id="xlive">${live.map(xcardHTML).join("")||'<p class="muted small">No live drops right now.</p>'}</div>
    <div class="vhead" style="padding-top:0"><h3>Upcoming drops</h3></div>
    <div class="xgrid" style="padding-top:0">${DROPS.map(([b,t,e,w],i)=>`<div class="xcard" style="cursor:default"><div class="xi" style="aspect-ratio:16/9;font-size:3rem"><span class="xchip">◆ Coming</span><span aria-hidden="true">${e}</span></div><div class="xb"><span class="br">◆ ${esc(U[b].n)}</span><b>${esc(t)}</b><span class="xs muted">${w}</span><button class="btn ${DROP_ON.has(i)?"":"g"}" style="align-self:flex-start;margin-top:8px" data-dropnotify="${i}" aria-pressed="${DROP_ON.has(i)}">${DROP_ON.has(i)?"Reminder set":"Remind me"}</button></div></div>`).join("")}</div>
@@ -2675,7 +2877,7 @@ function vExclusive(){
      <div><b>◆ Verified brands only</b><span class="small muted">Each brand shows its GSTIN, registered name and trademark or authorisation before it can sell.</span></div>
      <div><b>Certificate on every piece</b><span class="small muted">A Swaapo serial, maker's photos and a signed certificate are registered before the auction starts. Transfers stay on the record.</span></div>
      <div><b>Verified bidders</b><span class="small muted">Bidders are 18+ on Pro or Pro Plus and verify their ID once. That keeps bids serious.</span></div>
-     <div><b>SwaapoSafe escrow</b><span class="small muted">You pay into escrow and the brand is paid after you confirm the piece, with a GST invoice from the brand.</span></div>
+     <div><b>Licensed escrow</b><span class="small muted">You pay into escrow and the brand is paid after you confirm the piece, with a GST invoice from the brand.</span></div>
    </div>
    <p class="xs muted" style="padding:0 18px 18px">Brands, pieces and prices here are examples in this preview.</p></div>`;
 }
@@ -2691,33 +2893,23 @@ function vBrand(k){
    <div class="ptabs" role="tablist">${tabs.map(([t,l])=>`<button role="tab" aria-selected="${brandTab===t}" data-btab="${t}">${l}</button>`).join("")}</div>
    ${brandTab==="live"?`<div class="xgrid">${live.map(xcardHTML).join("")||'<p class="muted small">No live drops. Follow to hear about the next one.</p>'}</div>`
     :brandTab==="sold"?`<div style="padding:12px 16px 16px;overflow-x:auto"><table class="ecolog"><tr><th>Piece</th><th>Certificate</th><th>Sold for</th><th>When</th></tr>${b.sold.map(([n,c,p,w])=>`<tr><td><b>${esc(n)}</b></td><td><span class="xchip">${c}</span></td><td>${inr(p)}</td><td>${w}</td></tr>`).join("")}</table></div>`
-    :`<div class="xtrust" style="padding-top:12px"><div><b>Registered name</b><span class="small muted">${esc(b.legal)}</span></div><div><b>GSTIN</b><span class="small muted">${b.gstin}</span></div><div><b>Based in</b><span class="small muted">${esc(b.city)}</span></div><div><b>Returns</b><span class="small muted">7 days if the piece doesn't match its certificate or photos. Handled through SwaapoSafe.</span></div></div>`}
+    :`<div class="xtrust" style="padding-top:12px"><div><b>Registered name</b><span class="small muted">${esc(b.legal)}</span></div><div><b>GSTIN</b><span class="small muted">${b.gstin}</span></div><div><b>Based in</b><span class="small muted">${esc(b.city)}</span></div><div><b>Returns</b><span class="small muted">7 days if the piece doesn't match its certificate or photos. Handled through our licensed payment partner.</span></div></div>`}
    <p class="xs muted" style="padding:0 18px 18px">Example brand in this preview.</p></div>`;
 }
 function execHeader(a){const b=BRANDS[a.u];return `<div style="padding:14px 16px 0;display:flex;flex-direction:column;gap:10px"><div class="xcert" style="margin:0"><span class="xgem" aria-hidden="true">◆</span><div><b>${a.ed} · Certificate ${a.cert}</b><div class="small muted">Sold by ${esc(b.legal)} · GSTIN ${b.gstin}</div><div class="xs" style="margin-top:4px"><button class="namebtn" data-brand="${a.u}" style="color:var(--gold-ink);font-weight:800">Visit ${esc(U[a.u].n)} →</button></div></div></div>
-  ${canBid()&&!KYC?`<div class="warn">Executive auctions are for verified bidders. You'll verify your ID once when you place your first bid.</div>`:""}</div>`}
+  ${canBid()&&!KYC?`<div class="warn">Exclusive auctions are for verified bidders. You'll verify your ID once when you place your first bid.</div>`:""}</div>`}
 const _renderAuctionBody=renderAuctionBody;
 renderAuctionBody=function(a){_renderAuctionBody(a);const h=document.getElementById("adet-"+a.id);if(h&&a.exec)h.insertAdjacentHTML("afterbegin",execHeader(a))};
 const _placeBid=placeBid;
 placeBid=function(a,amt,quiet){if(a.exec&&canBid()&&has("pro")&&!KYC){openKyc(a);return false}return _placeBid(a,amt,quiet)};
-function openKyc(a){
-  const {w,close}=modal(`<div class="shead"><h3>Become a verified bidder</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
-   <form class="sbody" id="kycf" novalidate><p>Executive auctions are for verified bidders. Verify once and you can bid on every Swaapo Exclusive drop.</p>
-   <div class="vlist small"><span>Match your Aadhaar or passport with a quick selfie</span><span>Add your PAN (needed for high-value purchases)</span><span>We keep only the result, not the images</span></div>
-   <div class="field"><label for="kyc-pan">PAN</label><input id="kyc-pan" placeholder="ABCDE1234F" maxlength="10" autocomplete="off" style="text-transform:uppercase"></div>
-   <label class="check"><input type="checkbox" id="kyc-ok"> The ID and PAN are mine, and I understand bids are binding</label>
-   <span class="err" id="kyc-err" hidden></span><button class="btn g" type="submit" style="padding:12px">Verify and continue</button>
-   <p class="xs muted" style="text-align:center">Example verification. Nothing is uploaded in this preview.</p></form>`,"Verified bidder");
-  w.querySelector("#kycf").onsubmit=e=>{e.preventDefault();const pan=w.querySelector("#kyc-pan").value.trim().toUpperCase(),er=w.querySelector("#kyc-err");
-    if(!/^[A-Z]{5}[0-9]{4}[A-Z]$/.test(pan)){er.textContent="Enter a PAN like ABCDE1234F.";er.hidden=false;return}
-    if(!w.querySelector("#kyc-ok").checked){er.textContent="Please confirm to continue.";er.hidden=false;return}
-    KYC=true;close();toast("✓ You're a verified bidder. Place your bid.",true);if(a){document.getElementById("adet-"+a.id)?renderAuctionBody(a):openAuction(a.id)}if(location.hash==="#exclusive")vExclusive()};
-}
+function openKyc(){
+  modal(`<div class="shead"><h3>Verified bidders: coming soon</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
+   <div class="sbody"><p class="small">Exclusive auctions will need a one-time check with a licensed e-KYC provider. We don't collect ID or PAN numbers until that's in place.</p><button class="btn" data-x>OK</button></div>`,"Verified bidders")}
 function openBrandApply(){
   if(EDITION!=="web"){const {w}=modal(`<div class="shead"><h3>Sell as a brand</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div><div class="sbody"><p>Brand tools live on the Swaapo website, next to Ads Manager.</p><a class="btn g" href="${WEB_URL}" target="_blank" rel="noopener" style="text-decoration:none;align-self:flex-start">Open Swaapo Web</a></div>`,"Sell as a brand");return}
   if(!need18("Brand accounts are run by adults 18 and over."))return;
   const {w,close}=modal(`<div class="shead"><h3>◆ Apply for a verified brand page</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
-   <form class="sbody" id="baf" novalidate><p class="small muted">Verified brands can run one-of-one executive auctions. We check every application by hand.</p>
+   <form class="sbody" id="baf" novalidate><p class="small muted">Verified brands can run one-of-one Exclusive auctions. We check every application by hand.</p>
    <div class="two"><div class="field"><label for="ba-n">Brand name</label><input id="ba-n" placeholder="e.g. Kochi Kicks"></div><div class="field"><label for="ba-l">Registered business name</label><input id="ba-l" placeholder="As on your GST certificate"></div></div>
    <div class="two"><div class="field"><label for="ba-g">GSTIN</label><input id="ba-g" maxlength="15" placeholder="32ABCDE1234F1Z5" style="text-transform:uppercase"></div><div class="field"><label for="ba-t">Trademark no. or brand authorisation</label><input id="ba-t" placeholder="e.g. TM 4567890"></div></div>
    <div class="two"><div class="field"><label for="ba-c">What you make</label><select id="ba-c">${["Watches","Handloom","Furniture","Sneakers","Art","Jewellery","Other"].map(c=>`<option>${c}</option>`).join("")}</select></div><div class="field"><label for="ba-w">Website or Instagram</label><input id="ba-w" placeholder="https://"></div></div>
@@ -2762,10 +2954,14 @@ function applySession(acc){
   if(acc.coins==null&&!acc.demo){acc.coins=0;acc.coinLog=[]}
   if(!acc.demo){Object.assign(U.you,{swaps:0,rating:0,fol:0,fing:0});MY_TREES=0}
   if(acc.coins!=null){COINS=acc.coins;COIN_LOG=acc.coinLog||[]}
+  if(acc.demo){CONVS=structuredClone(DEMO_STATE.convs);ALERTS=structuredClone(DEMO_STATE.alerts);MY=structuredClone(DEMO_STATE.my);FOLLOW=new Set(DEMO_STATE.follow)}
+  else{CONVS=acc.convs||(acc.convs=[]);ALERTS=acc.alerts||(acc.alerts=[]);MY=acc.my||(acc.my=[]);FOLLOW=new Set(acc.follow||[])}
+  activeConv=0;REPORTS=acc.reports||(acc.reports=[]);
   updCoins();
   document.documentElement.dataset.minor=isTeen()?"1":"";
 }
 function signIn(acc,via){
+  if(acc.status==="pending_guardian"){guardianStep(acc);return}
   let msg="";
   if(acc.status==="deactivated"){acc.status="active";msg="Welcome back. Your account is active again."}
   if(acc.status==="pending_deletion"){acc.status="active";acc.deleteAfter=null;msg="Welcome back. We've cancelled your account deletion."}
@@ -2789,7 +2985,7 @@ let OTP={phone:null,code:null,at:0,purpose:null,tries:0};
 function sendOtp(phone,purpose){
   if(Date.now()-OTP.at<30000&&OTP.phone===phone){toast(`Wait ${Math.ceil((30000-(Date.now()-OTP.at))/1000)} seconds before asking for a new code.`);return false}
   OTP={phone,code:String(Math.floor(Math.random()*1e6)).padStart(6,"0"),at:Date.now(),purpose,tries:0};
-  toast(`Preview: your code is ${OTP.code}. On Swaapo it arrives by SMS.`,true);return true;
+  toast(purpose==="guardian"?`Preview: the code sent to your parent or guardian is ${OTP.code}. On Swaapo it arrives on their phone by SMS.`:`Preview: your code is ${OTP.code}. On Swaapo it arrives by SMS.`,true);return true;
 }
 function checkOtp(code){if(OTP.tries>=5)return "Too many wrong codes. Ask for a new one.";if(Date.now()-OTP.at>600000)return "That code has expired. Ask for a new one.";if(code!==OTP.code){OTP.tries++;return "That code isn't right."}OTP.code=null;return ""}
 function renderLogin(){
@@ -2827,10 +3023,8 @@ function renderSignup(){
      ${SIGN.phoneOk?`<span class="okline">✓ Verified</span>`:`<div id="su-codef" ${SIGN.codeSent?"":"hidden"} style="display:flex;gap:6px;margin-top:6px"><input id="su-code" class="otp" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="••••••" style="flex:1;min-width:0"><button type="button" class="btn p" id="su-verify">Verify</button></div>`}</div>
    <div class="field"><label for="su-e">Email <span class="muted">(optional, Gmail works)</span></label><input id="su-e" type="email" autocomplete="email" placeholder="you@gmail.com" value="${esc(SIGN.email||o?.email||"")}"></div>
    <div class="field"><label for="su-d">Date of birth</label><input id="su-d" type="date" value="${esc(SIGN.dob||"")}"><span class="agehint" id="su-age">You need to be 15 or older to join.</span></div>
-   <div class="field" id="su-gf" hidden><label for="su-g">Parent or guardian's mobile or email</label><input id="su-g" placeholder="They'll get a message to confirm your account"></div>
+   <div class="field" id="su-gf" hidden><label for="su-g">Parent or guardian's mobile number</label><div class="phone"><span class="cc">+91</span><input id="su-g" inputmode="numeric" autocomplete="off" maxlength="10" placeholder="98765 43210"></div><span class="hint">We'll send them a code. Your account starts once they confirm it.</span></div>
    ${o?"":`<div class="field"><label for="su-p">Password</label><input id="su-p" type="password" autocomplete="new-password" placeholder="At least 8 characters"></div>`}
-   <div class="idbox"><b>Verify your ID (optional)</b><span class="small muted">Aadhaar through DigiLocker, or a passport, driving licence or voter ID. With your mobile and email verified you start at <b>trust 50</b>. Complete your profile to get <b>1,000 Swaapo Coins</b>.</span>
-     <label class="check"><input type="checkbox" id="su-id" checked> Verify my ID right after sign-up</label></div>
    <label class="check"><input type="checkbox" id="su-t"> I agree to the Terms and Privacy Policy, and my details are my own</label>
    <span class="err" id="su-err" hidden></span><button class="btn g" type="submit" style="padding:12px">Create account</button>
    <p class="authnote">Already on Swaapo? <button type="button" class="linkbtn" data-amode="login">Log in</button></p></form>`;
@@ -2851,15 +3045,16 @@ function renderSignup(){
     if(email&&!/^\S+@\S+\.\S+$/.test(email))return fail("Enter a valid email or leave it blank.");
     if(email&&ACCOUNTS.some(x=>x.email===email))return fail("That email already has an account. Log in instead.");
     if(a<0)return fail("Enter your date of birth.");if(a<15)return fail("You need to be 15 or older to join Swaapo.");
-    if(a<18&&!$f("su-g").value.trim())return fail("Add a parent or guardian's mobile or email.");
+    const gph=a<18?normPhone($f("su-g").value):null;
+    if(a<18&&!gph)return fail("Add your parent or guardian's 10-digit mobile number.");
+    if(a<18&&gph===SIGN.phoneOk)return fail("Use your parent or guardian's number, not your own.");
     const pw=o?null:$f("su-p").value;if(!o&&pw.length<8)return fail("Use a password of at least 8 characters.");
     if(!$f("su-t").checked)return fail("Please agree to the Terms and Privacy Policy.");
-    const acc={handle,name,phone:SIGN.phoneOk,email:email||null,dob:SIGN.dob,pw:pw?await sha(pw):null,google:o?.provider==="google"?o.email||"linked":null,apple:o?.provider==="apple"?o.email||"linked":null,status:"active",guardian:a<18?$f("su-g").value.trim():null};
+    const acc={handle,name,phone:SIGN.phoneOk,email:email||null,dob:SIGN.dob,pw:pw?await sha(pw):null,google:o?.provider==="google"?o.email||"linked":null,apple:o?.provider==="apple"?o.email||"linked":null,status:a<18?"pending_guardian":"active",guardian:gph};
     acc.emailVerified=!!(o&&email&&o.email===email);acc.coins=0;acc.coinLog=[];acc.area="";acc.bio="";acc.photo=false;acc.idv=null;acc.bonus=false;
-    const wantId=$f("su-id").checked;
-    ACCOUNTS.push(acc);saveAccounts();SIGN={};PENDING_OAUTH=null;signIn(acc,"new");
-    setTimeout(()=>wantId?openIdVerify(true):openOnboarding(),700);
-    if(a<18)setTimeout(()=>toast("We've sent your parent or guardian a message to confirm your account."),2400)};
+    ACCOUNTS.push(acc);saveAccounts();SIGN={};PENDING_OAUTH=null;
+    if(acc.status==="pending_guardian"){guardianStep(acc);return}
+    signIn(acc,"new");setTimeout(openOnboarding,700)};
 }
 function openOAuth(provider,linking){
   const G=provider==="google";
@@ -2885,14 +3080,15 @@ function vSettings(){
    <div class="vhead" style="padding-top:0"><h3>Your details</h3></div>
    ${row("Name",esc(a.name))}${row("Username","@"+esc(a.handle))}${row("Mobile",a.phone?esc(a.phone.replace(/^\+91/,"+91 "))+' <span class="okline">✓ Verified</span>':"Not added")}
    ${row("Email",a.email?esc(a.email)+(a.emailVerified?' <span class="okline">✓ Verified</span>':""):"Not added",a.emailVerified?"":'<button class="btn" data-fix="email">Verify email</button>')}
-   <div class="vhead"><h3>Aadhaar &amp; trust score</h3></div>
+   <div class="vhead"><h3>Trust score</h3></div>
    <div class="idseg"><div class="trust"><b class="small">Trust score</b><div class="meter"><i style="width:${trustOf(a)}%"></i></div><b class="num">${trustOf(a)}</b></div>
     ${trustBreakdownHTML()}
-    ${row("ID verification",a.idv?`${esc(a.idv.label)} ending ${esc(a.idv.last4)} <span class="okline">✓ Verified</span>`:`Aadhaar through DigiLocker, or a passport, driving licence or voter ID. Optional. Phone, email and ID together give <b>trust 50</b>.`,a.idv?"":'<button class="btn g" data-fix="id">Verify with Aadhaar</button>')}
-    <p class="xs muted">Only the last 4 digits are kept. Your Aadhaar details and points are shown here only, never on your profile.</p></div>
+    ${row("ID verification","Coming soon, with a licensed e-KYC provider. We don't collect ID numbers until then.")}
+    <p class="xs muted">Verify your mobile and email, then build trust through completed swaps and ratings.</p></div>
    <div class="vhead"><h3>Your profile</h3></div>
-   <div class="idseg">${a.bonus?`<div class="tbreak"><span class="on">Profile complete ✓ · 9 of 9</span><span class="on">Welcome bonus received</span></div>`:completionHTML()}<button class="btn" data-fix="profile" style="align-self:flex-start">Edit profile</button></div>${row("Date of birth",`${esc(a.dob)} · ${ageGroup(ageFrom(a.dob))}`)}
+   <div class="idseg">${a.bonus?`<div class="tbreak"><span class="on">Profile complete ✓</span><span class="on">Welcome bonus received</span></div>`:completionHTML()}<button class="btn" data-fix="profile" style="align-self:flex-start">Edit profile</button></div>${row("Date of birth",`${esc(a.dob)} · ${ageGroup(ageFrom(a.dob))}`)}
    ${privacyHTML(a)}
+   ${reportsHTML()}
    ${pagesHTML(a)}
    <div class="vhead"><h3>Ways to log in</h3></div>
    ${row("Mobile number","A 6-digit code by SMS",'<span class="okline">On</span>')}
@@ -2912,7 +3108,7 @@ const PRIV_DEF=()=>({vis:isTeen()?"followers":"public",dm:isTeen()?"followers":"
 const PRIV=()=>{const a=SESSION||DEMO_ACC;a.privacy={...PRIV_DEF(),...(a.privacy||{})};if(isTeen())a.privacy.ads=false;return a.privacy};
 const PRIV_SEG={vis:["Who can see your profile",[["public","Everyone"],["followers","Followers"],["private","Only you"]]],dm:["Who can message you",[["everyone","Everyone"],["followers","Followers"],["none","No one"]]],area:["Location on your profile",[["area","Area"],["city","City only"],["hidden","Hidden"]]]};
 const PRIV_TOG=[["trust","Show trust score to others","Your score still counts for swaps and auctions"],["online","Online status and read receipts","When off, you can't see others' either"],["search","Find me in search and “People near you”",""],["mentions","Allow mentions and tags","People can tag you in posts and comments"],["ads","Personalised ads","Uses your categories and area, never your messages. Always off under 18."]];
-const areaShown=()=>{const v=PRIV().area,ar=U.you.area||"";return !ar||v==="hidden"?"":" · "+esc(v==="city"?"Kochi":ar)};
+const areaShown=()=>{const v=PRIV().area,ar=U.you.area||"";return !ar||v==="hidden"?"":" · "+esc(v==="city"?myCity():ar)};
 const privChips=()=>{const p=PRIV(),l={public:"Public profile",followers:"Followers only",private:"Private profile"};return `<div class="privchips"><span>${l[p.vis]}</span>${p.dm!=="everyone"?`<span>Messages: ${p.dm==="none"?"off":"followers"}</span>`:""}<a class="xs" href="#settings" style="font-weight:700">Privacy</a></div>`};
 function privacyHTML(a){const p=PRIV();
   return `<div class="vhead"><h3>Privacy</h3></div><div class="idseg" id="privseg">
@@ -2977,7 +3173,7 @@ function openPageAdmin(id,tab){const a=SESSION||DEMO_ACC,x=pagesOf(a).find(p=>p.
     if(d.pgt){re(d.pgt);return}
     if(d.prm){x.team=x.team.filter(m=>m[0]!==d.prm);toast(`@${U[d.prm].h} removed from the page`);re("team");return}
     if(d.pq){const q=x.queue.splice(+d.i,1)[0];toast(d.pq==="ok"?"Approved and posted":"Removed. The author has been told why.");if(d.pq==="ok")x.views+=1;re("review");return}
-    if(d.pdel!==undefined){if(!confirm(`Delete ${x.n}? This can't be undone.`))return;a.pages=a.pages.filter(p=>p!==x);saveAccounts();close();toast("Page deleted");vSettings()}});
+    if(d.pdel!==undefined){close();askConfirm({title:`Delete ${x.n}?`,body:"This removes the page, its posts and its team. It can't be undone.",ok:"Delete page",danger:true}).then(ok=>{if(!ok)return;a.pages=a.pages.filter(p=>p!==x);saveAccounts();toast("Page deleted");vSettings()})}});
   w.addEventListener("change",e=>{const s=e.target.closest("[data-prole]");if(!s)return;const m=x.team.find(t=>t[0]===s.dataset.prole);m[1]=s.value;saveAccounts();toast(`@${U[m[0]].h} is now ${ROLES[s.value].toLowerCase()}`)});
   const add=w.querySelector("#padd");if(add)add.onsubmit=e=>{e.preventDefault();const h=w.querySelector("#pa-h").value.trim().replace(/^@/,"").toLowerCase();const k=Object.keys(U).find(k=>U[k].h.toLowerCase()===h&&!U[k].brand&&!U[k].off);
     if(!k){toast("No member with that username.");return}if(x.team.some(t=>t[0]===k)){toast("They're already on the team.");return}
@@ -2995,8 +3191,8 @@ document.addEventListener("change",e=>{const t=e.target.closest("[data-ptog]");i
 
 function blockers(){const out=[];
   if(auctions().some(a=>a.u==="you"&&!ended(a)))out.push("auctions you're selling");
-  if(auctions().some(a=>a.sold&&a.soldTo==="you"))out.push("auction payments in SwaapoSafe escrow");
-  if(CONVS.some(c=>c.msgs.some(m=>m.t==="offer"&&m.state==="accepted"&&!c.done)))out.push("swaps you've agreed but not completed");
+  if(auctions().some(a=>youWon(a)&&(!a.order||a.order.step<4)))out.push("auction orders still in progress");
+  if(CONVS.some(c=>c.msgs.some(m=>m.t==="offer"&&m.state==="accepted")))out.push("swaps you've agreed but not completed");
   return out}
 async function confirmPw(w){const a=SESSION;if(!a||!a.pw)return true;const v=w.querySelector("#cf-pw").value;if(a.pw!==await sha(v)){const er=w.querySelector(".err");er.textContent="That password isn't right.";er.hidden=false;return false}return true}
 function openDeactivate(){
@@ -3059,31 +3255,31 @@ const TRUST_PTS={phone:20,email:10,id:20},WELCOME_BONUS=1000;
 const ID_OPTS=[["aadhaar_digilocker","Aadhaar via DigiLocker","Recommended. Log in to DigiLocker and share your Aadhaar."],["aadhaar_offline","Aadhaar offline e-KYC","Use the paperless e-KYC file from the UIDAI website."],["passport","Passport",""],["driving_licence","Driving licence",""],["voter_id","Voter ID",""]];
 const verifTrust=a=>(a.phone?TRUST_PTS.phone:0)+(a.emailVerified?TRUST_PTS.email:0)+(a.idv?TRUST_PTS.id:0);
 const trustOf=a=>Math.max(a.trustBase||0,verifTrust(a));
-const trustText=a=>`Phone ${a.phone?"✓":"·"} ${TRUST_PTS.phone} · Email ${a.emailVerified?"✓":"·"} ${TRUST_PTS.email} · ID ${a.idv?"✓":"·"} ${TRUST_PTS.id}`;
-const checklistOf=a=>[["name","Name",!!a.name,"profile"],["handle","Username",!!a.handle,"profile"],["phone","Mobile verified",!!a.phone,""],["email","Email verified",!!a.emailVerified,"email"],["id","ID verified",!!a.idv,"id"],["dob","Date of birth",!!a.dob,""],["area","City or area",!!(a.area||"").trim(),"profile"],["bio","Short bio",!!(a.bio||"").trim(),"profile"],["photo","Profile photo",!!a.photo,"photo"]].map(([key,label,done,fix])=>({key,label,done,fix}));
+const trustText=a=>`Phone ${a.phone?"✓":"·"} ${TRUST_PTS.phone} · Email ${a.emailVerified?"✓":"·"} ${TRUST_PTS.email}`;
+const checklistOf=a=>[["name","Name",!!a.name,"profile"],["handle","Username",!!a.handle,"profile"],["phone","Mobile verified",!!a.phone,""],["email","Email verified",!!a.emailVerified,"email"],["dob","Date of birth",!!a.dob,""],["area","City or area",!!(a.area||"").trim(),"profile"],["bio","Short bio",!!(a.bio||"").trim(),"profile"],["photo","Profile photo",!!a.photo,"photo"]].map(([key,label,done,fix])=>({key,label,done,fix}));
 function updCoins(){const t=COINS.toLocaleString("en-IN");const ct=document.getElementById("coin-tag");if(ct)ct.textContent=t;document.querySelectorAll(".coinpill b,.pcoin").forEach(b=>b.textContent=t)}
 function syncCoins(){if(!SESSION)return;SESSION.coins=COINS;SESSION.coinLog=COIN_LOG.slice(0,60);saveAccounts()}
 function completionHTML(compact){
   const a=SESSION||DEMO_ACC,items=checklistOf(a),n=items.filter(i=>i.done).length;
   if(a.bonus)return compact?"":`<div class="tbreak"><span class="on">Profile complete ✓</span></div>`;
   return `<div class="comp"><div class="top"><b>Finish your profile</b><span class="gift"><i class="coin" aria-hidden="true"></i>Get ${WELCOME_BONUS.toLocaleString("en-IN")} Swaapo Coins</span></div>
-   <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="9" aria-valuenow="${n}" aria-label="Profile ${n} of 9 complete"><i style="width:${n/9*100}%"></i></div>
+   <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="${items.length}" aria-valuenow="${n}" aria-label="Profile ${n} of ${items.length} complete"><i style="width:${n/items.length*100}%"></i></div>
    <div class="todo">${items.map(i=>i.done?`<button class="isdone" tabindex="-1">✓ ${i.label}</button>`:`<button data-fix="${i.fix}">${i.label}</button>`).join("")}</div>
-   ${compact?"":`<span class="xs muted">${n} of 9 done. Swaapo Coins have no cash value and can't be bought or sold.</span>`}</div>`;
+   ${compact?"":`<span class="xs muted">${n} of ${items.length} done. Swaapo Coins are a small reward with no cash value. They can't be bought, sold or traded.</span>`}</div>`;
 }
-function trustBreakdownHTML(){const a=SESSION||DEMO_ACC;return `<div class="tbreak"><span class="${a.phone?"on":""}">Phone ${a.phone?"✓":""} +${TRUST_PTS.phone}</span><span class="${a.emailVerified?"on":""}">Email ${a.emailVerified?"✓":""} +${TRUST_PTS.email}</span><span class="${a.idv?"on":""}">ID ${a.idv?"✓":""} +${TRUST_PTS.id}</span><span>Swaps and ratings add more</span></div>`}
+function trustBreakdownHTML(){const a=SESSION||DEMO_ACC;return `<div class="tbreak"><span class="${a.phone?"on":""}">Phone ${a.phone?"✓":""} +${TRUST_PTS.phone}</span><span class="${a.emailVerified?"on":""}">Email ${a.emailVerified?"✓":""} +${TRUST_PTS.email}</span><span>ID checks coming soon</span><span>Swaps and ratings add more</span></div>`}
 function afterVerify(msg){const a=SESSION;U.you.trust=trustOf(a);U.you.v=!!a.idv;saveAccounts();toast(msg,true);route();setTimeout(checkBonus,500)}
 function checkBonus(){
   const a=SESSION;if(!a||a.bonus||!checklistOf(a).every(i=>i.done))return;
   a.bonus=true;COINS+=WELCOME_BONUS;COIN_LOG.unshift(["+1,000","Welcome bonus: profile complete","now"]);syncCoins();updCoins();
   modal(`<div class="shead"><h3>Profile complete</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
-   <div class="sbody bonusmodal"><i class="coin" aria-hidden="true"></i><h2>+${WELCOME_BONUS.toLocaleString("en-IN")} Swaapo Coins</h2><p class="muted">Your welcome bonus is in. With 1,000 coins you can add coins to your swap offers.</p><a class="btn g" href="#coins" data-x style="text-decoration:none">See my coins</a></div>`,"Welcome bonus");
+   <div class="sbody bonusmodal"><i class="coin" aria-hidden="true"></i><h2>+${WELCOME_BONUS.toLocaleString("en-IN")} Swaapo Coins</h2><p class="muted">Your welcome bonus is in. Coins are a small thank-you for being on Swaapo. They have no cash value and can't be traded.</p><a class="btn g" href="#coins" data-x style="text-decoration:none">See my coins</a></div>`,"Welcome bonus");
   if(location.hash==="#profile"||location.hash==="#settings"||location.hash===""||location.hash==="#feed")route();
 }
 function openOnboarding(){
   const a=SESSION;if(!a)return;
   const {w,close}=modal(`<div class="shead"><h3>Welcome to Swaapo, ${esc(a.name.split(" ")[0])}</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
-   <div class="sbody"><p class="small muted">Your trust score is <b>${trustOf(a)}</b>. Verify your email and ID to reach 50, then complete your profile for ${WELCOME_BONUS.toLocaleString("en-IN")} Swaapo Coins.</p>${completionHTML()}<button class="btn" data-x style="align-self:flex-start">Later</button></div>`,"Welcome");
+   <div class="sbody"><p class="small muted">Your trust score is <b>${trustOf(a)}</b>. Verify your email to add ${TRUST_PTS.email}, then complete your profile for ${WELCOME_BONUS.toLocaleString("en-IN")} Swaapo Coins.</p>${completionHTML()}<button class="btn" data-x style="align-self:flex-start">Later</button></div>`,"Welcome");
   w.addEventListener("click",e=>{if(e.target.closest("[data-fix]"))close()});
 }
 function openEmailVerify(){
@@ -3098,46 +3294,11 @@ function openEmailVerify(){
   w.querySelector("form").onsubmit=e=>{e.preventDefault();if(!code)return fail("Send the code first.");if(w.querySelector("#ev-c").value.trim()!==code)return fail("That code isn't right.");
     a.email=w.querySelector("#ev-e").value.trim().toLowerCase();a.emailVerified=true;close();afterVerify(`Email verified. Trust is now ${trustOf(a)}.`)};
 }
-function openIdVerify(fromSignup){
-  const a=SESSION;if(!a)return;
-  const {w,close}=modal(`<div class="shead"><h3>Verify your ID</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
-   <form class="sbody" novalidate>${fromSignup?`<p class="small">Account created. Verify your ID to add <b>+${TRUST_PTS.id} trust</b>.</p>`:""}
-   <div class="idopts" role="radiogroup" aria-label="ID to verify with">${ID_OPTS.map(([v,l,d],i)=>`<label><input type="radio" name="idm" value="${v}" ${i===0?"checked":""}><span><b>${l}</b>${d?`<small>${d}</small>`:""}</span></label>`).join("")}</div>
-   <label class="check"><input type="checkbox" id="id-ok"> I agree to Swaapo checking my identity with the provider. Swaapo keeps only the last 4 digits and the result, never my full ID number or photo.</label>
-   <p class="xs muted">Aadhaar is optional. Every ID here earns the same trust.</p>
-   <span class="err" hidden></span><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn g" type="submit" style="padding:12px 18px">Continue</button>${fromSignup?'<button type="button" class="btn" data-x>Skip for now</button>':""}</div></form>`,"Verify your ID");
-  w.querySelector("form").onsubmit=e=>{e.preventDefault();const er=w.querySelector(".err");if(!w.querySelector("#id-ok").checked){er.textContent="Please agree so we can check your ID.";er.hidden=false;return}
-    const m=w.querySelector("input[name=idm]:checked").value;close();m.startsWith("aadhaar")?openDigiLocker(m):openDocCheck(m)};
-}
-function openDigiLocker(method){
-  const a=SESSION,off=method==="aadhaar_offline";let code=null,aad="";
-  const {w,close}=modal(`<div class="shead"><h3>${off?"UIDAI offline e-KYC":"DigiLocker"}</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
-   <form class="sbody" novalidate><div class="dl"><div class="dlh">${off?"UIDAI · Aadhaar Paperless e-KYC":"DigiLocker · Government of India"}</div><div class="dlb">
-     <p class="xs muted" style="margin:0">Preview of the ${off?"UIDAI":"DigiLocker"} window. On Swaapo this opens their website, so your Aadhaar number is typed there, not into Swaapo.</p>
-     <div class="field"><label for="dl-a">Aadhaar number</label><input id="dl-a" inputmode="numeric" maxlength="14" autocomplete="off" placeholder="XXXX XXXX XXXX"></div>
-     <div class="field" id="dl-cf" hidden><label for="dl-c">OTP sent to your Aadhaar-linked mobile</label><input id="dl-c" class="otp" inputmode="numeric" maxlength="6" placeholder="••••••"></div>
-     <span class="err" hidden></span><button class="btn p" type="submit" id="dl-go">Get OTP</button></div></div></form>`,"Aadhaar check");
-  const er=w.querySelector(".err"),fail=m=>{er.textContent=m;er.hidden=false};
-  w.querySelector("form").onsubmit=e=>{e.preventDefault();er.hidden=true;
-    if(!code){aad=w.querySelector("#dl-a").value.replace(/\s/g,"");if(!/^[2-9]\d{11}$/.test(aad))return fail("Enter your 12-digit Aadhaar number.");
-      code=String(Math.floor(Math.random()*1e6)).padStart(6,"0");w.querySelector("#dl-cf").hidden=false;w.querySelector("#dl-go").textContent="Verify and share with Swaapo";toast(`Preview: Aadhaar OTP ${code}`,true);return}
-    if(w.querySelector("#dl-c").value.trim()!==code)return fail("That OTP isn't right.");
-    const last4=aad.slice(-4);aad="";w.querySelector("#dl-a").value="";
-    if(ACCOUNTS.some(x=>x!==a&&x.idv&&x.idv.method.startsWith("aadhaar")&&x.idv.last4===last4&&x.dob===a.dob))return fail("This Aadhaar is already verified on another Swaapo account.");
-    a.idv={method,label:ID_OPTS.find(o=>o[0]===method)[1],last4,at:Date.now()};close();afterVerify(`ID verified with Aadhaar ending ${last4}. Trust is now ${trustOf(a)}.`)};
-}
-function openDocCheck(method){
-  const a=SESSION,label=ID_OPTS.find(o=>o[0]===method)[1];
-  const {w,close}=modal(`<div class="shead"><h3>Verify with your ${label.toLowerCase()}</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
-   <form class="sbody" novalidate><div class="field"><label for="dc-n">${label} number</label><input id="dc-n" autocomplete="off"></div>
-   <div class="field"><label for="dc-f">Photo of the ID</label><input id="dc-f" type="file" accept="image/*"></div>
-   <p class="xs muted">Our partner checks the document and your name and date of birth. We keep only the last 4 characters and the result.</p>
-   <span class="err" hidden></span><button class="btn g" type="submit" style="padding:12px">Verify</button></form>`,label);
-  w.querySelector("form").onsubmit=e=>{e.preventDefault();const n=w.querySelector("#dc-n").value.replace(/\s/g,"").toUpperCase(),er=w.querySelector(".err");
-    if(n.length<6){er.textContent=`Enter your ${label.toLowerCase()} number.`;er.hidden=false;return}
-    if(!w.querySelector("#dc-f").files.length){er.textContent="Add a clear photo of the ID.";er.hidden=false;return}
-    a.idv={method,label,last4:n.slice(-4),at:Date.now()};close();afterVerify(`ID verified with your ${label.toLowerCase()}. Trust is now ${trustOf(a)}.`)};
-}
+// ID checks wait for a licensed e-KYC provider. Until then Swaapo collects no ID numbers at all.
+function openIdVerify(){
+  modal(`<div class="shead"><h3>ID verification is coming</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>
+   <div class="sbody"><p class="small">We'll add ID checks once we're working with a licensed e-KYC provider. We'll ask for the minimum needed, and we don't collect any ID numbers until then.</p>
+   <p class="small muted">For now, verify your mobile and email, complete your profile, and build trust through swaps and ratings.</p><button class="btn" data-x>OK</button></div>`,"ID verification")}
 function openEditProfile(){
   const a=SESSION;if(!a)return;
   const {w,close}=modal(`<div class="shead"><h3>Edit profile</h3><button class="iconbtn" data-x aria-label="Close">✕</button></div>

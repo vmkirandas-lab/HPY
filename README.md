@@ -44,6 +44,22 @@ open('index.html', 'w').write(
 EOF
 ```
 
+## Launch scope
+
+The app launches with **swaps and the trust layer only**. In `social.html`, `LAUNCH_MVP=true` keeps these screens working: Home feed, Swipe, Messages, Notifications, Profile, Create (a swap listing only), Settings, Safety and Help.
+
+These are built but hidden behind a "Coming soon" note (set `LAUNCH_MVP=false` to see them): Reels and Stories, Auctions and Swaapo Exclusive, Offers, Resell, Donate, Gatherings, Events, Groups and Add-ons, Boards and pins, Draws and challenges, Advertise and brand pages, the Coins page and Plans. Mystery Box has been removed.
+
+How the launch version works:
+
+- **Swaps are two-sided.** An offer can be accepted, declined or countered, and withdrawn until it's accepted. An accepted swap leads to one next step: plan the meet-up. It completes only when both people confirm, then each rates the other 1–5. Coins arrive only after both ratings.
+- **No money.** Swaps are item for item. Swaapo never holds money. When paid features return, they'll use a licensed payment gateway or escrow provider.
+- **One report flow.** "Report a problem" on every post, profile, chat, swap and order feeds one review queue, shown in Settings under "Your reports". Reasons include "They didn't show up".
+- **Block really blocks.** A blocked member's posts, comments, profile and chats are hidden, and neither side can message the other.
+- **New accounts start empty.** No example chats, alerts, items or reviews.
+- **Teens (15–17).** The account starts only after a parent or guardian enters a code sent to their phone.
+- **No ID collection.** The Aadhaar/DigiLocker and PAN screens are gone until a licensed e-KYC provider is integrated.
+
 ## Features
 
 - **Swapping:** has/wants posts, swap offers, ask-for-it requests, Swipe to match, Discover pins and boards, reels.
